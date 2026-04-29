@@ -1,0 +1,16 @@
+:root { --cyan: #00f2ff; --lime: #deff9a; --bg: #050505; }
+body { margin: 0; background: var(--bg); color: white; font-family: 'Inter', sans-serif; }
+.container { width: 85%; margin: auto; }
+header { padding: 20px 0; border-bottom: 1px solid rgba(0, 242, 255, 0.1); }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo-text { font-weight: bold; letter-spacing: 2px; font-size: 1.5rem; }
+.logo-text span { color: var(--lime); }
+.hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+.main-logo { width: 280px; filter: drop-shadow(0 0 30px var(--cyan)); margin-bottom: 30px; }
+h1 { font-size: 3.5rem; margin: 10px 0; }
+h1 span { color: var(--cyan); }
+.tagline { font-size: 1.2rem; color: #888; margin-bottom: 40px; }
+.btn-wp { background: var(--lime); color: black; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: 0.3s; }
+.btn-wp:hover { background: var(--cyan); box-shadow: 0 0 15px var(--cyan); }
+.social-links a { color: white; margin: 0 15px; text-decoration: none; font-size: 1.1rem; }
+footer { padding: 50px; text-align: center; border-top: 1px solid rgba(222, 255, 154, 0.1); }
