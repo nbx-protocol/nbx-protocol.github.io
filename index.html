@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX PROTOCOL | INITIALIZED</title>
+    <title>NBX PROTOCOL | THE 2026 STANDARD</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,105 +16,81 @@
         <div class="nav-container">
             <div class="logo-text">NBX<span>PROTOCOL</span></div>
             <div class="nav-links">
-                <a href="#about">What is NBX</a>
+                <a href="#about">Concept</a>
                 <a href="#tech">Governance</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="whitepaper.pdf" class="btn-small">Whitepaper</a>
+                <a href="whitepaper.pdf" class="btn-nav-action">Whitepaper</a>
             </div>
         </div>
     </nav>
 
     <section class="hero">
         <div class="hero-container">
-            <div class="hero-layout-grid">
+            
+            <div class="hero-visual">
+                <div class="main-glow"></div>
+                <img src="logo.jpg" alt="NBX Core" class="hero-logo">
+            </div>
+
+            <div class="hero-content">
+                <h1 class="statement-title">NBX</h1>
+                <h2 class="statement-subtitle">Real Utility. No Hype.</h2>
+                <p class="statement-desc">
+                    A decentralized asset designed for <strong>scarcity, performance and long-term value.</strong><br>
+                    NBX is built differently — focused on structure, not speculation.
+                </p>
                 
-                <div class="coin-wrapper">
-                    <div class="coin-glow"></div>
-                    <img src="logo.jpg" alt="NBX Core" class="main-logo">
+                <div class="cta-wrapper">
+                    <a href="https://facebook.com/TUO-LINK" target="_blank" class="cta-main">Join the Project</a>
+                    <a href="#tech" class="cta-secondary">Explore Utility</a>
                 </div>
-
-                <div class="hero-text-content">
-                    <h1 class="hero-title">NBX</h1>
-                    <h2 class="hero-subtitle">Real Utility. No Hype.</h2>
-                    <p class="hero-desc">An engineered financial Governance Layer built for inviolable long-term value. Built Different.</p>
-                    <div class="cta-group">
-                        <a href="#tech" class="btn-primary">Verify Core Utility</a>
-                        <a href="https://facebook.com/TUO-LINK" class="btn-secondary" target="_blank">
-                            <i class="fab fa-facebook"></i> Community
-                        </a>
-                    </div>
-                </div>
-
             </div>
+
         </div>
     </section>
 
-    <section class="live-status">
-        <div class="status-container">
-            <div class="status-item">
-                <span class="status-dot"></span>
-                <span class="status-label">GLOBAL NODES:</span>
-                <span id="node-count" class="status-value">1204</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">LIVE CONNECTIONS:</span>
-                <span id="visitor-count" class="status-value">482</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">SYSTEM:</span>
-                <span class="status-value" style="color: #deff9a;">ACTIVE</span>
-            </div>
+    <div class="network-bar">
+        <div class="bar-content">
+            <div class="status-node"><span class="pulse-dot"></span> SYSTEM ACTIVE</div>
+            <div class="status-stats">NODES: <span id="node-count">1,204</span> — LIVE CONNECTIONS: <span id="visitor-count">482</span></div>
         </div>
-    </section>
+    </div>
 
-    <section id="tech" class="tech-section">
+    <section id="tech" class="tech-grid-section">
         <div class="container">
-            <h2 class="section-label">Technical Trust</h2>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Governance Layer</h3>
-                    <p>Automated risk management engine with sub-second finality.</p>
+            <h3 class="section-tag">Infrastructure</h3>
+            <h2 class="section-title">The Governance Core</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Structure-First</h3>
+                    <p>Designed to be an inviolable financial rail for institutions.</p>
                 </div>
-                <div class="tech-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Inviolable Security</h3>
-                    <p>Post-quantum encryption shielding institutional assets.</p>
+                <div class="card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>High Performance</h3>
+                    <p>Sub-second finality with zero-inflation architecture.</p>
                 </div>
-                <div class="tech-card">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Deflationary Pulse</h3>
-                    <p>Real-yield mechanism derived from protocol fees, not inflation.</p>
+                <div class="card">
+                    <i class="fas fa-gem"></i>
+                    <h3>True Scarcity</h3>
+                    <p>Value derived from real protocol utility, not market hype.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>© 2026 NBX PROTOCOL | THE NEW STANDARD.</p>
-            <p style="font-size: 0.7rem; color: #444; margin-top: 10px;">
-                Infrastructure monitored by Sentinel-Core.
-            </p>
-        </div>
+        <p>© 2026 NBX PROTOCOL. INITIALIZED FOR EXCELLENCE.</p>
     </footer>
 
     <script>
-        function updateLiveStats() {
-            const visitors = document.getElementById('visitor-count');
-            const nodes = document.getElementById('node-count');
-            
-            // Fluttuazione visitatori
-            let currentVisitors = parseInt(visitors.innerText);
-            let change = Math.floor(Math.random() * 5) - 2; 
-            visitors.innerText = currentVisitors + change;
-
-            // Incremento lento dei nodi
-            if (Math.random() > 0.98) {
-                nodes.innerText = parseInt(nodes.innerText) + 1;
-            }
+        function updateStats() {
+            const v = document.getElementById('visitor-count');
+            let val = parseInt(v.innerText);
+            v.innerText = val + (Math.floor(Math.random() * 3) - 1);
         }
-        setInterval(updateLiveStats, 3000);
+        setInterval(updateStats, 4000);
     </script>
 
 </body>
