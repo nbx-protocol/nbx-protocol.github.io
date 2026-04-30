@@ -34,14 +34,17 @@
             <div class="hero-content">
                 <h1 class="statement-title">NBX</h1>
                 <h2 class="statement-subtitle">Real Utility. No Hype.</h2>
-                <p class="statement-desc">
-                    A decentralized asset designed for <strong>scarcity, performance and long-term value.</strong><br>
-                    NBX is built differently — focused on structure, not speculation.
-                </p>
+                
+                <div class="positioning-bar">
+                    <p class="statement-desc">
+                        A decentralized asset designed for <strong>scarcity, performance and long-term value.</strong>
+                    </p>
+                    <p class="strong-line">Built for structure. Not speculation.</p>
+                </div>
                 
                 <div class="cta-wrapper">
-                    <a href="https://facebook.com/TUO-LINK" target="_blank" class="cta-main">Join the Project</a>
-                    <a href="#tech" class="cta-secondary">Explore Utility</a>
+                    <a href="https://link.me/mayleefun" target="_blank" class="cta-main">Explore NBX on WX Network</a>
+                    <a href="https://facebook.com/TUO-LINK" target="_blank" class="cta-secondary">Join Community</a>
                 </div>
             </div>
 
@@ -55,6 +58,8 @@
         </div>
     </div>
 
+    <div class="elegant-divider"></div>
+
     <section id="tech" class="tech-grid-section">
         <div class="container">
             <h3 class="section-tag">Infrastructure</h3>
@@ -64,31 +69,34 @@
                 <div class="card">
                     <i class="fas fa-layer-group"></i>
                     <h3>Structure-First</h3>
-                    <p>Designed to be an inviolable financial rail for institutions.</p>
+                    <p>Designed to be an inviolable financial rail for institutional compliance.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-bolt"></i>
                     <h3>High Performance</h3>
-                    <p>Sub-second finality with zero-inflation architecture.</p>
+                    <p>Sub-second finality with zero-inflation architecture for 2026.</p>
                 </div>
                 <div class="card">
                     <i class="fas fa-gem"></i>
                     <h3>True Scarcity</h3>
-                    <p>Value derived from real protocol utility, not market hype.</p>
+                    <p>Value derived from real protocol utility and network fees.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
+        <div class="footer-line"></div>
         <p>© 2026 NBX PROTOCOL. INITIALIZED FOR EXCELLENCE.</p>
     </footer>
 
     <script>
         function updateStats() {
             const v = document.getElementById('visitor-count');
-            let val = parseInt(v.innerText);
-            v.innerText = val + (Math.floor(Math.random() * 3) - 1);
+            if(v) {
+                let val = parseInt(v.innerText);
+                v.innerText = val + (Math.floor(Math.random() * 3) - 1);
+            }
         }
         setInterval(updateStats, 4000);
     </script>
