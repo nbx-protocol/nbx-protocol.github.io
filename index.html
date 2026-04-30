@@ -3,113 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Real Utility. No Hype.</title>
-    <link rel="stylesheet" href="style.css">
+    <title>NBX PROTOCOL | INITIALIZED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header class="hero">
-        <nav>
-            <div class="logo">NBX PROTOCOL</div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo-text">NBX<span>PROTOCOL</span></div>
             <div class="nav-links">
-                <a href="#about">About</a>
-                <a href="#value">Value</a>
-                <a href="#tokenomics">Tokenomics</a>
+                <a href="#about">What is NBX</a>
+                <a href="#tech">Governance</a>
                 <a href="#roadmap">Roadmap</a>
-            </div>
-        </nav>
-        <div class="hero-content">
-            <img src="logo.jpg" alt="NBX Logo" class="hero-logo">
-            <h1>NBX — REAL UTILITY. NO HYPE.</h1>
-            <p>A next-generation digital asset designed for performance, scarcity, and real-world application.</p>
-            <div class="hero-btns">
-                <a href="NBX_Whitepaper_v1.pdf" class="btn-primary" download>READ WHITEPAPER</a>
-                <a href="#value" class="btn-secondary">WHY NBX?</a>
+                <a href="whitepaper.pdf" class="btn-small">Whitepaper</a>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <section id="about" class="content-section">
-        <h2>WHAT IS NBX?</h2>
-        <div class="grid">
-            <div class="card">
-                <i class="fas fa-microchip"></i>
-                <h3>Problem Solver</h3>
-                <p>Traditional assets lack tangible utility. NBX bridges the gap by integrating with energy-focused data infrastructures and digital governance.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-halved"></i>
-                <h3>Inviolable Security</h3>
-                <p>Developed and tested within the NBX-Lab isolation environment to ensure maximum resilience against emerging 2026 threats.</p>
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-layout-grid">
+                
+                <div class="coin-wrapper">
+                    <div class="coin-glow"></div>
+                    <img src="logo.jpg" alt="NBX Core" class="main-logo">
+                </div>
+
+                <div class="hero-text-content">
+                    <h1 class="hero-title">NBX</h1>
+                    <h2 class="hero-subtitle">Real Utility. No Hype.</h2>
+                    <p class="hero-desc">An engineered financial Governance Layer built for inviolable long-term value. Built Different.</p>
+                    <div class="cta-group">
+                        <a href="#tech" class="btn-primary">Verify Core Utility</a>
+                        <a href="https://facebook.com/TUO-LINK" class="btn-secondary" target="_blank">
+                            <i class="fab fa-facebook"></i> Community
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <section id="value" class="value-proposition">
-        <h2>WHY NBX HAS VALUE</h2>
-        <p class="value-intro">NBX is built on principles of scarcity, utility, and long-term sustainability.</p>
-        
-        <div class="value-grid">
-            <div class="value-card">
-                <span class="dot purple"></span>
-                <h3>Scarcity</h3>
-                <p>Fixed Supply: 100,000,000 NBX. No inflation. No dilution. Predictable scarcity at its core.</p>
+    <section class="live-status">
+        <div class="status-container">
+            <div class="status-item">
+                <span class="status-dot"></span>
+                <span class="status-label">GLOBAL NODES:</span>
+                <span id="node-count" class="status-value">1204</span>
             </div>
-            <div class="value-card">
-                <span class="dot blue"></span>
-                <h3>Utility Focus</h3>
-                <p>Designed as a utility asset. Future integrations: access mechanisms, transaction roles, and ecosystem interactions.</p>
+            <div class="status-item">
+                <span class="status-label">LIVE CONNECTIONS:</span>
+                <span id="visitor-count" class="status-value">482</span>
             </div>
-            <div class="value-card">
-                <span class="dot yellow"></span>
-                <h3>Infrastructure</h3>
-                <p>Powered by the Waves blockchain. Fast transactions, low fees, and reliable technical solidity.</p>
+            <div class="status-item">
+                <span class="status-label">SYSTEM:</span>
+                <span class="status-value" style="color: #deff9a;">ACTIVE</span>
             </div>
-            <div class="value-card">
-                <span class="dot red"></span>
-                <h3>Vision</h3>
-                <p>Governance-oriented approach focused on controlled distribution and long-term sustainability.</p>
-            </div>
-            <div class="value-card">
-                <span class="dot white"></span>
-                <h3>Market Dynamics</h3>
-                <p>Value is driven by adoption and demand. NBX is built for positioning, not short-term speculation.</p>
-            </div>
-        </div>
-        
-        <div class="value-statement">
-            <p>"Its value is not promised — it is driven by adoption, utility, and real-world relevance."</p>
         </div>
     </section>
 
-    <section id="tokenomics" class="token-info">
-        <h2>TECHNICAL SPECIFICATIONS</h2>
-        <div class="token-grid">
-            <div class="token-item"><strong>Network:</strong> <span>Waves</span></div>
-            <div class="token-item"><strong>Total Supply:</strong> <span>100,000,000 NBX</span></div>
-            <div class="token-item"><strong>Decimals:</strong> <span>8</span></div>
-            <div class="token-item"><strong>Issuer Address:</strong> <span class="address">3P...[3P2t6ysJoNhjLdWQFsY9sVxYgidUdZbiXzb]</span></div>
-        </div>
-    </section>
-
-    <section id="roadmap" class="roadmap">
-        <h2>ROADMAP</h2>
-        <div class="roadmap-container">
-            <div class="roadmap-step"><h4>PHASE 1</h4><p>Global Infrastructure & Web Launch</p></div>
-            <div class="roadmap-step"><h4>PHASE 2</h4><p>Community Building & Social Integration</p></div>
-            <div class="roadmap-step"><h4>PHASE 3</h4><p>Utility Integration & Ecosystem Testing</p></div>
-            <div class="roadmap-step"><h4>PHASE 4</h4><p>Institutional Expansion & DAG Model</p></div>
+    <section id="tech" class="tech-section">
+        <div class="container">
+            <h2 class="section-label">Technical Trust</h2>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <i class="fas fa-microchip"></i>
+                    <h3>Governance Layer</h3>
+                    <p>Automated risk management engine with sub-second finality.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Inviolable Security</h3>
+                    <p>Post-quantum encryption shielding institutional assets.</p>
+                </div>
+                <div class="tech-card">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Deflationary Pulse</h3>
+                    <p>Real-yield mechanism derived from protocol fees, not inflation.</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="social-links">
-            <a href="https://www.facebook.com/NBXProjectOfficial/" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="mailto:info.nbxproject@gmail.com"><i class="fas fa-envelope"></i></a>
+        <div class="container">
+            <p>© 2026 NBX PROTOCOL | THE NEW STANDARD.</p>
+            <p style="font-size: 0.7rem; color: #444; margin-top: 10px;">
+                Infrastructure monitored by Sentinel-Core.
+            </p>
         </div>
-        <p>&copy; 2026 NBX Project Official | Built Different. Real Utility.</p>
     </footer>
+
+    <script>
+        function updateLiveStats() {
+            const visitors = document.getElementById('visitor-count');
+            const nodes = document.getElementById('node-count');
+            
+            // Fluttuazione visitatori
+            let currentVisitors = parseInt(visitors.innerText);
+            let change = Math.floor(Math.random() * 5) - 2; 
+            visitors.innerText = currentVisitors + change;
+
+            // Incremento lento dei nodi
+            if (Math.random() > 0.98) {
+                nodes.innerText = parseInt(nodes.innerText) + 1;
+            }
+        }
+        setInterval(updateLiveStats, 3000);
+    </script>
 
 </body>
 </html>
