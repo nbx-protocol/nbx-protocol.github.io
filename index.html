@@ -12,17 +12,22 @@
 </head>
 <body>
 
+    <!-- NAVIGATION -->
     <nav>
         <div class="nav-container">
             <div class="logo-text">NBX<span>PROTOCOL</span></div>
             <div class="nav-links">
-                <a href="#about">Concept</a>
+                <a href="#concept">Concept</a> 
                 <a href="#tech">Governance</a>
+                <a href="#contact">Contact Us</a>
+                <!-- Link diretto alla trasparenza dello Smart Contract -->
+                <a href="https://wavesexplorer.com/" target="_blank" style="color: var(--lime); font-weight: bold;">Verify Contract</a>
                 <a href="whitepaper.pdf" class="btn-nav-action">Whitepaper</a>
             </div>
         </div>
     </nav>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="hero-container">
             
@@ -39,55 +44,91 @@
                     <p class="statement-desc">
                         A decentralized asset designed for <strong>scarcity, performance and long-term value.</strong>
                     </p>
-                    <p class="strong-line">Built for structure. Not speculation.</p>
+                    <p class="strong-line">Auditable on Waves Blockchain.</p>
                 </div>
                 
                 <div class="cta-wrapper">
-                    <a href="https://link.me/mayleefun" target="_blank" class="cta-main">Explore NBX on WX Network</a>
-                    <a href="https://facebook.com/TUO-LINK" target="_blank" class="cta-secondary">Join Community</a>
+                    <!-- Link per lo scambio immediato su WX -->
+                    <a href="https://wx.network/trading/spot/NBX_WAVES" target="_blank" class="cta-main">Trade on WX.Exchange</a>
+                    
+                    <!-- Link per la verifica tecnica (Smart Contract/Explorer) -->
+                    <a href="https://wavesexplorer.com/" target="_blank" class="cta-secondary">View Smart Contract</a>
                 </div>
+                
+                <p style="margin-top: 25px; font-size: 0.75rem; color: #555; letter-spacing: 1px;">
+                    OFFICIAL ASSET VERIFIED VIA <span style="color: var(--cyan);">WAVES PROTOCOL</span>
+                </p>
             </div>
 
         </div>
     </section>
 
+    <!-- STATUS BAR -->
     <div class="network-bar">
         <div class="bar-content">
-            <div class="status-node"><span class="pulse-dot"></span> SYSTEM ACTIVE</div>
-            <div class="status-stats">NODES: <span id="node-count">1,204</span> — LIVE CONNECTIONS: <span id="visitor-count">482</span></div>
+            <div class="status-node"><span class="pulse-dot"></span> CONTRACT LIVE</div>
+            <div class="status-stats">NETWORK: WAVES MAINNET — ACCESS: PUBLIC — VISITS: <span id="visitor-count">512</span></div>
         </div>
     </div>
 
-    <div class="elegant-divider"></div>
-
-    <section id="tech" class="tech-grid-section">
+    <!-- CONCEPT SECTION -->
+    <section id="concept" class="tech-grid-section">
         <div class="container">
-            <h3 class="section-tag">Infrastructure</h3>
-            <h2 class="section-title">The Governance Core</h2>
+            <h3 class="section-tag">Core Concept</h3>
+            <h2 class="section-title">Institutional Grade Tech</h2>
+            <p class="concept-text">
+                NBX is more than a token. It is a programmable asset. By leveraging Waves Smart Contracts, we ensure that the governance rules are immutable, transparent, and verifiable by any user, anywhere in the world.
+            </p>
+        </div>
+    </section>
+
+    <!-- TECHNICAL CORE -->
+    <section id="tech" class="tech-grid-section" style="background: #030303;">
+        <div class="container">
+            <h3 class="section-tag">Blockchain Logic</h3>
+            <h2 class="section-title">Open-Source Trust</h2>
             
             <div class="grid">
                 <div class="card">
-                    <i class="fas fa-layer-group"></i>
-                    <h3>Structure-First</h3>
-                    <p>Designed to be an inviolable financial rail for institutional compliance.</p>
+                    <i class="fas fa-code"></i>
+                    <h3>Smart Contract</h3>
+                    <p>Logic-driven asset management without middle-men interference.</p>
                 </div>
                 <div class="card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>High Performance</h3>
-                    <p>Sub-second finality with zero-inflation architecture for 2026.</p>
+                    <i class="fas fa-search-dollar"></i>
+                    <h3>Full Transparency</h3>
+                    <p>Every transaction and supply update is recorded on the public ledger.</p>
                 </div>
                 <div class="card">
-                    <i class="fas fa-gem"></i>
-                    <h3>True Scarcity</h3>
-                    <p>Value derived from real protocol utility and network fees.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Waves Security</h3>
+                    <p>Built on one of the fastest and most secure L1 networks in existence.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h3 class="section-tag">Support & Info</h3>
+            <h2 class="section-title">Human Interface</h2>
+            <div class="contact-grid">
+                <a href="https://www.facebook.com/NBXProjectOfficial/" target="_blank" class="contact-card">
+                    <i class="fab fa-facebook"></i>
+                    <span>Official Community</span>
+                </a>
+                <a href="mailto:info@nbxprotocol.io" class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <span>Official Support</span>
+                </a>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="footer-line"></div>
-        <p>© 2026 NBX PROTOCOL. INITIALIZED FOR EXCELLENCE.</p>
+        <p>© 2026 NBX PROTOCOL. OPEN SOURCE. DECENTRALIZED. VERIFIED.</p>
     </footer>
 
     <script>
