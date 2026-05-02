@@ -15,21 +15,34 @@
         h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; }
         h2 { font-size: 2rem; margin-top: 40px; color: #fff; }
         p { color: var(--text-dim); max-width: 750px; margin: 15px auto; }
+        
+        /* Hero */
         .hero { padding: 80px 20px; }
         .hero img { max-width: 450px; width: 100%; height: auto; margin-bottom: 20px; border-radius: 15px; }
         .asset-id-box { background: #111; padding: 15px; border-radius: 8px; border: 1px solid #222; display: inline-block; margin: 20px 0; font-family: monospace; font-size: 0.9rem; }
         .asset-id-box span { color: var(--primary); display: block; font-size: 0.7rem; text-transform: uppercase; margin-bottom: 5px; }
+        
+        /* Buttons */
         .cta-wrapper { margin-top: 30px; }
         .cta { display: inline-block; margin: 10px; padding: 14px 28px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: 0.3s; }
         .cta-main { background: #fff; color: #000; }
         .cta-secondary { border: 1px solid #333; color: #fff; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; text-align: left; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid #1a1a1a; }
+        
+        /* Grid System */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 40px; text-align: left; }
+        .card { background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid #1a1a1a; display: flex; flex-direction: column; justify-content: space-between; }
+        .card h3 { color: var(--primary); margin-top: 0; }
+        
+        /* Tokenomics Table */
         .token-box { background: #050505; padding: 25px; border-radius: 12px; border: 1px solid #111; margin: 40px auto; max-width: 500px; text-align: left; font-family: monospace; }
         .token-row { display: flex; justify-content: space-between; border-bottom: 1px solid #111; padding: 8px 0; }
+        
+        /* Risk box */
         .risk-box { background: #1a0000; border: 1px solid #440000; padding: 30px; border-radius: 12px; margin-top: 60px; }
         .risk-box h2 { color: #ff4444; margin-top: 0; }
+        
         footer { padding: 60px 20px; border-top: 1px solid #111; color: #444; font-size: 0.9rem; }
+        code { background: #111; padding: 2px 6px; border-radius: 4px; color: var(--primary); }
     </style>
 </head>
 <body>
@@ -66,6 +79,38 @@
         </div>
     </section>
 
+    <section class="container" id="tech">
+        <h2>Technical Architecture</h2>
+        <p>NBX implements a time-locked transfer model with a controlled whitelist to ensure stability during the early stages of the protocol.</p>
+        
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <h3>Smart Asset Logic</h3>
+                    <p>NBX transfer logic is enforced directly at the asset level through Waves smart asset scripting.</p>
+                    <ul style="color:#aaa; font-size: 0.9rem; padding-left: 20px;">
+                        <li>Transfers restricted before unlock date</li>
+                        <li>Whitelisted protocol addresses remain active</li>
+                        <li>Full unlock triggered by blockchain timestamp</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <h3>On-Chain Verification</h3>
+                    <p>NBX transfer logic is enforced directly at the asset level through Waves smart asset scripting.</p>
+                    <p style="font-size:0.85rem; color:#aaa; font-family: monospace;">Asset ID: FxtPT76oaWyyLjzr2P1Wq7SQLBd5yn9TDCgfYcsjvhEF</p>
+                </div>
+                <a href="https://wavesexplorer.com/assets/FxtPT76oaWyyLjzr2P1Wq7SQLBd5yn9TDCgfYcsjvhEF" target="_blank" style="color:#00c6ff; text-decoration: none; font-weight: 600; margin-top: 15px;">Verify on-chain →</a>
+            </div>
+        </div>
+
+        <p style="margin-top:30px; font-size: 1rem; border-left: 3px solid var(--primary); padding-left: 20px; text-align: left; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <strong>Human Logic:</strong> Before the unlock date, transfers are restricted to specific protocol addresses. This prevents uncontrolled circulation during early stages and ensures a structured distribution.
+        </p>
+    </section>
+
     <section class="container" id="roadmap">
         <h2>Roadmap</h2>
         <div class="grid">
@@ -88,11 +133,11 @@
         <h2>Community Signals</h2>
         <p>Early-stage feedback helps shape the direction of NBX. Results are indicative, non-binding, and used to build our development narrative.</p>
         <div class="card" style="max-width: 600px; margin: 30px auto; text-align: center;">
-            <h3>What should NBX focus on next?</h3>
+            <h3 style="text-align: center;">What should NBX focus on next?</h3>
             <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 20px;">
-                <button class="cta cta-secondary" style="cursor: not-allowed;">Governance Tools</button>
-                <button class="cta cta-secondary" style="cursor: not-allowed;">Analytics Dashboard</button>
-                <button class="cta cta-secondary" style="cursor: not-allowed;">Community Expansion</button>
+                <button class="cta cta-secondary" style="cursor: not-allowed; margin: 0;">Governance Tools</button>
+                <button class="cta cta-secondary" style="cursor: not-allowed; margin: 0;">Analytics Dashboard</button>
+                <button class="cta cta-secondary" style="cursor: not-allowed; margin: 0;">Community Expansion</button>
             </div>
             <p style="margin-top:20px; font-size:0.75rem; color:#555;">Non-binding community poll</p>
         </div>
@@ -112,7 +157,7 @@
     <section class="container">
         <div class="risk-box">
             <h2>Risk Disclosure</h2>
-            <p>NBX is an experimental digital asset. No guarantees are made regarding future value, profitability, or exchange listings. Results of Community Signals are not binding.</p>
+            <p>NBX is an experimental digital asset. No guarantees are made regarding future value, profitability, or exchange listings. Results of Community Signals are not legally or technically binding for the issuer.</p>
         </div>
     </section>
 
