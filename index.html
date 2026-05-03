@@ -1,142 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Governance Flow</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBX Protocol</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://unpkg.com/@waves/waves-transactions/dist/waves-transactions.min.js"></script>
 </head>
+
 <body>
 
-    <section class="hero">
-        <div class="container">
-            <img src="logo1.jpg" class="hero-logo" alt="NBX Logo">
-            <h1>Programmable Governance.<br>Real Utility.</h1>
-            <p class="hero-sub">
-                NBX is a fixed-supply asset where governance power is enforced on-chain. 
-                No speculation layer. Only execution.
-            </p>
+<div class="container">
 
-            <div class="live-stats">
-                <div><span id="supply">100M</span><label>Total Supply</label></div>
-                <div><span id="holders">--</span><label>Active Weight</label></div>
-                <div><span id="txs">--</span><label>Consensus Txs</label></div>
-            </div>
+<h1>NBX Governance</h1>
 
-            <div class="cta-wrapper">
-                <a href="#dashboard" class="cta cta-main">Enter Governance</a>
-                <a href="#" class="cta cta-secondary">Read Whitepaper</a>
-            </div>
-        </div>
-    </section>
+<button onclick="connectWallet()">Connect Wallet</button>
+<p id="wallet"></p>
 
-    <section class="container" style="border-top: 1px solid #111;">
-        <h2>Why NBX Exists</h2>
-        <p>Most digital assets are built as speculative layers. NBX is engineered as a governance-backed execution system.</p>
-        <p>Value is not driven by hype — but by the ability to coordinate, validate, and execute decisions on-chain.</p>
-    </section>
+<input id="title" placeholder="Proposal title">
+<button onclick="createProposal()">Create Proposal</button>
 
-    <section id="dashboard" class="dao-section">
-        <div class="container">
-            <p class="dao-intro">Governance is not a concept. It is an executable system.</p>
-            <h2 class="dao-title">Governance Architecture</h2>
-            <p class="dao-subtitle">NBX operates through a functional DAO-flow architecture where decisions emerge from on-chain consensus.</p>
+<div id="proposals"></div>
 
-            <div class="dao-flow">
-                <div class="dao-node">
-                    <h3>Community Layer</h3>
-                    <p>Signal generation and ecosystem feedback.</p>
-                </div>
-                <div class="dao-arrow"></div>
-                <div class="dao-node">
-                    <h3>Governance Layer</h3>
-                    <p>Weighted voting based on NBX holdings.</p>
-                </div>
-                <div class="dao-arrow"></div>
-                <div class="dao-core-box">
-                    <div class="dao-core">
-                        <h3>Development</h3>
-                        <p>Infrastructure maintenance.</p>
-                    </div>
-                    <div class="dao-core">
-                        <h3>Treasury</h3>
-                        <p>Fund allocation logic.</p>
-                    </div>
-                </div>
-                <div class="dao-arrow"></div>
-                <div class="dao-node final">
-                    <h3>Protocol Core</h3>
-                    <p>Immutable execution layer.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<canvas id="chart"></canvas>
 
-    <section class="container">
-        <h3 style="text-align:center; margin-bottom:30px; font-size:1.5rem;">Live Governance State</h3>
-        <div class="chart-container">
-            <canvas id="voteChart" style="max-height: 350px;"></canvas>
-        </div>
-    </section>
+</div>
 
-    <section class="container" style="padding-bottom: 100px;">
-        <h2 style="margin-bottom: 40px;">Ecosystem Transparency</h2>
-        <div id="address-list" style="text-align: left; max-width: 800px; margin: 0 auto;">
-            <div style="background:#0a0a0a; padding:15px; border-radius:8px; border:1px solid #1a1a1a; margin-bottom:10px; display:flex; justify-content:space-between;">
-                <span><b>NBX-MAIN</b> <br><code style="color:#555; font-size:0.8rem;">3P2t6ysJoNhjLdWQFsY9sVxYgidUdZbiXzb</code></span>
-                <a href="https://wavesexplorer.com/address/3P2t6ysJoNhjLdWQFsY9sVxYgidUdZbiXzb" target="_blank" style="color:#00c6ff;"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-            </div>
-    </section>
+<script>
 
-    <footer style="text-align:center; padding: 40px; border-top: 1px solid #111; color: #333; font-size: 0.8rem;">
-        NBX Protocol © 2026 — Verified Ledger Data
-    </footer>
+const API = "https://nbx-governance.onrender.com";
 
-    <script>
-        let myChart;
-        async function loadStats() {
-            try {
-                const res = await fetch("http://localhost:3000/votes");
-                const data = await res.json();
-                const total = data.GOVERNANCE + data.ANALYTICS + data.GROWTH;
+let user = null;
+let chart = null;
 
-                // Update Stats
-                document.getElementById("holders").innerText = (total * 2.1).toFixed(0);
-                document.getElementById("txs").innerText = (total * 5.4).toFixed(0);
+// ===== WALLET =====
 
-                // Chart Update
-                const ctx = document.getElementById('voteChart').getContext('2d');
-                if (myChart) myChart.destroy();
-                myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Governance', 'Analytics', 'Growth'],
-                        datasets: [{
-                            data: [data.GOVERNANCE, data.ANALYTICS, data.GROWTH],
-                            backgroundColor: ['#00c6ff', '#0072ff', '#0033ff'],
-                            borderWidth: 0
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            y: { beginAtZero: true, grid: { color: '#111' }, ticks: { color: '#444' } },
-                            x: { grid: { display: false }, ticks: { color: '#444' } }
-                        }
-                    }
-                });
-            } catch (e) {
-                console.log("Stats offline");
-            }
+async function connectWallet() {
+    const state = await window.WavesKeeper.publicState();
+    user = state.account.address;
+    document.getElementById("wallet").innerText = user;
+}
+
+// ===== CREATE =====
+
+async function createProposal() {
+
+    const title = document.getElementById("title").value;
+
+    const res = await fetch(API + "/proposals", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({
+            title,
+            options: ["YES","NO"]
+        })
+    });
+
+    const data = await res.json();
+    alert("Created: " + data.id);
+
+    loadProposals();
+}
+
+// ===== LOAD =====
+
+async function loadProposals() {
+
+    const res = await fetch(API + "/proposals");
+    const data = await res.json();
+
+    const container = document.getElementById("proposals");
+    container.innerHTML = "";
+
+    data.forEach(p => {
+
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+            <h3>${p.title}</h3>
+            <button onclick="snapshot('${p.id}')">Snapshot</button>
+            <button onclick="vote('${p.id}','YES')">YES</button>
+            <button onclick="vote('${p.id}','NO')">NO</button>
+            <button onclick="loadVotes('${p.id}')">Load Votes</button>
+            <pre id="res-${p.id}"></pre>
+        `;
+
+        container.appendChild(div);
+    });
+}
+
+// ===== SNAPSHOT =====
+
+async function snapshot(id) {
+    await fetch(API + "/snapshot/" + id, { method: "POST" });
+    alert("Snapshot done");
+}
+
+// ===== VOTE =====
+
+function vote(id, option) {
+
+    const tx = {
+        type: 4,
+        recipient: "3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M",
+        amount: 100000,
+        attachment: btoa(`VOTE:${id}:${option}`),
+        fee: 100000
+    };
+
+    window.WavesKeeper.signAndPublishTransaction(tx);
+}
+
+// ===== LOAD VOTES =====
+
+async function loadVotes(id) {
+
+    const res = await fetch(API + "/votes/" + id);
+    const data = await res.json();
+
+    document.getElementById("res-" + id).innerText = JSON.stringify(data, null, 2);
+
+    updateChart(data);
+}
+
+// ===== CHART =====
+
+function updateChart(data) {
+
+    const ctx = document.getElementById("chart");
+
+    if (chart) chart.destroy();
+
+    chart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: Object.keys(data),
+            datasets: [{
+                data: Object.values(data)
+            }]
         }
-        loadStats();
-        setInterval(loadStats, 30000);
-    </script>
+    });
+}
+
+loadProposals();
+
+</script>
+
 </body>
 </html>

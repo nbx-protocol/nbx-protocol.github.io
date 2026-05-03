@@ -1,112 +1,23 @@
-/* RESET TOTALE */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
-    background-color: #000000 !important;
-    color: #ffffff !important;
+    background: #000;
+    color: #fff;
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
 }
 
 .container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
 }
 
-/* HERO SECTION */
-.hero {
-    padding: 80px 0;
-    text-align: center;
-    background: #000000;
+button {
+    margin: 5px;
+    padding: 10px;
+    background: #00c6ff;
+    border: none;
 }
 
-.hero-logo {
-    width: 150px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    filter: drop-shadow(0 0 15px rgba(0, 198, 255, 0.4));
-}
-
-h1 {
-    font-size: 3rem;
-    color: #ffffff !important;
-    margin-bottom: 20px;
-}
-
-.hero-sub {
-    color: #888 !important;
-    font-size: 1.1rem;
-    max-width: 700px;
-    margin: 0 auto 40px;
-}
-
-/* LIVE STATS */
-.live-stats {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.live-stats span {
-    display: block;
-    font-size: 2rem;
-    font-weight: 800;
-    color: #00c6ff !important;
-}
-
-.live-stats label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    color: #555 !important;
-    letter-spacing: 1px;
-}
-
-/* BUTTONS */
-.cta-wrapper { display: flex; justify-content: center; gap: 20px; }
-.cta {
-    padding: 15px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: 0.3s;
-}
-.cta-main { background: #00c6ff; color: #000 !important; }
-.cta-secondary { border: 1px solid #333; color: #fff !important; }
-
-/* SEZIONI TESTO (WHY NBX & DAO) */
-section {
-    background-color: #000000 !important;
-    padding: 100px 0;
-    text-align: center;
-}
-
-h2 {
-    font-size: 2.2rem;
-    color: #00c6ff !important;
-    margin-bottom: 30px;
-}
-
-p {
-    color: #bbbbbb !important;
-    max-width: 800px;
-    margin: 0 auto 20px;
-}
-
-.dao-intro {
-    color: #00ff88 !important;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-/* GRAFICO */
-.chart-container {
-    background: #0a0a0a;
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #1a1a1a;
-    margin-top: 40px;
+input {
+    padding: 10px;
+    margin: 10px;
 }
