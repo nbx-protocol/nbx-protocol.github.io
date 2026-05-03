@@ -1,105 +1,96 @@
-/* NBX DAO FLOW ARCHITECTURE */
-.dao-section {
+/* --- HERO & LIVE STATS --- */
+.hero {
     padding: 100px 20px;
-    background: #000;
     text-align: center;
+    background: radial-gradient(circle at center, #0a0a0a 0%, #000 100%);
 }
 
-.dao-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 10px;
+.hero-logo {
+    max-width: 150px;
+    border-radius: 50%;
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 20px rgba(0, 198, 255, 0.3)); /* GLOW DINAMICO */
+    transition: 0.5s ease;
 }
 
-.dao-subtitle {
-    color: #aaa;
-    max-width: 700px;
-    margin: 15px auto 50px;
+.hero-logo:hover {
+    filter: drop-shadow(0 0 35px rgba(0, 198, 255, 0.6));
 }
 
-.dao-flow {
+.hero-sub {
+    color: #666;
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 1.1rem;
+}
+
+.live-stats {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-}
-
-.dao-node {
-    background: #0a0a0a;
-    border: 1px solid #1a1a1a;
-    padding: 25px;
-    border-radius: 10px;
-    max-width: 400px;
-    width: 100%;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.dao-node:hover {
-    border-color: #00c6ff;
-    transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0, 198, 255, 0.05);
-}
-
-.dao-node h3 {
-    color: #00c6ff;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.dao-arrow {
-    width: 2px;
-    height: 30px;
-    background: linear-gradient(to bottom, transparent, #00c6ff, transparent);
-    animation: flow 2s infinite;
-}
-
-@keyframes flow {
-    0% { opacity: 0.2; transform: translateY(-5px); }
-    50% { opacity: 1; }
-    100% { opacity: 0.2; transform: translateY(5px); }
-}
-
-.dao-core-box {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
     justify-content: center;
+    gap: 40px;
+    margin: 40px 0;
+    flex-wrap: wrap;
 }
 
-.dao-core {
-    background: #050505;
-    border: 1px solid #111;
-    padding: 20px;
-    border-radius: 10px;
-    width: 280px;
+.live-stats div { text-align: center; }
+
+.live-stats span {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #00c6ff;
+    font-variant-numeric: tabular-nums;
+}
+
+.live-stats label {
+    display: block;
+    font-size: 0.7rem;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 5px;
+}
+
+/* --- CTA & BUTTONS --- */
+.cta-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.cta {
+    padding: 15px 35px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
     transition: 0.3s;
 }
 
-.dao-core:hover {
-    border-color: #0072ff;
+.cta-main {
+    background: #00c6ff;
+    color: #000;
 }
 
-.dao-core h3 {
-    color: #0072ff;
-    margin-bottom: 8px;
+.cta-main:hover {
+    transform: scale(1.05); /* MICRO UX */
+    box-shadow: 0 0 20px rgba(0, 198, 255, 0.4);
 }
 
-.dao-node.final {
-    border: 1px solid #00ff88;
+.cta-secondary {
+    border: 1px solid #333;
+    color: #fff;
 }
 
-.dao-node.final h3 {
+.cta-secondary:hover {
+    background: #111;
+    border-color: #666;
+}
+
+/* --- TEXT ELEMENTS --- */
+.dao-intro {
+    text-align: center;
+    font-style: italic;
     color: #00ff88;
-}
-
-.dao-flow-text {
-    margin-top: 50px;
-    font-size: 1rem;
-    color: #00ff88;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    letter-spacing: 2px;
-    font-weight: 800;
-    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
 }

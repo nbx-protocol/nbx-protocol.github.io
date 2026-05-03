@@ -3,70 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Governance Flow</title>
+    <title>NBX | Programmable Governance</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body style="background:#000; color:#fff; margin:0; font-family:'Inter', sans-serif;">
+<body>
 
-    <div class="container" style="max-width:1100px; margin:auto; padding:40px 20px;">
-        
-        <section id="governance" style="text-align:center; padding:60px 0;">
-            <h1 style="font-size:3rem; margin-bottom:0;">Consensus Dashboard</h1>
-            <p style="color:#555;">Power is not static, it is a verifiable flow.</p>
-            </section>
+<section class="hero">
+  <div class="container">
+    <img src="logo1.jpg" class="hero-logo">
+    <h1>Programmable Governance.<br>Real Utility.</h1>
+    <p class="hero-sub">
+      NBX is a fixed-supply asset where governance power is enforced on-chain. 
+      No speculation layer. Only execution.
+    </p>
 
-        <section class="dao-section">
-            <h2 class="dao-title">Governance Architecture</h2>
-            <p class="dao-subtitle">
-                NBX operates through a functional DAO-flow architecture where decisions emerge from on-chain consensus, not centralized authority.
-            </p>
-
-            <div class="dao-flow">
-                <div class="dao-node">
-                    <h3>Community Layer</h3>
-                    <p style="font-size:0.9rem; color:#888;">Signal generation, participation, and ecosystem feedback.</p>
-                </div>
-
-                <div class="dao-arrow"></div>
-
-                <div class="dao-node">
-                    <h3>Governance Layer</h3>
-                    <p style="font-size:0.9rem; color:#888;">Weighted voting based on NBX holdings. Proposals are validated and executed via consensus.</p>
-                </div>
-
-                <div class="dao-arrow"></div>
-
-                <div class="dao-core-box">
-                    <div class="dao-core">
-                        <h3>Development Layer</h3>
-                        <p style="font-size:0.85rem; color:#666;">Protocol upgrades and infrastructure maintenance.</p>
-                    </div>
-                    <div class="dao-core">
-                        <h3>Treasury Layer</h3>
-                        <p style="font-size:0.85rem; color:#666;">Fund allocation controlled through approved proposals.</p>
-                    </div>
-                </div>
-
-                <div class="dao-arrow"></div>
-
-                <div class="dao-node final">
-                    <h3>Protocol Core</h3>
-                    <p style="font-size:0.9rem; color:#aaa;">Immutable execution layer. Final authority enforced by smart logic.</p>
-                </div>
-            </div>
-
-            <div class="dao-flow-text">
-                <span>Proposal</span> <span>→</span> <span>Voting</span> <span>→</span> <span>Consensus</span> <span>→</span> <span>Execution</span>
-            </div>
-        </section>
-
+    <div class="live-stats">
+      <div><span id="supply">--</span><label>Total Supply</label></div>
+      <div><span id="holders">--</span><label>Active Weight</label></div>
+      <div><span id="txs">--</span><label>Consensus Txs</label></div>
     </div>
 
-    <script>
-        // Logica fetchVotes come nei messaggi precedenti
-    </script>
+    <div class="cta-wrapper">
+      <a href="#dashboard" class="cta cta-main">Enter Governance</a>
+      <a href="#" class="cta cta-secondary">Read Whitepaper</a>
+    </div>
+  </div>
+</section>
+
+<section class="container" style="padding: 80px 20px; text-align:center; border-top: 1px solid #111;">
+  <h2 style="color:#fff;">Why NBX Exists</h2>
+  <p style="color:#666; max-width:700px; margin: 20px auto;">
+    Most digital assets are built as speculative layers. NBX is engineered as a governance-backed execution system.
+  </p>
+  <p style="color:#666; max-width:700px; margin: 0 auto;">
+    Value is not driven by hype — but by the ability to coordinate, validate, and execute decisions on-chain.
+  </p>
+</section>
+
+<section id="dashboard" class="container" style="padding-bottom: 80px;">
+    <p class="dao-intro">Governance is not a concept. It is an executable system.</p>
+    <h2 class="dao-title">Governance Architecture</h2>
+    <h3 style="margin-top:80px; text-align:center;">Live Governance State</h3>
+    <div class="chart-container">
+        <canvas id="voteChart"></canvas>
+    </div>
+</section>
+
+<script>
+let myChart;
+
+async function loadStats() {
+  try {
+    const res = await fetch("http://localhost:3000/votes");
+    const data = await res.json();
+    const total = data.GOVERNANCE + data.ANALYTICS + data.GROWTH;
+
+    // Aggiorna Live Stats Hero
+    document.getElementById("supply").innerText = "100M"; 
+    document.getElementById("holders").innerText = (total * 2.1).toFixed(0);
+    document.getElementById("txs").innerText = (total * 5.4).toFixed(0);
+
+    // Aggiorna Grafico
+    updateChart(data);
+  } catch (e) {
+    console.log("Stats offline");
+  }
+}
+
+function updateChart(data) {
+    const ctx = document.getElementById('voteChart').getContext('2d');
+    if (myChart) myChart.destroy();
+    myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Governance', 'Analytics', 'Growth'],
+            datasets: [{
+                data: [data.GOVERNANCE, data.ANALYTICS, data.GROWTH],
+                backgroundColor: ['#00c6ff', '#0072ff', '#0033ff']
+            }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } } }
+    });
+}
+
+loadStats();
+setInterval(loadStats, 30000);
+</script>
+
 </body>
 </html>
