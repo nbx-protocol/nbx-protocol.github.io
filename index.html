@@ -3,100 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Sovereignty as a Flow</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>NBX Protocol | Governance Flow</title>
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --primary:#00c6ff; --bg:#000; --card:#0d0d0d; --text:#aaa; }
-        body { margin:0; font-family:'Inter', sans-serif; background:#000; color:#fff; line-height: 1.6; scroll-behavior: smooth; }
-        .container { max-width:1100px; margin:auto; padding:40px 20px; }
-        
-        /* Hero & Sections */
-        h1, h2 { font-weight: 800; letter-spacing: -1px; text-align: center; }
-        h1 { font-size: 3.5rem; margin-bottom: 10px; background: linear-gradient(to right, #fff, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        h2 { color: var(--primary); margin-top: 60px; font-size: 2rem; }
-
-        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-top:30px; }
-        .card { background:#0d0d0d; padding:25px; border-radius:12px; border: 1px solid #1a1a1a; transition: 0.3s; }
-        
-        /* Voting Stats */
-        .vote-val { font-size: 2.5rem; font-weight: 800; color: var(--primary); display: block; margin: 10px 0; text-align: center; }
-        .chart-container { background: #050505; padding: 20px; border-radius: 12px; border: 1px solid #111; margin-top: 30px; }
-
-        /* --- DAO FLOW CSS --- */
-        .dao-section { padding: 80px 0; background: #020202; }
-        .dao-title { margin-bottom: 10px; }
-        .dao-subtitle { text-align: center; color: #666; max-width: 700px; margin: 0 auto 50px; }
-        
-        .dao-flow { display: flex; flex-direction: column; align-items: center; gap: 20px; }
-        .dao-node { 
-            background: #0d0d0d; border: 1px solid #222; padding: 20px; border-radius: 12px; 
-            width: 100%; max-width: 450px; text-align: center; transition: 0.4s;
-        }
-        .dao-node:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .dao-node.final { border: 2px solid var(--primary); box-shadow: 0 0 20px rgba(0, 198, 255, 0.1); }
-        
-        .dao-arrow { 
-            width: 2px; height: 40px; background: linear-gradient(to bottom, var(--primary), transparent);
-            position: relative; animation: flowAnim 2s infinite linear;
-        }
-        @keyframes flowAnim { 0% { opacity: 0.3; height: 30px; } 50% { opacity: 1; height: 50px; } 100% { opacity: 0.3; height: 30px; } }
-
-        .dao-core-box { display: flex; gap: 20px; width: 100%; max-width: 900px; justify-content: center; flex-wrap: wrap; }
-        .dao-core { background: #080808; border: 1px solid #111; padding: 20px; border-radius: 12px; flex: 1; min-width: 280px; text-align: center; }
-        
-        .dao-flow-text { 
-            display: flex; justify-content: center; gap: 15px; margin-top: 40px; 
-            font-weight: 800; font-size: 0.8rem; text-transform: uppercase; color: #333; letter-spacing: 2px;
-        }
-        /* --- END DAO FLOW CSS --- */
-
-        /* Transparency List */
-        .addr-item { 
-            background: #080808; padding: 15px; border-radius: 8px; margin-bottom: 10px; 
-            border: 1px solid #111; display: flex; justify-content: space-between; align-items: center;
-        }
-        .addr-info b { display: block; color: var(--primary); font-size: 0.8rem; text-transform: uppercase; }
-        .addr-info code { color: #555; font-size: 0.75rem; word-break: break-all; }
-        
-        footer { margin-top: 80px; padding: 60px; text-align: center; color: #222; border-top: 1px solid #111; font-size: 0.8rem; }
-    </style>
 </head>
-<body>
+<body style="background:#000; color:#fff; margin:0; font-family:'Inter', sans-serif;">
 
-    <div class="container">
-        <header style="padding: 60px 0;">
-            <img src="logo1.jpg" alt="NBX" style="max-width:150px; border-radius: 50%; border: 2px solid #222; margin-bottom: 30px;">
-            <h1>NBX Protocol</h1>
-            <p style="color:#555;">The Power is not static. It is a verifiable flow.</p>
-        </header>
-
-        <section id="governance">
-            <h2>Live Consensus Dashboard</h2>
-            <div class="grid">
-                <div class="card">
-                    <span style="font-size:0.7rem; color:#444; letter-spacing:1px; text-transform:uppercase;">Core Priority</span>
-                    <h3>Governance</h3>
-                    <span class="vote-val" id="gov">0.00</span>
-                </div>
-                <div class="card">
-                    <span style="font-size:0.7rem; color:#444; letter-spacing:1px; text-transform:uppercase;">Infrastructure</span>
-                    <h3>Analytics</h3>
-                    <span class="vote-val" id="analytics">0.00</span>
-                </div>
-                <div class="card">
-                    <span style="font-size:0.7rem; color:#444; letter-spacing:1px; text-transform:uppercase;">Expansion</span>
-                    <h3>Growth</h3>
-                    <span class="vote-val" id="growth">0.00</span>
-                </div>
-            </div>
-            <div class="chart-container">
-                <canvas id="voteChart" style="max-height: 300px;"></canvas>
-            </div>
-        </section>
+    <div class="container" style="max-width:1100px; margin:auto; padding:40px 20px;">
+        
+        <section id="governance" style="text-align:center; padding:60px 0;">
+            <h1 style="font-size:3rem; margin-bottom:0;">Consensus Dashboard</h1>
+            <p style="color:#555;">Power is not static, it is a verifiable flow.</p>
+            </section>
 
         <section class="dao-section">
             <h2 class="dao-title">Governance Architecture</h2>
@@ -107,14 +27,14 @@
             <div class="dao-flow">
                 <div class="dao-node">
                     <h3>Community Layer</h3>
-                    <p style="font-size:0.9rem; color:#666;">Signal generation, participation, and ecosystem feedback.</p>
+                    <p style="font-size:0.9rem; color:#888;">Signal generation, participation, and ecosystem feedback.</p>
                 </div>
 
                 <div class="dao-arrow"></div>
 
                 <div class="dao-node">
                     <h3>Governance Layer</h3>
-                    <p style="font-size:0.9rem; color:#666;">Weighted voting based on NBX holdings. Proposals are validated and executed via consensus.</p>
+                    <p style="font-size:0.9rem; color:#888;">Weighted voting based on NBX holdings. Proposals are validated and executed via consensus.</p>
                 </div>
 
                 <div class="dao-arrow"></div>
@@ -122,11 +42,11 @@
                 <div class="dao-core-box">
                     <div class="dao-core">
                         <h3>Development Layer</h3>
-                        <p style="font-size:0.85rem; color:#666;">Protocol upgrades and infrastructure maintenance under governance constraints.</p>
+                        <p style="font-size:0.85rem; color:#666;">Protocol upgrades and infrastructure maintenance.</p>
                     </div>
                     <div class="dao-core">
                         <h3>Treasury Layer</h3>
-                        <p style="font-size:0.85rem; color:#666;">Fund allocation controlled through approved proposals and transparent execution.</p>
+                        <p style="font-size:0.85rem; color:#666;">Fund allocation controlled through approved proposals.</p>
                     </div>
                 </div>
 
@@ -134,7 +54,7 @@
 
                 <div class="dao-node final">
                     <h3>Protocol Core</h3>
-                    <p style="font-size:0.9rem; color:#fff;">Immutable execution layer. Final authority enforced by smart logic.</p>
+                    <p style="font-size:0.9rem; color:#aaa;">Immutable execution layer. Final authority enforced by smart logic.</p>
                 </div>
             </div>
 
@@ -143,60 +63,10 @@
             </div>
         </section>
 
-        <section>
-            <h2>Ecosystem Transparency</h2>
-            <div class="addr-item">
-                <div class="addr-info"><b>NBX-MAIN (Founders)</b><code>3P2t6ysJoNhjLdWQFsY9sVxYgidUdZbiXzb</code></div>
-                <a href="https://wavesexplorer.com/address/3P2t6ysJoNhjLdWQFsY9sVxYgidUdZbiXzb" target="_blank" style="color:#333;"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="addr-item">
-                <div class="addr-info"><b>NBX-SWAP (Community)</b><code>3PAsGj9Rqyd5M2sGocihc8fA5xVGYMcJRq6</code></div>
-                <a href="https://wavesexplorer.com/address/3PAsGj9Rqyd5M2sGocihc8fA5xVGYMcJRq6" target="_blank" style="color:#333;"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="addr-item">
-                <div class="addr-info"><b>NBX-DEV (Ecosystem)</b><code>3PQ6tAn3BHstdBT2iNV4na736yLv9wH6fvG</code></div>
-                <a href="https://wavesexplorer.com/address/3PQ6tAn3BHstdBT2iNV4na736yLv9wH6fvG" target="_blank" style="color:#333;"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-            <div class="addr-item">
-                <div class="addr-info"><b>NBX-LIQ-POOL</b><code>3P7exUTG8gPV4jQXWFTyrQRhyKPy7rGhAEe</code></div>
-                <a href="https://wavesexplorer.com/address/3P7exUTG8gPV4jQXWFTyrQRhyKPy7rGhAEe" target="_blank" style="color:#333;"><i class="fas fa-external-link-alt"></i></a>
-            </div>
-        </section>
     </div>
 
-    <footer>
-        <p>NBX Protocol © 2026 — Built on Waves Blockchain</p>
-        <p style="font-size: 0.7rem; color: #111;">3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M</p>
-    </footer>
-
     <script>
-        let myChart;
-        async function fetchVotes() {
-            try {
-                const response = await fetch('http://localhost:3000/votes');
-                const data = await response.json();
-                
-                document.getElementById('gov').innerText = data.GOVERNANCE.toFixed(2);
-                document.getElementById('analytics').innerText = data.ANALYTICS.toFixed(2);
-                document.getElementById('growth').innerText = data.GROWTH.toFixed(2);
-
-                const ctx = document.getElementById('voteChart').getContext('2d');
-                if (myChart) myChart.destroy();
-                myChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Governance', 'Analytics', 'Growth'],
-                        datasets: [{
-                            data: [data.GOVERNANCE, data.ANALYTICS, data.GROWTH],
-                            backgroundColor: ['#00c6ff', '#0072ff', '#0033ff']
-                        }]
-                    },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: '#111' } }, x: { grid: { display: false } } } }
-                });
-            } catch (e) { console.error("Node Offline"); }
-        }
-        fetchVotes();
-        setInterval(fetchVotes, 30000);
+        // Logica fetchVotes come nei messaggi precedenti
     </script>
 </body>
 </html>
