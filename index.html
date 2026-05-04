@@ -6,44 +6,69 @@
     <title>NBX | Programmable Governance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* CSS INTEGRATO PER EVITARE ERRORI DI CARICAMENTO */
+        /* CSS INTEGRATO BLINDATO */
         :root { --primary: #00c6ff; --bg: #000000; --card: #0a0a0a; --text: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* HERO */
-        .hero { padding: 100px 0 60px; text-align: center; }
-        .hero-logo { width: 140px; height: 140px; border-radius: 50%; margin-bottom: 30px; border: 2px solid #1a1a1a; filter: drop-shadow(0 0 20px rgba(0,198,255,0.3)); }
-        h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1; }
-        .hero-sub { color: #666; font-size: 1.2rem; max-width: 700px; margin: 0 auto 40px; }
+        /* HERO - LOGO AGGIORNATO */
+        .hero { padding: 80px 0 60px; text-align: center; }
+        
+        .hero-logo { 
+            width: 280px;          /* Dimensione Massiccia */
+            height: 280px;         /* Proporzioni quadrate */
+            object-fit: cover;     /* Adatta l'immagine senza distorcerla */
+            border-radius: 20px;   /* Angoli smussati "Tech", non cerchio */
+            margin-bottom: 40px; 
+            border: 3px solid #1a1a1a; 
+            /* Glow Potenziato */
+            filter: drop-shadow(0 0 30px rgba(0, 198, 255, 0.5)); 
+            transition: 0.5s ease;
+        }
+
+        .hero-logo:hover {
+            filter: drop-shadow(0 0 50px rgba(0, 198, 255, 0.8));
+            transform: scale(1.02);
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1; text-transform: uppercase; }
+        .hero-sub { color: #666; font-size: 1.2rem; max-width: 700px; margin: 0 auto 50px; }
 
         /* STATS */
-        .live-stats { display: flex; justify-content: center; gap: 50px; margin-bottom: 50px; }
-        .stat-item span { display: block; font-size: 2.5rem; font-weight: 900; color: var(--primary); }
+        .live-stats { display: flex; justify-content: center; gap: 50px; margin-bottom: 50px; flex-wrap: wrap; }
+        .stat-item span { display: block; font-size: 2.8rem; font-weight: 900; color: var(--primary); }
         .stat-item label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #444; }
 
         /* BUTTONS */
         .cta-wrapper { display: flex; justify-content: center; gap: 20px; }
-        .cta { padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; }
+        .cta { padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
         .cta-main { background: var(--primary); color: #000; }
-        .cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,198,255,0.3); }
-        .cta-secondary { border: 1px solid #333; color: #fff; }
+        .cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,198,255,0.4); }
+        .cta-secondary { border: 2px solid #333; color: #fff; }
+        .cta-secondary:hover { border-color: #666; background: #0a0a0a; }
 
-        /* WHY NBX & DAO FLOW */
+        /* SECTIONS */
         .section-dark { padding: 100px 0; border-top: 1px solid #111; text-align: center; }
-        h2 { font-size: 2.5rem; margin-bottom: 40px; color: var(--primary); }
-        .dao-node { background: var(--card); border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; margin-bottom: 20px; transition: 0.3s; }
-        .dao-node:hover { border-color: var(--primary); }
-        .dao-arrow { color: var(--primary); font-size: 2rem; margin: 10px 0; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+        h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 40px; color: var(--primary); text-transform: uppercase; }
+        
+        /* DAO FLOW */
+        .dao-node { background: var(--card); border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; margin-bottom: 20px; transition: 0.3s; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .dao-node h3 { color: #fff; margin-bottom: 10px; text-transform: uppercase; }
+        .dao-node p { color: #888; font-size: 0.95rem; }
+        .dao-node:hover { border-color: var(--primary); background: #050505; }
+        .dao-arrow { color: var(--primary); font-size: 2.5rem; margin: 15px 0; animation: bounce 2s infinite; }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(15px); } }
+
+        footer { text-align: center; padding: 50px; border-top: 1px solid #111; color: #333; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <div class="container">
-            <img src="logo1.jpg" class="hero-logo" alt="NBX">
+            <img src="logo1.jpg" class="hero-logo" alt="NBX PROTOCOL">
+            
             <h1>Programmable Governance.<br>Real Utility.</h1>
             <p class="hero-sub">NBX is a fixed-supply asset where governance power is enforced on-chain. No speculation layer. Only execution.</p>
             
@@ -63,7 +88,7 @@
     <section class="section-dark">
         <div class="container">
             <h2>Why NBX Exists</h2>
-            <p style="font-size: 1.2rem; color: #888; max-width: 800px; margin: 0 auto;">Most digital assets are speculative layers. NBX is engineered as a governance-backed execution system. Value is driven by the ability to coordinate and execute on-chain.</p>
+            <p style="font-size: 1.3rem; color: #aaa; max-width: 800px; margin: 0 auto; font-weight: 300;">Most digital assets are speculative layers. NBX is engineered as a governance-backed execution system. Value is driven by the ability to coordinate and execute on-chain.</p>
         </div>
     </section>
 
@@ -74,9 +99,13 @@
             <div class="dao-arrow">↓</div>
             <div class="dao-node"><h3>Governance Layer</h3><p>Weighted voting via NBX holdings.</p></div>
             <div class="dao-arrow">↓</div>
-            <div class="dao-node" style="border-color: #00ff88;"><h3>Protocol Core</h3><p>Immutable execution logic.</p></div>
+            <div class="dao-node" style="border-color: #00ff88; border-width: 2px;"><h3>Protocol Core</h3><p>Immutable execution logic.</p></div>
         </div>
     </section>
+
+    <footer>
+        NBX Protocol © 2026 — Verified Ledger Data
+    </footer>
 
     <script>
         async function loadStats() {
@@ -89,6 +118,7 @@
             } catch (e) { console.log("Backend offline"); }
         }
         loadStats();
+        setInterval(loadStats, 30000);
     </script>
 </body>
 </html>
