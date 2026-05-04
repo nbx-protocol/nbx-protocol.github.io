@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NBX Governance</title>
+    <script src="https://unpkg.com/@waves/waves-transactions/dist/waves-transactions.min.js"></script>
+
+    <style>
+        body {
+            background:#000;
+            color:#fff;
+            font-family: Arial;
+            text-align:center;
+            padding:40px;
+        }
+
+        h1 {
+            font-size:2.5rem;
+        }
+
+        button {
+            padding:12px 20px;
+            margin:10px;
+            border:none;
+            background:#00c6ff;
+            color:#000;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .card {
+            border:1px solid #222;
+            padding:20px;
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>NBX Governance</h1>
+<p>On-chain voting powered by Waves</p>
+
+<button onclick="connectWallet()">Connect Wallet</button>
+<p id="wallet"></p>
+
+<div class="card">
+    <h2>Vote</h2>
+
+    <button onclick="vote('GOVERNANCE')">Governance</button>
+    <button onclick="vote('ANALYTICS')">Analytics</button>
+    <button onclick="vote('GROWTH')">Growth</button>
+</div>
+
+<div class="card">
+    <h2>Live Results</h2>
+
+    <p>Governance: <span id="gov">0</span></p>
+    <p>Analytics: <span id="analytics">0</span></p>
+    <p>Growth: <span id="growth">0</span></p>
+</div>
+
+<script>
+let userAddress = null;
+
+async function connectWallet() {
+    try {
+        const auth = await window.WavesKeeper.auth();
+        userAddress = auth.address;
+        document.getElementById("wallet").innerText = "Connected: " + userAddress;
+    } catch(e) {
+        alert("Install WavesKeeper");
+    }
+}
+
+async function vote(option) {
+
+    if (!userAddress) {
+        await connectWallet();
+    }
+
+    const tx = {
+        type: 4,
+        data: {
+            recipient: "3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M",
+            amount: {
+                assetId: null,
+                tokens: "0.001"
+            },
+            attachment: btoa("VOTE:" + option),
+            fee: {
+                assetId: null,
+                tokens: "0.001"
+            }
+        }
+    };
+
+    try {
+        await window.WavesKeeper.signAndPublishTransaction(tx);
+        alert("Vote sent!");
+    } catch(e) {
+        alert("Transaction failed");
+    }
+}
+
+async function loadVotes() {
+    try {
+        const res = await fetch("/votes");
+        const data = await res.json();
+
+        document.getElementById("gov").innerText = data.GOVERNANCE.toFixed(2);
+        document.getElementById("analytics").innerText = data.ANALYTICS.toFixed(2);
+        document.getElementById("growth").innerText = data.GROWTH.toFixed(2);
+
+    } catch(e) {
+        console.log("Errore:", e);
+    }
+}
+
+loadVotes();
+setInterval(loadVotes, 30000);
+</script>
+
+</body>
+</html>

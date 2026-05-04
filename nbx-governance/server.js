@@ -3,143 +3,91 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
-app.use(express.json());
+app.use(express.static('public'));
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 const votingAddress = "3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M";
 const assetId = "FxtPT76oaWyyLjzr2P1Wq7SQLBd5yn9TDCgfYcsjvhEF";
 
-let proposals = [];
-let snapshots = {};
+// 🔹 fetch helper (Node 18+)
+async function fetchJSON(url) {
+    const res = await fetch(url);
+    return await res.json();
+}
 
-// ===== WAVES =====
-
+// 🔹 prendi transazioni
 async function getTxs() {
     try {
-        const url = `https://api.wavesplatform.com/v0/transactions/transfer?recipient=${votingAddress}&limit=500`;
-        const res = await fetch(url);
-        const json = await res.json();
-        return json.data || [];
-    } catch {
+        const url = `https://api.wavesplatform.com/v0/transactions/transfer?recipient=${votingAddress}&limit=100`;
+        const json = await fetchJSON(url);
+
+        if (!json.data || !Array.isArray(json.data)) return [];
+        return json.data;
+
+    } catch (err) {
+        console.log("Errore TX:", err);
         return [];
     }
 }
 
+// 🔹 balance
 async function getBalance(address) {
     try {
         const url = `https://nodes.wavesnodes.com/assets/balance/${address}/${assetId}`;
-        const res = await fetch(url);
-        const json = await res.json();
-        return (json.balance || 0) / Math.pow(10, 8);
+        const json = await fetchJSON(url);
+        return (json.balance || 0) / 1e8;
     } catch {
         return 0;
     }
 }
 
-// ===== ROOT =====
-
-app.get('/', (req, res) => {
-    res.send("NBX Governance API LIVE");
-});
-
-// ===== PROPOSALS =====
-
-app.get('/proposals', (req, res) => {
-    res.json(proposals);
-});
-
-app.post('/proposals', (req, res) => {
-
-    const { title, options } = req.body;
-
-    const id = Date.now().toString();
-
-    proposals.push({
-        id,
-        title,
-        options,
-        createdAt: Date.now(),
-        status: "ACTIVE"
-    });
-
-    snapshots[id] = {};
-
-    res.json({ id });
-});
-
-// ===== SNAPSHOT =====
-
-app.post('/snapshot/:id', async (req, res) => {
+// 🔹 endpoint voti
+app.get('/votes', async (req, res) => {
 
     const txs = await getTxs();
-    let snapshot = {};
 
-    for (let tx of txs) {
+    let votes = {
+        GOVERNANCE: 0,
+        ANALYTICS: 0,
+        GROWTH: 0
+    };
 
-        const addr = tx.sender;
-
-        if (snapshot[addr]) continue;
-
-        const balance = await getBalance(addr);
-
-        if (balance >= 1) {
-            snapshot[addr] = balance;
-        }
-    }
-
-    snapshots[req.params.id] = snapshot;
-
-    res.json({
-        voters: Object.keys(snapshot).length
-    });
-});
-
-// ===== VOTES =====
-
-app.get('/votes/:id', async (req, res) => {
-
-    const proposal = proposals.find(p => p.id === req.params.id);
-    if (!proposal) return res.json({});
-
-    const txs = await getTxs();
-    const snapshot = snapshots[req.params.id] || {};
-
-    let results = {};
-    proposal.options.forEach(o => results[o] = 0);
-
-    let voted = new Set();
+    let voters = new Set();
 
     for (let tx of txs) {
 
         if (!tx.attachment) continue;
 
         let decoded = "";
-
         try {
             decoded = Buffer.from(tx.attachment, 'base64').toString();
         } catch { continue; }
 
-        if (!decoded.startsWith(`VOTE:${proposal.id}`)) continue;
+        if (!decoded.startsWith("VOTE:")) continue;
 
-        const parts = decoded.split(":");
-        const option = parts[2];
-        const voter = tx.sender;
+        const option = decoded.replace("VOTE:", "").trim();
 
-        if (voted.has(voter)) continue;
+        if (voters.has(tx.sender)) continue;
 
-        const weight = snapshot[voter];
-        if (!weight) continue;
+        const balance = await getBalance(tx.sender);
 
-        if (results[option] !== undefined) {
-            results[option] += weight;
-            voted.add(voter);
+        if (balance < 1) continue;
+
+        if (votes[option] !== undefined) {
+            votes[option] += balance;
+            voters.add(tx.sender);
         }
     }
 
-    res.json(results);
+    res.json(votes);
+});
+
+// 🔹 homepage
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
 });
 
 app.listen(PORT, () => {
-    console.log(`NBX API running on port ${PORT}`);
+    console.log(`NBX Governance live → http://localhost:${PORT}`);
 });
