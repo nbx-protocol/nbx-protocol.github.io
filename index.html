@@ -3,104 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX | Programmable Governance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root { --primary: #00c6ff; --bg: #000000; --card: #0a0a0a; --text: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        .hero { padding: 100px 0 60px; text-align: center; }
-        .hero-logo { 
-            width: 320px; 
-            height: 320px; 
-            object-fit: cover; 
-            border-radius: 24px; 
-            margin-bottom: 40px; 
-            border: 2px solid #1a1a1a; 
-            filter: drop-shadow(0 0 40px rgba(0, 198, 255, 0.3));
-            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .hero-logo:hover {
-            filter: drop-shadow(0 0 60px rgba(0, 198, 255, 0.6));
-            transform: scale(1.03);
-        }
-
-        h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; letter-spacing: -3px; margin-bottom: 20px; line-height: 0.9; text-transform: uppercase; }
-        .hero-sub { color: #666; font-size: 1.2rem; max-width: 750px; margin: 0 auto 50px; font-weight: 300; }
-
-        .live-stats { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
-        .stat-item span { display: block; font-size: 3rem; font-weight: 900; color: var(--primary); font-variant-numeric: tabular-nums; }
-        .stat-item label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #444; font-weight: 700; }
-
-        .cta-wrapper { display: flex; justify-content: center; gap: 20px; }
-        .cta { padding: 20px 45px; border-radius: 4px; text-decoration: none; font-weight: 800; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; border: none; cursor: pointer; }
-        .cta-main { background: var(--primary); color: #000; }
-        .cta-main:hover { background: #fff; box-shadow: 0 0 30px rgba(0,198,255,0.5); transform: translateY(-2px); }
-        .cta-secondary { border: 1px solid #333; color: #fff; background: transparent; }
-        .cta-secondary:hover { border-color: var(--primary); background: rgba(0,198,255,0.05); }
-
-        footer { text-align: center; padding: 80px 20px; color: #222; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; border-top: 1px solid #111; margin-top: 100px; }
-        
-        @media (max-width: 768px) {
-            .hero-logo { width: 220px; height: 220px; }
-            .live-stats { gap: 30px; }
-        }
-    </style>
+    <title>NBX Protocol | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">NBX Protocol</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" target="_blank">GitHub</a>
+                </div>
+            </nav>
+        </header>
 
-    <section class="hero">
-        <div class="container">
-            <img src="logo1.jpg" class="hero-logo" alt="NBX PROTOCOL">
+        <main class="hero">
+            <h1>The Future of Governance</h1>
+            <p>Empowering the community through transparent and decentralized decision making.</p>
             
-            <h1>Programmable<br><span style="color:var(--primary)">Governance.</span></h1>
-            <p class="hero-sub">NBX is a fixed-supply coordination asset. No inflation. No noise. Only pure on-chain execution power.</p>
-            
-            <div class="live-stats">
-                <div class="stat-item"><span id="supply">100M</span><label>Fixed Supply</label></div>
-                <div class="stat-item"><span id="weight">--</span><label>Voting Weight</label></div>
-                <div class="stat-item"><span id="activity">--</span><label>Network Txs</label></div>
-            </div>
-
             <div class="cta-wrapper">
-                <!-- LINK CORRETTO ALLA CARTELLA PUBLIC -->
-                <a href="./public/index.html" class="cta cta-main">Open Dashboard</a>
                 <a href="https://nbx-governance.onrender.com" class="cta cta-main">Open Dashboard</a>
                 
-                <a href="./whitepaper.pdf" class="cta cta-main">Whitepaper</a>
+                <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" class="cta cta-main">Whitepaper</a>
             </div>
-        </div>
-    </section>
+        </main>
 
-    <footer>
-        NBX PROTOCOL &copy; 2026 — ALL SYSTEMS OPERATIONAL
-    </footer>
+        <section id="features" class="features">
+            <div class="feature-card">
+                <h3>Decentralized</h3>
+                <p>No single point of failure. Truly community driven.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Transparent</h3>
+                <p>Every vote and decision is recorded on the blockchain.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Secure</h3>
+                <p>Built on the Waves ecosystem for maximum reliability.</p>
+            </div>
+        </section>
 
-    <script>
-        const API_URL = "https://nbx-governance-api.onrender.com/votes";
-
-        async function updateStats() {
-            try {
-                const response = await fetch(API_URL);
-                if (!response.ok) throw new Error('API Offline');
-                
-                const data = await response.json();
-                const totalVotes = data.GOVERNANCE + data.ANALYTICS + data.GROWTH;
-                
-                document.getElementById("weight").innerText = totalVotes.toLocaleString(undefined, {maximumFractionDigits: 0});
-                document.getElementById("activity").innerText = (totalVotes * 1.4).toFixed(0);
-                
-                console.log("Stats Sync: Success");
-            } catch (error) {
-                console.error("Stats Sync Error:", error);
-                document.getElementById("weight").innerText = "SYNC...";
-            }
-        }
-
-        updateStats();
-        setInterval(updateStats, 60000);
-    </script>
+        <footer>
+            <p>&copy; 2026 NBX Protocol. All rights reserved.</p>
+        </footer>
+    </div>
 </body>
 </html>
