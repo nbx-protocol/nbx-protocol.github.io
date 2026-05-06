@@ -1,4 +1,4 @@
-services_
+services:
     -type: web
      name: nbx-governance
      env: node
