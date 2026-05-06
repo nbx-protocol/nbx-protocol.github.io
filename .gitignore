@@ -1,0 +1,19 @@
+node_modules/
+    ```
+    *Questo impedirà a Git di colorarsi di rosso la prossima volta che reinstallerai i pacchetti.*
+
+3.  **Fai un commit per confermare la pulizia:**
+    ```bash
+    git add .gitignore
+    git commit -m "Rimosso node_modules e aggiornato gitignore"
+    git push origin main
+    ```
+
+### Perché è successo?
+In un mondo ideale, `node_modules` non sarebbe mai dovuto finire nel tuo repository online. Probabilmente qualcuno (o un push precedente) lo ha aggiunto per errore. 
+
+
+
+Adesso che hai cancellato la cartella, Git giustamente ti avvisa. Una volta fatto il commit descritto sopra, la tua "lista rossa" sparirà e il repository sarà molto più leggero e professionale.
+
+**Un consiglio:** Dopo aver fatto questi passaggi, se hai bisogno che il progetto torni a funzionare localmente, ricordati di lanciare `npm install` (o `yarn install`) dentro la cartella del progetto. Questo ricreerà i file necessari, ma Git questa volta li ignorerà restando "pulito".
