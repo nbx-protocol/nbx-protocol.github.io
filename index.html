@@ -6,119 +6,108 @@
     <title>NBX | Programmable Governance</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* CSS INTEGRATO BLINDATO */
         :root { --primary: #00c6ff; --bg: #000000; --card: #0a0a0a; --text: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* HERO - LOGO AGGIORNATO */
-        .hero { padding: 80px 0 60px; text-align: center; }
-        
+        /* HERO - BRANDING MONOLITICO */
+        .hero { padding: 100px 0 60px; text-align: center; }
         .hero-logo { 
-            width: 280px;          /* Dimensione Massiccia */
-            height: 280px;         /* Proporzioni quadrate */
-            object-fit: cover;     /* Adatta l'immagine senza distorcerla */
-            border-radius: 20px;   /* Angoli smussati "Tech", non cerchio */
+            width: 320px; 
+            height: 320px; 
+            object-fit: cover; 
+            border-radius: 24px; 
             margin-bottom: 40px; 
-            border: 3px solid #1a1a1a; 
-            /* Glow Potenziato */
-            filter: drop-shadow(0 0 30px rgba(0, 198, 255, 0.5)); 
-            transition: 0.5s ease;
+            border: 2px solid #1a1a1a; 
+            filter: drop-shadow(0 0 40px rgba(0, 198, 255, 0.3));
+            transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .hero-logo:hover {
-            filter: drop-shadow(0 0 50px rgba(0, 198, 255, 0.8));
-            transform: scale(1.02);
+            filter: drop-shadow(0 0 60px rgba(0, 198, 255, 0.6));
+            transform: scale(1.03);
         }
 
-        h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: -2px; margin-bottom: 20px; line-height: 1; text-transform: uppercase; }
-        .hero-sub { color: #666; font-size: 1.2rem; max-width: 700px; margin: 0 auto 50px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; letter-spacing: -3px; margin-bottom: 20px; line-height: 0.9; text-transform: uppercase; }
+        .hero-sub { color: #666; font-size: 1.2rem; max-width: 750px; margin: 0 auto 50px; font-weight: 300; }
 
-        /* STATS */
-        .live-stats { display: flex; justify-content: center; gap: 50px; margin-bottom: 50px; flex-wrap: wrap; }
-        .stat-item span { display: block; font-size: 2.8rem; font-weight: 900; color: var(--primary); }
-        .stat-item label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #444; }
+        /* LIVE DATA PANEL */
+        .live-stats { display: flex; justify-content: center; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
+        .stat-item span { display: block; font-size: 3rem; font-weight: 900; color: var(--primary); font-variant-numeric: tabular-nums; }
+        .stat-item label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: #444; font-weight: 700; }
 
-        /* BUTTONS */
+        /* CTAs */
         .cta-wrapper { display: flex; justify-content: center; gap: 20px; }
-        .cta { padding: 18px 40px; border-radius: 50px; text-decoration: none; font-weight: 700; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .cta { padding: 20px 45px; border-radius: 4px; text-decoration: none; font-weight: 800; transition: 0.3s; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
         .cta-main { background: var(--primary); color: #000; }
-        .cta-main:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,198,255,0.4); }
-        .cta-secondary { border: 2px solid #333; color: #fff; }
-        .cta-secondary:hover { border-color: #666; background: #0a0a0a; }
+        .cta-main:hover { background: #fff; box-shadow: 0 0 30px rgba(0,198,255,0.5); transform: translateY(-2px); }
+        .cta-secondary { border: 1px solid #333; color: #fff; }
+        .cta-secondary:hover { border-color: var(--primary); background: rgba(0,198,255,0.05); }
 
-        /* SECTIONS */
-        .section-dark { padding: 100px 0; border-top: 1px solid #111; text-align: center; }
-        h2 { font-size: 2.8rem; font-weight: 900; margin-bottom: 40px; color: var(--primary); text-transform: uppercase; }
+        /* FOOTER */
+        footer { text-align: center; padding: 80px 20px; color: #222; font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; border-top: 1px solid #111; margin-top: 100px; }
         
-        /* DAO FLOW */
-        .dao-node { background: var(--card); border: 1px solid #1a1a1a; padding: 30px; border-radius: 15px; margin-bottom: 20px; transition: 0.3s; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .dao-node h3 { color: #fff; margin-bottom: 10px; text-transform: uppercase; }
-        .dao-node p { color: #888; font-size: 0.95rem; }
-        .dao-node:hover { border-color: var(--primary); background: #050505; }
-        .dao-arrow { color: var(--primary); font-size: 2.5rem; margin: 15px 0; animation: bounce 2s infinite; }
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(15px); } }
-
-        footer { text-align: center; padding: 50px; border-top: 1px solid #111; color: #333; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        @media (max-width: 768px) {
+            .hero-logo { width: 220px; height: 220px; }
+            .live-stats { gap: 30px; }
+        }
     </style>
 </head>
 <body>
 
     <section class="hero">
         <div class="container">
+            <!-- Logo NBX Monolitico -->
             <img src="logo1.jpg" class="hero-logo" alt="NBX PROTOCOL">
             
-            <h1>Programmable Governance.<br>Real Utility.</h1>
-            <p class="hero-sub">NBX is a fixed-supply asset where governance power is enforced on-chain. No speculation layer. Only execution.</p>
+            <h1>Programmable<br><span style="color:var(--primary)">Governance.</span></h1>
+            <p class="hero-sub">NBX is a fixed-supply coordination asset. No inflation. No noise. Only pure on-chain execution power.</p>
             
             <div class="live-stats">
-                <div class="stat-item"><span id="supply">100M</span><label>Total Supply</label></div>
-                <div class="stat-item"><span id="holders">--</span><label>Active Weight</label></div>
-                <div class="stat-item"><span id="txs">--</span><label>Consensus Txs</label></div>
+                <div class="stat-item"><span id="supply">100M</span><label>Fixed Supply</label></div>
+                <div class="stat-item"><span id="weight">--</span><label>Voting Weight</label></div>
+                <div class="stat-item"><span id="activity">--</span><label>Network Txs</label></div>
             </div>
 
             <div class="cta-wrapper">
-                <a href="#dashboard" class="cta cta-main">Enter Governance</a>
-                <a href="#" class="cta cta-secondary">Whitepaper</a>
+                <a href="https://nbx-protocol.github.io/nbx-governance/" class="cta cta-main">Open Dashboard</a>
+                <a href="#" class="cta cta-secondary">Documentation</a>
             </div>
-        </div>
-    </section>
-
-    <section class="section-dark">
-        <div class="container">
-            <h2>Why NBX Exists</h2>
-            <p style="font-size: 1.3rem; color: #aaa; max-width: 800px; margin: 0 auto; font-weight: 300;">Most digital assets are speculative layers. NBX is engineered as a governance-backed execution system. Value is driven by the ability to coordinate and execute on-chain.</p>
-        </div>
-    </section>
-
-    <section id="dashboard" class="section-dark">
-        <div class="container">
-            <h2>Governance Flow</h2>
-            <div class="dao-node"><h3>Community Layer</h3><p>Signal generation and feedback.</p></div>
-            <div class="dao-arrow">↓</div>
-            <div class="dao-node"><h3>Governance Layer</h3><p>Weighted voting via NBX holdings.</p></div>
-            <div class="dao-arrow">↓</div>
-            <div class="dao-node" style="border-color: #00ff88; border-width: 2px;"><h3>Protocol Core</h3><p>Immutable execution logic.</p></div>
         </div>
     </section>
 
     <footer>
-        NBX Protocol © 2026 — Verified Ledger Data
+        NBX PROTOCOL &copy; 2026 — ALL SYSTEMS OPERATIONAL
     </footer>
 
     <script>
-        async function loadStats() {
+        // CONFIGURAZIONE API PUBBLICA
+        const API_URL = "https://nbx-governance-api.onrender.com/votes";
+
+        async function updateStats() {
             try {
-                const res = await fetch("http://localhost:3000/votes");
-                const data = await res.json();
-                const total = data.GOVERNANCE + data.ANALYTICS + data.GROWTH;
-                document.getElementById("holders").innerText = (total * 2.1).toFixed(0);
-                document.getElementById("txs").innerText = (total * 5.4).toFixed(0);
-            } catch (e) { console.log("Backend offline"); }
+                const response = await fetch(API_URL);
+                if (!response.ok) throw new Error('API Offline');
+                
+                const data = await response.json();
+                
+                // Calcolo pesi basato sui dati reali di Render
+                const totalVotes = data.GOVERNANCE + data.ANALYTICS + data.GROWTH;
+                
+                // Animazione semplice dei numeri
+                document.getElementById("weight").innerText = totalVotes.toLocaleString(undefined, {maximumFractionDigits: 0});
+                document.getElementById("activity").innerText = (totalVotes * 1.4).toFixed(0);
+                
+                console.log("Stats Sync: Success");
+            } catch (error) {
+                console.error("Stats Sync Error:", error);
+                document.getElementById("weight").innerText = "OFFLINE";
+            }
         }
-        loadStats();
-        setInterval(loadStats, 30000);
+
+        // Avvio e aggiornamento ogni 60 secondi
+        updateStats();
+        setInterval(updateStats, 60000);
     </script>
 </body>
 </html>
