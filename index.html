@@ -3,81 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Official Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>NBX Protocol</title>
     <style>
-        /* CSS TOTALE INTEGRATO - BYPASS CACHE */
-        :root { --primary: #00d1ff; --bg: #000; }
-        body { background-color: var(--bg) !important; color: #fff !important; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
-        .logo-box { display: flex; align-items: center; gap: 15px; }
-        .logo-img { height: 50px; width: auto; border-radius: 8px; border: 1px solid #333; }
-        .logo-text { font-size: 24px; font-weight: 700; letter-spacing: 1px; color: #fff; }
-        
-        .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; opacity: 0.7; font-size: 14px; }
-        .nav-links a:hover { opacity: 1; color: var(--primary); }
-
-        .hero { text-align: center; padding: 120px 0 80px; }
-        h1 { font-size: 4rem; margin: 0 0 20px; background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
-        .hero p { color: #aaa; font-size: 1.25rem; max-width: 700px; margin: 0 auto 50px; line-height: 1.6; }
-
-        .cta-wrapper { display: flex; justify-content: center; gap: 25px; }
-        .cta { background-color: var(--primary); color: #000; padding: 18px 40px; text-decoration: none; font-weight: 700; border-radius: 6px; text-transform: uppercase; transition: 0.3s; border: 2px solid var(--primary); }
-        .cta:hover { background-color: transparent; color: var(--primary); transform: translateY(-3px); }
-        .cta-alt { background-color: transparent; color: #fff; border: 2px solid #444; }
-        .cta-alt:hover { border-color: var(--primary); color: var(--primary); }
-
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 80px; }
-        .feature-card { background: #0c0c0c; padding: 40px; border-radius: 15px; border: 1px solid #1a1a1a; text-align: left; }
-        .feature-card h3 { color: var(--primary); margin-top: 0; font-size: 1.6rem; margin-bottom: 15px; }
-        .feature-card p { color: #888; line-height: 1.7; margin: 0; }
-        
-        footer { text-align: center; padding: 80px 0 40px; color: #555; font-size: 14px; border-top: 1px solid #111; margin-top: 100px; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; margin: 0; padding: 0; }
+        .wrapper { padding: 100px 20px; }
+        .logo-img { height: 80px; margin-bottom: 20px; border-radius: 10px; }
+        h1 { font-size: 3rem; color: #00d1ff; margin-bottom: 10px; }
+        p { color: #888; font-size: 1.2rem; margin-bottom: 40px; }
+        .btns { display: flex; justify-content: center; gap: 20px; }
+        .btn { background: #00d1ff; color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; text-transform: uppercase; }
+        .btn:hover { opacity: 0.8; }
+        .btn-alt { background: transparent; color: #fff; border: 1px solid #333; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo-box">
-                <img src="logo1.jpg?v=2" alt="NBX Logo" class="logo-img">
-                <span class="logo-text">NBX Protocol</span>
-            </div>
-            <nav class="nav-links">
-                <a href="#features">Features</a>
-                <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" target="_blank">GitHub</a>
-            </nav>
-        </header>
-
-        <main class="hero">
-            <h1>The Future of Governance</h1>
-            <p>Empowering the community through transparent and decentralized decision making on the blockchain.</p>
-            
-            <div class="cta-wrapper">
-                <a href="https://nbx-governance.onrender.com" class="cta">Open Dashboard</a>
-                <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" class="cta cta-alt">Whitepaper</a>
-            </div>
-        </main>
-
-        <section id="features" class="features">
-            <div class="feature-card">
-                <h3>Decentralized</h3>
-                <p>A community-led ecosystem where every participant has a voice. No central authority, just pure code.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Transparent</h3>
-                <p>Built on public ledger technology. Every vote, proposal, and transaction is verifiable by anyone.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Secure</h3>
-                <p>Leveraging the robust security of the Waves blockchain to protect assets and governance integrity.</p>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 NBX Protocol. Built for a decentralized world.</p>
-        </footer>
+    <div class="wrapper">
+        <img src="logo1.jpg" alt="Logo" class="logo-img">
+        <h1>NBX Protocol</h1>
+        <p>The Future of Governance is here.</p>
+        <div class="btns">
+            <a href="https://nbx-governance.onrender.com" class="btn">Open Dashboard</a>
+            <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" class="btn btn-alt">Whitepaper</a>
+        </div>
     </div>
 </body>
 </html>
