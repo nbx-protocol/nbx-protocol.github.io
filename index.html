@@ -3,46 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Home</title>
+    <title>NBX Protocol | Official Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* STILE INTEGRATO PER EVITARE PROBLEMI DI CARICAMENTO */
-        :root { --primary: #00d1ff; --bg: #000; --card: #0a0a0a; }
-        body { background-color: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
+        /* CSS TOTALE INTEGRATO - BYPASS CACHE */
+        :root { --primary: #00d1ff; --bg: #000; }
+        body { background-color: var(--bg) !important; color: #fff !important; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; }
+        header { padding: 30px 0; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222; }
         .logo-box { display: flex; align-items: center; gap: 15px; }
-        .logo-img { height: 50px; width: auto; border-radius: 5px; }
-        .logo-text { font-size: 22px; font-weight: 700; letter-spacing: 1px; }
+        .logo-img { height: 50px; width: auto; border-radius: 8px; border: 1px solid #333; }
+        .logo-text { font-size: 24px; font-weight: 700; letter-spacing: 1px; color: #fff; }
         
-        .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; opacity: 0.7; transition: 0.3s; font-size: 14px; }
+        .nav-links a { color: #fff; text-decoration: none; margin-left: 20px; opacity: 0.7; font-size: 14px; }
         .nav-links a:hover { opacity: 1; color: var(--primary); }
 
-        .hero { text-align: center; padding: 100px 0 60px; }
-        h1 { font-size: 3.5rem; margin-bottom: 15px; background: linear-gradient(to right, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .hero p { color: #888; font-size: 1.2rem; max-width: 600px; margin: 0 auto 40px; }
+        .hero { text-align: center; padding: 120px 0 80px; }
+        h1 { font-size: 4rem; margin: 0 0 20px; background: linear-gradient(90deg, #fff, var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        .hero p { color: #aaa; font-size: 1.25rem; max-width: 700px; margin: 0 auto 50px; line-height: 1.6; }
 
-        .cta-wrapper { display: flex; justify-content: center; gap: 20px; }
-        .cta { background-color: var(--primary); color: #000; padding: 16px 35px; text-decoration: none; font-weight: 700; border-radius: 4px; text-transform: uppercase; transition: 0.3s; border: 2px solid var(--primary); }
+        .cta-wrapper { display: flex; justify-content: center; gap: 25px; }
+        .cta { background-color: var(--primary); color: #000; padding: 18px 40px; text-decoration: none; font-weight: 700; border-radius: 6px; text-transform: uppercase; transition: 0.3s; border: 2px solid var(--primary); }
         .cta:hover { background-color: transparent; color: var(--primary); transform: translateY(-3px); }
-        .cta-alt { background-color: transparent; color: #fff; border: 2px solid #333; }
+        .cta-alt { background-color: transparent; color: #fff; border: 2px solid #444; }
         .cta-alt:hover { border-color: var(--primary); color: var(--primary); }
 
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .feature-card { background: var(--card); padding: 40px; border-radius: 12px; border: 1px solid #1a1a1a; transition: 0.3s; }
-        .feature-card:hover { border-color: var(--primary); }
-        .feature-card h3 { color: var(--primary); margin-top: 0; font-size: 1.5rem; }
-        .feature-card p { color: #777; line-height: 1.6; margin-bottom: 0; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 80px; }
+        .feature-card { background: #0c0c0c; padding: 40px; border-radius: 15px; border: 1px solid #1a1a1a; text-align: left; }
+        .feature-card h3 { color: var(--primary); margin-top: 0; font-size: 1.6rem; margin-bottom: 15px; }
+        .feature-card p { color: #888; line-height: 1.7; margin: 0; }
         
-        footer { text-align: center; padding: 60px 0; color: #444; font-size: 13px; border-top: 1px solid #1a1a1a; margin-top: 50px; }
+        footer { text-align: center; padding: 80px 0 40px; color: #555; font-size: 14px; border-top: 1px solid #111; margin-top: 100px; }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo-box">
-                <img src="logo1.jpg" alt="Logo" class="logo-img">
+                <img src="logo1.jpg?v=2" alt="NBX Logo" class="logo-img">
                 <span class="logo-text">NBX Protocol</span>
             </div>
             <nav class="nav-links">
@@ -53,7 +52,7 @@
 
         <main class="hero">
             <h1>The Future of Governance</h1>
-            <p>Empowering the community through transparent and decentralized decision making.</p>
+            <p>Empowering the community through transparent and decentralized decision making on the blockchain.</p>
             
             <div class="cta-wrapper">
                 <a href="https://nbx-governance.onrender.com" class="cta">Open Dashboard</a>
@@ -64,20 +63,20 @@
         <section id="features" class="features">
             <div class="feature-card">
                 <h3>Decentralized</h3>
-                <p>No single point of failure. Truly community driven, autonomous and transparent.</p>
+                <p>A community-led ecosystem where every participant has a voice. No central authority, just pure code.</p>
             </div>
             <div class="feature-card">
                 <h3>Transparent</h3>
-                <p>Every vote and governance decision is recorded permanently on the blockchain.</p>
+                <p>Built on public ledger technology. Every vote, proposal, and transaction is verifiable by anyone.</p>
             </div>
             <div class="feature-card">
                 <h3>Secure</h3>
-                <p>Built on top of the Waves ecosystem to ensure maximum reliability and scalability.</p>
+                <p>Leveraging the robust security of the Waves blockchain to protect assets and governance integrity.</p>
             </div>
         </section>
 
         <footer>
-            <p>&copy; 2026 NBX Protocol. All rights reserved. | Built for the community.</p>
+            <p>&copy; 2026 NBX Protocol. Built for a decentralized world.</p>
         </footer>
     </div>
 </body>
