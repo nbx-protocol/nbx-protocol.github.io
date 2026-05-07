@@ -29,6 +29,7 @@
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
+            position: relative;
         }
 
         .container {
@@ -53,6 +54,8 @@
             border-radius: 999px;
         }
 
+        .logo-wrapper { margin-bottom: 30px; }
+
         .logo-img {
             width: 160px;
             height: 160px;
@@ -62,13 +65,16 @@
             padding: 6px;
             background: #000;
             box-shadow: 0 0 45px rgba(0,217,255,0.20);
+            transition: 0.35s ease;
         }
+
+        .logo-img:hover { transform: scale(1.05); }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             letter-spacing: 4px;
-            margin: 20px 0;
+            margin-bottom: 15px;
             color: #e6fbff;
             text-shadow: 0 0 18px rgba(0,217,255,0.30);
         }
@@ -77,16 +83,39 @@
             font-size: 1rem;
             line-height: 1.6;
             color: var(--muted);
-            margin-bottom: 40px;
+            margin-bottom: 45px;
             font-weight: 300;
         }
 
-        /* --- IL TUO NUOVO BLOCCO BOTTONI STILIZZATO --- */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 15px;
+            margin-bottom: 45px;
         }
+
+        .stat-card {
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 15px;
+            padding: 15px 5px;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-group { display: flex; flex-direction: column; gap: 15px; }
 
         .btn {
             text-decoration: none;
@@ -118,15 +147,22 @@
 
         .btn-secondary:hover {
             border-color: var(--primary);
-            color: var(--primary);
             background: rgba(0,217,255,0.05);
+            color: var(--primary);
         }
 
         .footer {
             margin-top: 40px;
             font-size: 0.7rem;
             color: #475569;
+            letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif;
+        }
+
+        @media(max-width:768px){
+            h1 { font-size: 2rem; }
+            .container { padding: 40px 25px; }
+            .stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -139,20 +175,31 @@
 
         <h1>NBX PROTOCOL</h1>
         <p class="subtitle">
-            Advanced decentralized governance infrastructure for the next generation of treasury management and on-chain voting.
+            Institutional-grade decentralized governance infrastructure powered by Waves blockchain architecture.
         </p>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-value">DAO</div>
+                <div class="stat-label">Governance</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">ON-CHAIN</div>
+                <div class="stat-label">Treasury</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">LIVE</div>
+                <div class="stat-label">Voting</div>
+            </div>
+        </div>
 
         <div class="btn-group">
             <a href="dashboard.html" class="btn btn-primary">
-                Open Dashboard
+                Open Governance Dashboard
             </a>
-
-            <a href="https://nbx-governance-api.onrender.com/votes" class="btn btn-secondary" target="_blank">
-                API / Votes Data
-            </a>
-
+            
             <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">
-                Whitepaper
+                Open Whitepaper
             </a>
         </div>
 
