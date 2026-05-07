@@ -1,22 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NBX Protocol</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBX Protocol | Home</title>
     <style>
-        /* STILE FORZATO - NESSUN FILE ESTERNO */
-        body { background: #000 !important; color: #fff !important; font-family: sans-serif; text-align: center; padding-top: 100px; }
-        .logo-img { height: 80px; border-radius: 10px; margin-bottom: 20px; border: 2px solid #00d1ff; }
-        h1 { color: #00d1ff; font-size: 3rem; margin: 0; }
-        p { color: #888; margin-bottom: 40px; }
-        .btn { background: #00d1ff; color: #000; padding: 15px 30px; text-decoration: none; font-weight: bold; border-radius: 5px; margin: 10px; display: inline-block; }
+        * { margin: 0; padding: 0; box-sizing: border-box !important; }
+        body { 
+            background-color: #000000 !important; 
+            color: #ffffff !important; 
+            font-family: 'Arial', sans-serif !important; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .main-card {
+            text-align: center;
+            padding: 40px;
+            border: 2px solid #00d1ff;
+            border-radius: 20px;
+            background: #050505;
+        }
+        .logo-img {
+            height: 120px;
+            width: auto;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 209, 255, 0.3);
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; color: #00d1ff; }
+        p { color: #888; margin-bottom: 30px; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; }
+        .btn {
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn-blue { background: #00d1ff; color: #000; }
+        .btn-outline { border: 1px solid #444; color: #fff; }
+        .btn:hover { transform: scale(1.05); }
     </style>
 </head>
 <body>
-    <img src="logo1.jpg" class="logo-img">
-    <h1>NBX Protocol</h1>
-    <p>The Future of Governance</p>
-    <a href="https://nbx-governance.onrender.com" class="btn">DASHBOARD</a>
-    <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" class="btn" style="background:#333; color:#fff;">WHITEPAPER</a>
+    <div class="main-card">
+        <img src="logo1.jpg?v=99" alt="NBX" class="logo-img">
+        <h1>NBX PROTOCOL</h1>
+        <p>Decentralized Governance</p>
+        <div class="btn-group">
+            <a href="https://nbx-governance.onrender.com" class="btn btn-blue">Dashboard</a>
+            <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" class="btn btn-outline">Whitepaper</a>
+        </div>
+    </div>
 </body>
 </html>
