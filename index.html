@@ -1,7 +1,10 @@
-<!DOCTYPE html>
+k<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>NBX Protocol | Institutional Governance</title>
@@ -11,13 +14,20 @@
     <style>
 
         :root{
+
             --primary:#00d9ff;
             --primary-dark:#009dff;
+
             --bg:#030712;
+
             --card:#08111f;
+
             --card-2:#0d1728;
+
             --border:rgba(0,217,255,0.12);
+
             --text:#ffffff;
+
             --muted:#94a3b8;
         }
 
@@ -75,7 +85,7 @@
 
             width:100%;
 
-            padding:24px 8%;
+            padding:26px 8%;
 
             display:flex;
 
@@ -86,11 +96,30 @@
 
         .nav-logo{
 
+            display:flex;
+
+            align-items:center;
+
+            gap:14px;
+        }
+
+        .nav-logo img{
+
+            width:42px;
+            height:42px;
+
+            border-radius:12px;
+
+            border:1px solid rgba(0,217,255,0.35);
+        }
+
+        .nav-logo span{
+
             font-family:'Orbitron',sans-serif;
 
-            letter-spacing:2px;
-
             font-size:1rem;
+
+            letter-spacing:2px;
 
             color:#dffcff;
         }
@@ -101,9 +130,9 @@
 
             border-radius:999px;
 
-            border:1px solid rgba(0,255,180,0.18);
-
             background:rgba(0,255,180,0.05);
+
+            border:1px solid rgba(0,255,180,0.18);
 
             color:#6dffca;
 
@@ -139,14 +168,13 @@
 
             grid-template-columns:1.1fr 0.9fr;
 
-            gap:50px;
+            gap:55px;
 
             align-items:center;
         }
 
         .hero-left{
-
-            max-width:700px;
+            max-width:720px;
         }
 
         .hero-badge{
@@ -161,32 +189,32 @@
 
             border-radius:999px;
 
-            background:rgba(0,217,255,0.06);
+            background:rgba(0,217,255,0.05);
 
             border:1px solid rgba(0,217,255,0.12);
 
-            margin-bottom:30px;
+            margin-bottom:28px;
 
             color:#8aefff;
 
             font-size:0.82rem;
 
-            letter-spacing:1px;
-
             text-transform:uppercase;
+
+            letter-spacing:1px;
         }
 
         .hero-title{
 
             font-family:'Orbitron',sans-serif;
 
-            font-size:4.8rem;
+            font-size:5rem;
 
-            line-height:1.05;
+            line-height:1.02;
 
             margin-bottom:28px;
 
-            letter-spacing:3px;
+            letter-spacing:2px;
 
             color:#f4fdff;
         }
@@ -197,15 +225,15 @@
 
         .hero-subtitle{
 
-            font-size:1.1rem;
-
-            line-height:1.8;
-
             color:var(--muted);
 
-            max-width:620px;
+            line-height:1.9;
 
-            margin-bottom:40px;
+            font-size:1.08rem;
+
+            max-width:640px;
+
+            margin-bottom:42px;
         }
 
         .btn-group{
@@ -229,9 +257,9 @@
 
             font-weight:700;
 
-            letter-spacing:1px;
-
             text-transform:uppercase;
+
+            letter-spacing:1px;
 
             transition:0.3s ease;
         }
@@ -263,9 +291,9 @@
 
             border:1px solid rgba(255,255,255,0.08);
 
-            color:#dffcff;
-
             background:rgba(255,255,255,0.02);
+
+            color:#dffcff;
         }
 
         .btn-secondary:hover{
@@ -277,7 +305,7 @@
             background:rgba(0,217,255,0.04);
         }
 
-        /* ================= RIGHT PANEL ================= */
+        /* ================= DASHBOARD PREVIEW ================= */
 
         .dashboard-preview{
 
@@ -315,9 +343,9 @@
 
             font-family:'Orbitron',sans-serif;
 
-            font-size:1rem;
-
             letter-spacing:1px;
+
+            font-size:1rem;
         }
 
         .live-dot{
@@ -395,9 +423,9 @@
 
             border-radius:999px;
 
-            background:rgba(255,255,255,0.05);
-
             overflow:hidden;
+
+            background:rgba(255,255,255,0.05);
         }
 
         .fill{
@@ -468,9 +496,113 @@
 
             font-size:0.82rem;
 
-            text-transform:uppercase;
-
             letter-spacing:1px;
+
+            text-transform:uppercase;
+        }
+
+        /* ================= ARCHITECTURE ================= */
+
+        .architecture{
+
+            width:100%;
+
+            padding:0 8% 120px 8%;
+        }
+
+        .section-title{
+
+            max-width:1300px;
+
+            margin:0 auto 35px auto;
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:1.4rem;
+
+            letter-spacing:2px;
+
+            color:#dffcff;
+        }
+
+        .architecture-grid{
+
+            max-width:1300px;
+
+            margin:auto;
+
+            display:grid;
+
+            grid-template-columns:repeat(3,1fr);
+
+            gap:24px;
+        }
+
+        .architecture-card{
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255,255,255,0.03),
+                    rgba(255,255,255,0.015)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.05);
+
+            border-radius:24px;
+
+            padding:30px;
+        }
+
+        .architecture-name{
+
+            font-family:'Orbitron',sans-serif;
+
+            color:var(--primary);
+
+            margin-bottom:18px;
+
+            font-size:1rem;
+        }
+
+        .architecture-desc{
+
+            color:#7f93aa;
+
+            line-height:1.7;
+
+            font-size:0.92rem;
+
+            margin-bottom:25px;
+        }
+
+        .architecture-link{
+
+            display:inline-block;
+
+            text-decoration:none;
+
+            color:#dffcff;
+
+            border:
+                1px solid rgba(255,255,255,0.08);
+
+            padding:12px 18px;
+
+            border-radius:12px;
+
+            transition:0.25s ease;
+        }
+
+        .architecture-link:hover{
+
+            border-color:var(--primary);
+
+            color:var(--primary);
+
+            background:
+                rgba(0,217,255,0.05);
         }
 
         /* ================= FOOTER ================= */
@@ -504,13 +636,26 @@
                 grid-template-columns:1fr;
             }
 
+            .architecture-grid{
+                grid-template-columns:1fr;
+            }
+
             .hero{
                 min-height:auto;
                 padding-top:20px;
             }
+
+            .btn-group{
+                flex-direction:column;
+            }
+
+            .btn{
+                text-align:center;
+            }
         }
 
     </style>
+
 </head>
 
 <body>
@@ -524,7 +669,11 @@
         <div class="navbar">
 
             <div class="nav-logo">
-                NBX PROTOCOL
+
+                <img src="logo1.jpg" alt="NBX">
+
+                <span>NBX PROTOCOL</span>
+
             </div>
 
             <div class="nav-status">
@@ -560,13 +709,21 @@
 
                     <div class="btn-group">
 
-                        <!-- LINK ORIGINALI NON MODIFICATI -->
+                        <!-- LINK ORIGINALI -->
 
                         <a href="dashboard.html" class="btn btn-primary">
                             Open Governance Dashboard
                         </a>
 
-                        <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">
+                        <a href="https://nbx-governance-api.onrender.com/votes"
+                           class="btn btn-secondary"
+                           target="_blank">
+                            API / Votes
+                        </a>
+
+                        <a href="whitepaper.pdf"
+                           class="btn btn-secondary"
+                           target="_blank">
                             Open Whitepaper
                         </a>
 
@@ -585,8 +742,11 @@
                         </div>
 
                         <div class="live-dot">
+
                             <div class="dot"></div>
+
                             LIVE
+
                         </div>
 
                     </div>
@@ -596,8 +756,15 @@
                         <div class="vote-card">
 
                             <div class="vote-top">
-                                <div class="vote-name">GOVERNANCE</div>
-                                <div class="vote-value">72%</div>
+
+                                <div class="vote-name">
+                                    GOVERNANCE
+                                </div>
+
+                                <div class="vote-value">
+                                    72%
+                                </div>
+
                             </div>
 
                             <div class="bar">
@@ -609,8 +776,15 @@
                         <div class="vote-card">
 
                             <div class="vote-top">
-                                <div class="vote-name">ANALYTICS</div>
-                                <div class="vote-value">48%</div>
+
+                                <div class="vote-name">
+                                    ANALYTICS
+                                </div>
+
+                                <div class="vote-value">
+                                    48%
+                                </div>
+
                             </div>
 
                             <div class="bar">
@@ -622,8 +796,15 @@
                         <div class="vote-card">
 
                             <div class="vote-top">
-                                <div class="vote-name">GROWTH</div>
-                                <div class="vote-value">31%</div>
+
+                                <div class="vote-name">
+                                    GROWTH
+                                </div>
+
+                                <div class="vote-value">
+                                    31%
+                                </div>
+
                             </div>
 
                             <div class="bar">
@@ -647,23 +828,125 @@
             <div class="metrics-grid">
 
                 <div class="metric-card">
-                    <div class="metric-value">DAO</div>
-                    <div class="metric-label">Governance Layer</div>
+
+                    <div class="metric-value">
+                        DAO
+                    </div>
+
+                    <div class="metric-label">
+                        Governance Layer
+                    </div>
+
                 </div>
 
                 <div class="metric-card">
-                    <div class="metric-value">ON-CHAIN</div>
-                    <div class="metric-label">Treasury System</div>
+
+                    <div class="metric-value">
+                        ON-CHAIN
+                    </div>
+
+                    <div class="metric-label">
+                        Treasury System
+                    </div>
+
                 </div>
 
                 <div class="metric-card">
-                    <div class="metric-value">LIVE</div>
-                    <div class="metric-label">Voting Engine</div>
+
+                    <div class="metric-value">
+                        LIVE
+                    </div>
+
+                    <div class="metric-label">
+                        Voting Engine
+                    </div>
+
                 </div>
 
                 <div class="metric-card">
-                    <div class="metric-value">WAVES</div>
-                    <div class="metric-label">Blockchain Network</div>
+
+                    <div class="metric-value">
+                        WAVES
+                    </div>
+
+                    <div class="metric-label">
+                        Blockchain Network
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- PROTOCOL ARCHITECTURE -->
+
+        <section class="architecture">
+
+            <div class="section-title">
+                Protocol Architecture
+            </div>
+
+            <div class="architecture-grid">
+
+                <div class="architecture-card">
+
+                    <div class="architecture-name">
+                        Treasury Wallet
+                    </div>
+
+                    <div class="architecture-desc">
+                        Main treasury reserve and protocol allocation layer.
+                    </div>
+
+                    <a
+                        href="https://wavesexplorer.com/"
+                        target="_blank"
+                        class="architecture-link"
+                    >
+                        View Treasury
+                    </a>
+
+                </div>
+
+                <div class="architecture-card">
+
+                    <div class="architecture-name">
+                        Governance Wallet
+                    </div>
+
+                    <div class="architecture-desc">
+                        DAO governance execution and operational coordination.
+                    </div>
+
+                    <a
+                        href="https://wavesexplorer.com/"
+                        target="_blank"
+                        class="architecture-link"
+                    >
+                        View Governance
+                    </a>
+
+                </div>
+
+                <div class="architecture-card">
+
+                    <div class="architecture-name">
+                        Voting Wallet
+                    </div>
+
+                    <div class="architecture-desc">
+                        Snapshot-style voting destination for governance proposals.
+                    </div>
+
+                    <a
+                        href="https://wavesexplorer.com/address/3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M"
+                        target="_blank"
+                        class="architecture-link"
+                    >
+                        View Voting Wallet
+                    </a>
+
                 </div>
 
             </div>
@@ -673,10 +956,14 @@
         <!-- FOOTER -->
 
         <div class="footer">
+
             © 2026 NBX PROTOCOL — DECENTRALIZED GOVERNANCE INFRASTRUCTURE
+
         </div>
 
     </div>
 
 </body>
+
 </html>
+
