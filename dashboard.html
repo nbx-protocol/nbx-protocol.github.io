@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBX | Governance Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #00d9ff; --bg: #020408; --card: #07111d; --text: #ffffff; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); margin: 0; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        .nav { width: 100%; padding: 20px; border-bottom: 1px solid rgba(0,217,255,0.1); display: flex; justify-content: space-between; align-items: center; max-width: 1200px; }
+        .logo-small { font-family: 'Orbitron'; color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1.2rem; }
+        .container { width: 90%; max-width: 1000px; margin-top: 50px; text-align: center; }
+        h1 { font-family: 'Orbitron'; letter-spacing: 2px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 40px; }
+        .card { background: var(--card); border: 1px solid rgba(0,217,255,0.1); padding: 30px; border-radius: 20px; }
+        .card h2 { color: var(--primary); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px; }
+        .value { font-size: 2rem; font-weight: 700; font-family: 'Orbitron'; }
+        .btn-back { margin-top: 40px; text-decoration: none; color: var(--text); border: 1px solid #333; padding: 10px 20px; border-radius: 10px; transition: 0.3s; }
+        .btn-back:hover { border-color: var(--primary); color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html" class="logo-small">NBX PROTOCOL</a>
+        <span>Network Status: <span style="color:var(--primary)">Online</span></span>
+    </div>
+
+    <div class="container">
+        <h1>GOVERNANCE DASHBOARD</h1>
+        <p style="color:#94a3b8">Real-time on-chain data overview</p>
+
+        <div class="grid">
+            <div class="card">
+                <h2>Total Proposals</h2>
+                <div class="value">24</div>
+            </div>
+            <div class="card">
+                <h2>Active Votes</h2>
+                <div class="value">1,240</div>
+            </div>
+            <div class="card">
+                <h2>Treasury Balance</h2>
+                <div class="value">980k WAVES</div>
+            </div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <a href="index.html" class="btn-back">← Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>
