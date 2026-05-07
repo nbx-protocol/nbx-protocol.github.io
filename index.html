@@ -1,152 +1,385 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>NBX Protocol | Decentralized Governance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --primary: #00d1ff;
-            --bg: #030303;
-            --card-bg: #0a0a0a;
-            --text: #ffffff;
+
+        :root{
+            --primary:#00d9ff;
+            --primary-dark:#009dff;
+            --bg:#020408;
+            --card:#07111d;
+            --border:rgba(0,217,255,0.18);
+            --text:#ffffff;
+            --muted:#94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            overflow: hidden;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        /* Effetto luce soffusa sullo sfondo */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            filter: blur(150px);
-            opacity: 0.1;
-            z-index: 0;
+        body{
+            font-family:'Inter',sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(0,217,255,0.10), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(0,80,255,0.12), transparent 35%),
+                #020408;
+
+            color:var(--text);
+
+            min-height:100vh;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            overflow:hidden;
+            position:relative;
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            padding: 40px;
-            background: var(--card-bg);
-            border: 1px solid rgba(0, 209, 255, 0.2);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            max-width: 450px;
-            width: 90%;
+        body::before{
+            content:"";
+            position:absolute;
+
+            width:700px;
+            height:700px;
+
+            background:rgba(0,217,255,0.08);
+
+            filter:blur(180px);
+
+            border-radius:50%;
+
+            z-index:0;
         }
 
-        .logo-wrapper {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 25px;
+        .container{
+
+            position:relative;
+            z-index:1;
+
+            width:92%;
+            max-width:760px;
+
+            padding:70px 55px;
+
+            border-radius:34px;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(10,20,35,0.92),
+                    rgba(5,10,18,0.96)
+                );
+
+            border:1px solid var(--border);
+
+            box-shadow:
+                0 0 80px rgba(0,217,255,0.08),
+                0 30px 90px rgba(0,0,0,0.65);
+
+            text-align:center;
+
+            backdrop-filter:blur(10px);
         }
 
-        .logo-img {
-            height: 120px;
-            width: 120px;
-            border-radius: 20px;
-            border: 2px solid var(--primary);
-            padding: 5px;
-            background: #000;
+        .top-line{
+            width:100px;
+            height:4px;
+            margin:0 auto 45px auto;
+
+            background:linear-gradient(
+                90deg,
+                transparent,
+                var(--primary),
+                transparent
+            );
+
+            border-radius:999px;
         }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            color: var(--text);
+        .logo-wrapper{
+            margin-bottom:35px;
         }
 
-        p {
-            font-size: 1rem;
-            color: #888;
-            margin-bottom: 35px;
-            font-weight: 300;
+        .logo-img{
+
+            width:220px;
+            height:220px;
+
+            object-fit:cover;
+
+            border-radius:34px;
+
+            border:2px solid rgba(0,217,255,0.45);
+
+            padding:8px;
+
+            background:#000;
+
+            box-shadow:
+                0 0 45px rgba(0,217,255,0.30),
+                0 0 120px rgba(0,217,255,0.12);
+
+            transition:0.35s ease;
         }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .logo-img:hover{
+            transform:scale(1.03);
         }
 
-        .btn {
-            padding: 16px;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
+        h1{
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:4rem;
+
+            line-height:1.1;
+
+            letter-spacing:4px;
+
+            margin-bottom:20px;
+
+            color:#e6fbff;
+
+            text-shadow:
+                0 0 18px rgba(0,217,255,0.30);
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: #000;
-            box-shadow: 0 4px 15px rgba(0, 209, 255, 0.3);
+        .subtitle{
+
+            max-width:600px;
+
+            margin:0 auto 55px auto;
+
+            font-size:1.18rem;
+
+            line-height:1.7;
+
+            color:var(--muted);
+
+            font-weight:300;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 209, 255, 0.5);
-            background: #00b8e6;
+        .stats{
+
+            display:grid;
+
+            grid-template-columns:repeat(3,1fr);
+
+            gap:18px;
+
+            margin-bottom:45px;
         }
 
-        .btn-secondary {
-            background: transparent;
-            color: var(--text);
-            border: 1px solid #333;
+        .stat-card{
+
+            background:rgba(255,255,255,0.025);
+
+            border:1px solid rgba(255,255,255,0.06);
+
+            border-radius:18px;
+
+            padding:22px 15px;
         }
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(0, 209, 255, 0.05);
+        .stat-value{
+
+            font-family:'Orbitron',sans-serif;
+
+            color:var(--primary);
+
+            font-size:1.35rem;
+
+            margin-bottom:8px;
         }
 
-        footer {
-            margin-top: 30px;
-            font-size: 0.7rem;
-            color: #444;
+        .stat-label{
+
+            color:#8da0b6;
+
+            font-size:0.82rem;
+
+            letter-spacing:1px;
+
+            text-transform:uppercase;
         }
+
+        .btn-group{
+
+            display:flex;
+            flex-direction:column;
+
+            gap:18px;
+        }
+
+        .btn{
+
+            text-decoration:none;
+
+            padding:20px;
+
+            border-radius:18px;
+
+            font-size:1rem;
+
+            font-weight:700;
+
+            letter-spacing:1px;
+
+            transition:0.3s ease;
+
+            text-transform:uppercase;
+        }
+
+        .btn-primary{
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            color:#001018;
+
+            box-shadow:
+                0 0 30px rgba(0,217,255,0.28);
+        }
+
+        .btn-primary:hover{
+
+            transform:translateY(-3px);
+
+            box-shadow:
+                0 0 50px rgba(0,217,255,0.45);
+        }
+
+        .btn-secondary{
+
+            border:1px solid rgba(255,255,255,0.10);
+
+            color:#d8f8ff;
+
+            background:rgba(255,255,255,0.02);
+        }
+
+        .btn-secondary:hover{
+
+            border-color:var(--primary);
+
+            color:var(--primary);
+
+            background:rgba(0,217,255,0.05);
+        }
+
+        .footer{
+
+            margin-top:45px;
+
+            color:#4d6277;
+
+            font-size:0.82rem;
+
+            letter-spacing:1px;
+        }
+
+        @media(max-width:768px){
+
+            .container{
+                padding:50px 28px;
+            }
+
+            h1{
+                font-size:2.5rem;
+            }
+
+            .logo-img{
+                width:170px;
+                height:170px;
+            }
+
+            .stats{
+                grid-template-columns:1fr;
+            }
+
+            .subtitle{
+                font-size:1rem;
+            }
+        }
+
     </style>
 </head>
+
 <body>
 
     <div class="container">
+
+        <div class="top-line"></div>
+
         <div class="logo-wrapper">
             <img src="logo1.jpg" alt="NBX Logo" class="logo-img">
         </div>
-        
-        <h1>NBX PROTOCOL</h1>
-        <p>Advanced Decentralized Governance</p>
 
-        <div class="btn-group">
-            <a href="https://nbx-governance.onrender.com" class="btn btn-primary">Open Dashboard</a>
-            <a href="https://github.com/nbx-protocol/nbx-protocol.github.io" class="btn btn-secondary">Whitepaper</a>
+        <h1>NBX PROTOCOL</h1>
+
+        <p class="subtitle">
+            Institutional-grade decentralized governance infrastructure
+            powered by Waves blockchain architecture, transparent treasury
+            mechanics and snapshot-style community voting.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <div class="stat-value">DAO</div>
+                <div class="stat-label">Governance Layer</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-value">ON-CHAIN</div>
+                <div class="stat-label">Treasury Logic</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-value">LIVE</div>
+                <div class="stat-label">Voting System</div>
+            </div>
+
         </div>
 
-        <footer>
-            &copy; 2026 NBX PROTOCOL | Built on Blockchain
-        </footer>
+        <div class="btn-group">
+
+            <a
+                href="https://nbx-governance-api.onrender.com/votes"
+                class="btn btn-primary"
+                target="_blank"
+            >
+                Open Governance Dashboard
+            </a>
+
+            <a
+                href="whitepaper.pdf"
+                class="btn btn-secondary"
+                target="_blank"
+            >
+                Open Whitepaper
+            </a>
+
+        </div>
+
+        <div class="footer">
+            © 2026 NBX PROTOCOL — Decentralized Governance Infrastructure
+        </div>
+
     </div>
 
 </body>
