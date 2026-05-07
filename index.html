@@ -3,208 +3,680 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>NBX Protocol | Institutional Governance</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --primary: #00d9ff;
-            --primary-dark: #009dff;
-            --bg: #020408;
-            --card: #07111d;
-            --border: rgba(0,217,255,0.18);
-            --text: #ffffff;
-            --muted: #94a3b8;
+
+        :root{
+            --primary:#00d9ff;
+            --primary-dark:#009dff;
+            --bg:#030712;
+            --card:#08111f;
+            --card-2:#0d1728;
+            --border:rgba(0,217,255,0.12);
+            --text:#ffffff;
+            --muted:#94a3b8;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top left, rgba(0,217,255,0.10), transparent 30%),
-                        radial-gradient(circle at bottom right, rgba(0,80,255,0.12), transparent 35%),
-                        #020408;
-            color: var(--text);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow-x: hidden;
-            position: relative;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            width: 92%;
-            max-width: 650px;
-            padding: 60px 45px;
-            border-radius: 34px;
-            background: linear-gradient(180deg, rgba(10,20,35,0.92), rgba(5,10,18,0.96));
-            border: 1px solid var(--border);
-            box-shadow: 0 0 80px rgba(0,217,255,0.08), 0 30px 90px rgba(0,0,0,0.65);
-            text-align: center;
-            backdrop-filter: blur(10px);
+        html{
+            scroll-behavior:smooth;
         }
 
-        .top-line {
-            width: 80px;
-            height: 3px;
-            margin: 0 auto 35px auto;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            border-radius: 999px;
+        body{
+
+            font-family:'Inter',sans-serif;
+
+            background:
+                radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(0,80,255,0.10), transparent 35%),
+                var(--bg);
+
+            color:var(--text);
+
+            overflow-x:hidden;
         }
 
-        .logo-img {
-            width: 160px;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 28px;
-            border: 2px solid rgba(0,217,255,0.45);
-            padding: 6px;
-            background: #000;
-            box-shadow: 0 0 45px rgba(0,217,255,0.20);
+        .background-glow{
+
+            position:fixed;
+
+            width:700px;
+            height:700px;
+
+            background:rgba(0,217,255,0.06);
+
+            filter:blur(160px);
+
+            border-radius:50%;
+
+            top:-200px;
+            left:-200px;
+
+            z-index:0;
         }
 
-        h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.8rem;
-            letter-spacing: 4px;
-            margin: 20px 0;
-            color: #e6fbff;
-            text-shadow: 0 0 18px rgba(0,217,255,0.30);
+        .wrapper{
+            position:relative;
+            z-index:1;
         }
 
-        .subtitle {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: var(--muted);
-            margin-bottom: 40px;
-            font-weight: 300;
+        /* ================= NAVBAR ================= */
+
+        .navbar{
+
+            width:100%;
+
+            padding:24px 8%;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
         }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 40px;
+        .nav-logo{
+
+            font-family:'Orbitron',sans-serif;
+
+            letter-spacing:2px;
+
+            font-size:1rem;
+
+            color:#dffcff;
         }
 
-        .stat-card {
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 15px;
-            padding: 15px 5px;
+        .nav-status{
+
+            padding:10px 18px;
+
+            border-radius:999px;
+
+            border:1px solid rgba(0,255,180,0.18);
+
+            background:rgba(0,255,180,0.05);
+
+            color:#6dffca;
+
+            font-size:0.8rem;
+
+            font-weight:600;
         }
 
-        .stat-value {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--primary);
-            font-size: 1rem;
+        /* ================= HERO ================= */
+
+        .hero{
+
+            width:100%;
+
+            min-height:88vh;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            padding:40px 8% 80px 8%;
         }
 
-        .stat-label {
-            color: #64748b;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 5px;
+        .hero-grid{
+
+            width:100%;
+
+            max-width:1300px;
+
+            display:grid;
+
+            grid-template-columns:1.1fr 0.9fr;
+
+            gap:50px;
+
+            align-items:center;
         }
 
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .hero-left{
+
+            max-width:700px;
         }
 
-        .btn {
-            text-decoration: none;
-            padding: 18px;
-            border-radius: 15px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            transition: 0.3s ease;
-            text-transform: uppercase;
-            display: block;
+        .hero-badge{
+
+            display:inline-flex;
+
+            align-items:center;
+
+            gap:10px;
+
+            padding:10px 18px;
+
+            border-radius:999px;
+
+            background:rgba(0,217,255,0.06);
+
+            border:1px solid rgba(0,217,255,0.12);
+
+            margin-bottom:30px;
+
+            color:#8aefff;
+
+            font-size:0.82rem;
+
+            letter-spacing:1px;
+
+            text-transform:uppercase;
         }
 
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: #001018;
-            box-shadow: 0 10px 25px rgba(0,217,255,0.2);
+        .hero-title{
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:4.8rem;
+
+            line-height:1.05;
+
+            margin-bottom:28px;
+
+            letter-spacing:3px;
+
+            color:#f4fdff;
         }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(0,217,255,0.4);
+        .hero-title span{
+            color:var(--primary);
         }
 
-        .btn-secondary {
-            border: 1px solid rgba(255,255,255,0.10);
-            color: #d8f8ff;
-            background: rgba(255,255,255,0.02);
+        .hero-subtitle{
+
+            font-size:1.1rem;
+
+            line-height:1.8;
+
+            color:var(--muted);
+
+            max-width:620px;
+
+            margin-bottom:40px;
         }
 
-        .btn-secondary:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            background: rgba(0,217,255,0.05);
+        .btn-group{
+
+            display:flex;
+
+            flex-wrap:wrap;
+
+            gap:18px;
         }
 
-        .footer {
-            margin-top: 40px;
-            font-size: 0.7rem;
-            color: #475569;
-            font-family: 'Orbitron', sans-serif;
+        .btn{
+
+            text-decoration:none;
+
+            padding:18px 28px;
+
+            border-radius:16px;
+
+            font-size:0.92rem;
+
+            font-weight:700;
+
+            letter-spacing:1px;
+
+            text-transform:uppercase;
+
+            transition:0.3s ease;
         }
 
-        @media(max-width:768px){
-            h1 { font-size: 2rem; }
-            .container { padding: 40px 25px; }
-            .stats { grid-template-columns: 1fr; }
+        .btn-primary{
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            color:#001018;
+
+            box-shadow:
+                0 10px 35px rgba(0,217,255,0.22);
         }
+
+        .btn-primary:hover{
+
+            transform:translateY(-3px);
+
+            box-shadow:
+                0 18px 45px rgba(0,217,255,0.38);
+        }
+
+        .btn-secondary{
+
+            border:1px solid rgba(255,255,255,0.08);
+
+            color:#dffcff;
+
+            background:rgba(255,255,255,0.02);
+        }
+
+        .btn-secondary:hover{
+
+            border-color:var(--primary);
+
+            color:var(--primary);
+
+            background:rgba(0,217,255,0.04);
+        }
+
+        /* ================= RIGHT PANEL ================= */
+
+        .dashboard-preview{
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(10,20,35,0.92),
+                    rgba(5,10,18,0.98)
+                );
+
+            border:1px solid var(--border);
+
+            border-radius:30px;
+
+            padding:35px;
+
+            box-shadow:
+                0 0 60px rgba(0,217,255,0.08);
+
+            backdrop-filter:blur(12px);
+        }
+
+        .preview-header{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            align-items:center;
+
+            margin-bottom:28px;
+        }
+
+        .preview-title{
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:1rem;
+
+            letter-spacing:1px;
+        }
+
+        .live-dot{
+
+            display:flex;
+
+            align-items:center;
+
+            gap:8px;
+
+            color:#6dffca;
+
+            font-size:0.8rem;
+        }
+
+        .dot{
+
+            width:8px;
+            height:8px;
+
+            background:#00ff99;
+
+            border-radius:50%;
+
+            box-shadow:
+                0 0 12px #00ff99;
+        }
+
+        .vote-grid{
+
+            display:grid;
+
+            gap:18px;
+        }
+
+        .vote-card{
+
+            background:rgba(255,255,255,0.025);
+
+            border:1px solid rgba(255,255,255,0.05);
+
+            border-radius:18px;
+
+            padding:22px;
+        }
+
+        .vote-top{
+
+            display:flex;
+
+            justify-content:space-between;
+
+            margin-bottom:12px;
+        }
+
+        .vote-name{
+
+            color:#dffcff;
+
+            font-weight:600;
+        }
+
+        .vote-value{
+
+            color:var(--primary);
+
+            font-family:'Orbitron',sans-serif;
+        }
+
+        .bar{
+
+            width:100%;
+
+            height:8px;
+
+            border-radius:999px;
+
+            background:rgba(255,255,255,0.05);
+
+            overflow:hidden;
+        }
+
+        .fill{
+
+            height:100%;
+
+            border-radius:999px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+        }
+
+        .fill-1{ width:72%; }
+        .fill-2{ width:48%; }
+        .fill-3{ width:31%; }
+
+        /* ================= METRICS ================= */
+
+        .metrics{
+
+            width:100%;
+
+            padding:0 8% 100px 8%;
+        }
+
+        .metrics-grid{
+
+            max-width:1300px;
+
+            margin:auto;
+
+            display:grid;
+
+            grid-template-columns:repeat(4,1fr);
+
+            gap:22px;
+        }
+
+        .metric-card{
+
+            background:rgba(255,255,255,0.025);
+
+            border:1px solid rgba(255,255,255,0.05);
+
+            border-radius:24px;
+
+            padding:28px;
+        }
+
+        .metric-value{
+
+            font-family:'Orbitron',sans-serif;
+
+            color:var(--primary);
+
+            font-size:1.4rem;
+
+            margin-bottom:10px;
+        }
+
+        .metric-label{
+
+            color:#7f93aa;
+
+            font-size:0.82rem;
+
+            text-transform:uppercase;
+
+            letter-spacing:1px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer{
+
+            padding:40px 8%;
+
+            text-align:center;
+
+            color:#4c6178;
+
+            font-size:0.82rem;
+
+            border-top:1px solid rgba(255,255,255,0.04);
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:980px){
+
+            .hero-grid{
+                grid-template-columns:1fr;
+            }
+
+            .hero-title{
+                font-size:3rem;
+            }
+
+            .metrics-grid{
+                grid-template-columns:1fr;
+            }
+
+            .hero{
+                min-height:auto;
+                padding-top:20px;
+            }
+        }
+
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="top-line"></div>
-        <div class="logo-wrapper">
-            <img src="logo1.jpg" alt="NBX Logo" class="logo-img">
+
+    <div class="background-glow"></div>
+
+    <div class="wrapper">
+
+        <!-- NAVBAR -->
+
+        <div class="navbar">
+
+            <div class="nav-logo">
+                NBX PROTOCOL
+            </div>
+
+            <div class="nav-status">
+                GOVERNANCE ACTIVE
+            </div>
+
         </div>
 
-        <h1>NBX PROTOCOL</h1>
-        <p class="subtitle">
-            Institutional-grade decentralized governance infrastructure powered by Waves blockchain architecture.
-        </p>
+        <!-- HERO -->
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-value">DAO</div>
-                <div class="stat-label">Governance</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">ON-CHAIN</div>
-                <div class="stat-label">Treasury</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">LIVE</div>
-                <div class="stat-label">Voting</div>
-            </div>
-        </div>
+        <section class="hero">
 
-        <div class="btn-group">
-            <a href="dashboard.html" class="btn btn-primary">
-                Open Governance Dashboard
-            </a>
+            <div class="hero-grid">
 
-            <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">
-                Open Whitepaper
-            </a>
-        </div>
+                <!-- LEFT -->
+
+                <div class="hero-left">
+
+                    <div class="hero-badge">
+                        WAVES BLOCKCHAIN • DAO INFRASTRUCTURE
+                    </div>
+
+                    <h1 class="hero-title">
+                        Institutional <span>Governance</span><br>
+                        Infrastructure
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        NBX Protocol provides decentralized treasury coordination,
+                        snapshot-style voting mechanics and transparent governance
+                        infrastructure powered by Waves blockchain architecture.
+                    </p>
+
+                    <div class="btn-group">
+
+                        <!-- LINK ORIGINALI NON MODIFICATI -->
+
+                        <a href="dashboard.html" class="btn btn-primary">
+                            Open Governance Dashboard
+                        </a>
+
+                        <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">
+                            Open Whitepaper
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT -->
+
+                <div class="dashboard-preview">
+
+                    <div class="preview-header">
+
+                        <div class="preview-title">
+                            GOVERNANCE OVERVIEW
+                        </div>
+
+                        <div class="live-dot">
+                            <div class="dot"></div>
+                            LIVE
+                        </div>
+
+                    </div>
+
+                    <div class="vote-grid">
+
+                        <div class="vote-card">
+
+                            <div class="vote-top">
+                                <div class="vote-name">GOVERNANCE</div>
+                                <div class="vote-value">72%</div>
+                            </div>
+
+                            <div class="bar">
+                                <div class="fill fill-1"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="vote-card">
+
+                            <div class="vote-top">
+                                <div class="vote-name">ANALYTICS</div>
+                                <div class="vote-value">48%</div>
+                            </div>
+
+                            <div class="bar">
+                                <div class="fill fill-2"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="vote-card">
+
+                            <div class="vote-top">
+                                <div class="vote-name">GROWTH</div>
+                                <div class="vote-value">31%</div>
+                            </div>
+
+                            <div class="bar">
+                                <div class="fill fill-3"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- METRICS -->
+
+        <section class="metrics">
+
+            <div class="metrics-grid">
+
+                <div class="metric-card">
+                    <div class="metric-value">DAO</div>
+                    <div class="metric-label">Governance Layer</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">ON-CHAIN</div>
+                    <div class="metric-label">Treasury System</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">LIVE</div>
+                    <div class="metric-label">Voting Engine</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-value">WAVES</div>
+                    <div class="metric-label">Blockchain Network</div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
 
         <div class="footer">
-            © 2026 NBX PROTOCOL — DECENTRALIZED INFRASTRUCTURE
+            © 2026 NBX PROTOCOL — DECENTRALIZED GOVERNANCE INFRASTRUCTURE
         </div>
+
     </div>
+
 </body>
 </html>
