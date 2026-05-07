@@ -54,8 +54,6 @@
             border-radius: 999px;
         }
 
-        .logo-wrapper { margin-bottom: 30px; }
-
         .logo-img {
             width: 160px;
             height: 160px;
@@ -65,16 +63,13 @@
             padding: 6px;
             background: #000;
             box-shadow: 0 0 45px rgba(0,217,255,0.20);
-            transition: 0.35s ease;
         }
-
-        .logo-img:hover { transform: scale(1.05); }
 
         h1 {
             font-family: 'Orbitron', sans-serif;
             font-size: 2.8rem;
             letter-spacing: 4px;
-            margin-bottom: 15px;
+            margin: 20px 0;
             color: #e6fbff;
             text-shadow: 0 0 18px rgba(0,217,255,0.30);
         }
@@ -83,7 +78,7 @@
             font-size: 1rem;
             line-height: 1.6;
             color: var(--muted);
-            margin-bottom: 45px;
+            margin-bottom: 40px;
             font-weight: 300;
         }
 
@@ -91,7 +86,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
         .stat-card {
@@ -105,7 +100,6 @@
             font-family: 'Orbitron', sans-serif;
             color: var(--primary);
             font-size: 1rem;
-            margin-bottom: 5px;
         }
 
         .stat-label {
@@ -113,9 +107,14 @@
             font-size: 0.65rem;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-top: 5px;
         }
 
-        .btn-group { display: flex; flex-direction: column; gap: 15px; }
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
         .btn {
             text-decoration: none;
@@ -126,6 +125,7 @@
             letter-spacing: 1px;
             transition: 0.3s ease;
             text-transform: uppercase;
+            display: block;
         }
 
         .btn-primary {
@@ -147,15 +147,14 @@
 
         .btn-secondary:hover {
             border-color: var(--primary);
-            background: rgba(0,217,255,0.05);
             color: var(--primary);
+            background: rgba(0,217,255,0.05);
         }
 
         .footer {
             margin-top: 40px;
             font-size: 0.7rem;
             color: #475569;
-            letter-spacing: 1px;
             font-family: 'Orbitron', sans-serif;
         }
 
@@ -197,7 +196,7 @@
             <a href="dashboard.html" class="btn btn-primary">
                 Open Governance Dashboard
             </a>
-            
+
             <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">
                 Open Whitepaper
             </a>
