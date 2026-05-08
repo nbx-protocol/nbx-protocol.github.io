@@ -6,16 +6,62 @@
     <title>NBX Protocol | Institutional Governance</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        :root{ --primary:#00d9ff; --primary-dark:#009dff; --bg:#030712; --card:#08111f; --card-2:#0d1728; --border:rgba(0,217,255,0.12); --text:#ffffff; --muted:#94a3b8; }
+        :root{
+            --primary:#00d9ff;
+            --primary-dark:#009dff;
+            --bg:#030712;
+            --card:#08111f;
+            --card-2:#0d1728;
+            --border:rgba(0,217,255,0.12);
+            --text:#ffffff;
+            --muted:#94a3b8;
+        }
+
         *{ margin:0; padding:0; box-sizing:border-box; }
         html{ scroll-behavior:smooth; }
-        body{ font-family:'Inter',sans-serif; background: radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%), radial-gradient(circle at bottom right, rgba(0,80,255,0.10), transparent 35%), var(--bg); color:var(--text); overflow-x:hidden; }
+
+        body{
+            font-family:'Inter',sans-serif;
+            background: radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%), radial-gradient(circle at bottom right, rgba(0,80,255,0.10), transparent 35%), var(--bg);
+            color:var(--text);
+            overflow-x:hidden;
+        }
+
         .wrapper{ position:relative; z-index:1; }
-        .navbar{ width:100%; padding:26px 8%; display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo{ display:flex; align-items:center; gap:14px; }
-        .nav-logo img{ width:42px; height:42px; border-radius:12px; border:1px solid rgba(0,217,255,0.35); }
-        .nav-logo span{ font-family:'Orbitron',sans-serif; font-size:1rem; letter-spacing:2px; color:#dffcff; }
-        .nav-status{ padding:10px 18px; border-radius:999px; background:rgba(0,255,180,0.05); border:1px solid rgba(0,255,180,0.18); color:#6dffca; font-size:0.8rem; font-weight:600; }
+
+        /* ================= MODIFICA NAVBAR PER CENTRARE IL LOGO ================= */
+        .navbar{
+            width:100%;
+            padding: 40px 0; /* Aumentato lo spazio verticale */
+            display:flex;
+            flex-direction: column; /* Impila logo e testo verticalmente */
+            justify-content: center; /* Centra orizzontalmente rispetto alla pagina */
+            align-items:center; /* Centra gli elementi internamente */
+            gap: 20px; /* Spazio tra logo e testo */
+        }
+
+        /* Testo "NBX PROTOCOL" sotto il logo */
+        .nav-text{
+            font-family:'Orbitron',sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            color: #dffcff;
+            text-transform: uppercase;
+        }
+
+        /* MODIFICA DIMENSIONI LOGO - MOLTO PIÙ GRANDE */
+        .nav-logo img{
+            width: 150px; /* Dimensione molto più grande, come da foto */
+            height: 150px;
+            border-radius: 30px; /* Angoli più morbidi per un logo grande */
+            border: 2px solid rgba(0,217,255,0.4);
+            box-shadow: 0 0 30px rgba(0,217,255,0.2); /* Effetto bagliore */
+        }
+
+        /* Rimuovi il vecchio status che non c'è nello screenshot target */
+        .nav-status{ display: none; }
+
+        /* ================= RESTO DEL CODICE INVARIATO ================= */
         .hero{ width:100%; min-height:88vh; display:flex; justify-content:center; align-items:center; padding:40px 8% 80px 8%; }
         .hero-grid{ width:100%; max-width:1300px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:55px; align-items:center; }
         .hero-title{ font-family:'Orbitron',sans-serif; font-size:5rem; line-height:1.02; margin-bottom:28px; letter-spacing:2px; color:#f4fdff; }
@@ -38,10 +84,9 @@
     <div class="wrapper">
         <div class="navbar">
             <div class="nav-logo">
-                <img src="logo1.jpg" alt="NBX">
-                <span>NBX PROTOCOL</span>
+                <img src="logo1.jpg" alt="NBX Logo Large">
             </div>
-            <div class="nav-status">GOVERNANCE ACTIVE</div>
+            <div class="nav-text">NBX PROTOCOL</div>
         </div>
 
         <section class="hero">
@@ -52,11 +97,9 @@
                     
                     <div class="btn-group">
                         <a href="dashboard.html" class="btn btn-primary">Open Dashboard</a>
-                        
                         <a href="https://nbx-governance-api.onrender.com/votes" class="btn btn-secondary" target="_blank">
                             API / VOTES DATA
                         </a>
-                        
                         <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">Whitepaper</a>
                     </div>
                 </div>
