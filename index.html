@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
-
         :root{
             --primary:#00d9ff;
             --primary-dark:#009dff;
@@ -31,16 +30,12 @@
         }
 
         body{
-
             font-family:'Inter',sans-serif;
-
             background:
                 radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%),
                 radial-gradient(circle at bottom right, rgba(0,80,255,0.10), transparent 35%),
                 var(--bg);
-
             color:var(--text);
-
             overflow-x:hidden;
         }
 
@@ -49,63 +44,39 @@
             z-index:1;
         }
 
-        /* ================= NAVBAR ================= */
-
+        /* ================= NAVBAR MODIFICATA ================= */
         .navbar{
-
             width:100%;
-
-            padding:55px 0 35px 0;
-
+            padding:60px 0 40px 0; /* Aumentato spazio verticale */
             display:flex;
-
             flex-direction:column;
-
             justify-content:center;
-
             align-items:center;
-
-            gap:26px;
+            gap:20px;
+            height: auto !important; /* Libera il contenitore */
         }
 
-        /* ================= LOGO GIGANTE ================= */
-
+        /* ================= LOGO FORZATO ================= */
         .nav-logo img{
-
-            width:340px;
-
-            height:340px;
-
-            object-fit:cover;
-
-            border-radius:50px;
-
+            width:340px !important; /* Forza la larghezza */
+            height:340px !important; /* Forza l'altezza */
+            object-fit:contain !important; /* Assicura che l'immagine sia visibile interamente */
+            border-radius:40px;
             border:2px solid rgba(0,217,255,0.45);
-
-            box-shadow:
-                0 0 65px rgba(0,217,255,0.28);
-
+            box-shadow: 0 0 65px rgba(0,217,255,0.28);
             transition:0.3s ease;
+            display: block;
         }
 
-        /* ================= TESTO ENORME ================= */
-
+        /* ================= TESTO SOTTO LOGO ================= */
         .nav-text{
-
             font-family:'Orbitron',sans-serif;
-
-            font-size:2.8rem;
-
+            font-size:2.4rem;
             font-weight:800;
-
-            letter-spacing:8px;
-
+            letter-spacing:6px;
             color:#f4fdff;
-
             text-transform:uppercase;
-
-            text-shadow:
-                0 0 18px rgba(0,217,255,0.25);
+            text-shadow: 0 0 18px rgba(0,217,255,0.25);
         }
 
         .nav-status{
@@ -113,49 +84,30 @@
         }
 
         /* ================= HERO ================= */
-
         .hero{
-
             width:100%;
-
             min-height:88vh;
-
             display:flex;
-
             justify-content:center;
-
             align-items:center;
-
             padding:20px 8% 80px 8%;
         }
 
         .hero-grid{
-
             width:100%;
-
             max-width:1300px;
-
             display:grid;
-
             grid-template-columns:1.1fr 0.9fr;
-
             gap:55px;
-
             align-items:center;
         }
 
         .hero-title{
-
             font-family:'Orbitron',sans-serif;
-
             font-size:5rem;
-
             line-height:1.02;
-
             margin-bottom:28px;
-
             letter-spacing:2px;
-
             color:#f4fdff;
         }
 
@@ -164,71 +116,41 @@
         }
 
         .hero-subtitle{
-
             color:var(--muted);
-
             line-height:1.9;
-
             font-size:1.08rem;
-
             max-width:640px;
-
             margin-bottom:42px;
         }
 
         /* ================= BUTTONS ================= */
-
         .btn-group{
-
             display:flex;
-
             flex-wrap:wrap;
-
             gap:18px;
         }
 
         .btn{
-
             text-decoration:none;
-
             padding:18px 28px;
-
             border-radius:16px;
-
             font-size:0.92rem;
-
             font-weight:700;
-
             text-transform:uppercase;
-
             letter-spacing:1px;
-
             transition:0.3s ease;
-
             display:inline-block;
         }
 
         .btn-primary{
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
-
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             color:#001018;
-
-            box-shadow:
-                0 10px 35px rgba(0,217,255,0.22);
+            box-shadow: 0 10px 35px rgba(0,217,255,0.22);
         }
 
         .btn-secondary{
-
             border:1px solid rgba(255,255,255,0.08);
-
             background:rgba(255,255,255,0.02);
-
             color:#dffcff;
         }
 
@@ -237,134 +159,69 @@
         }
 
         /* ================= DASHBOARD ================= */
-
         .dashboard-preview{
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(10,20,35,0.92),
-                    rgba(5,10,18,0.98)
-                );
-
+            background: linear-gradient(180deg, rgba(10,20,35,0.92), rgba(5,10,18,0.98));
             border:1px solid var(--border);
-
             border-radius:30px;
-
             padding:35px;
-
             backdrop-filter:blur(12px);
         }
 
         .vote-card{
-
             background:rgba(255,255,255,0.025);
-
             border:1px solid rgba(255,255,255,0.05);
-
             border-radius:18px;
-
             padding:22px;
-
             margin-bottom:15px;
         }
 
         .bar{
-
             width:100%;
-
             height:8px;
-
             border-radius:999px;
-
             overflow:hidden;
-
             background:rgba(255,255,255,0.05);
         }
 
         .fill{
-
             height:100%;
-
             border-radius:999px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
         }
 
         /* ================= MOBILE ================= */
-
         @media(max-width:980px){
-
-            .hero-grid{
-                grid-template-columns:1fr;
-            }
-
-            .hero-title{
-                font-size:3rem;
-            }
-
-            .btn-group{
-                flex-direction:column;
-            }
-
+            .hero-grid{ grid-template-columns:1fr; }
+            .hero-title{ font-size:3rem; }
+            .btn-group{ flex-direction:column; }
             .nav-logo img{
-
-                width:240px;
-
-                height:240px;
+                width:240px !important;
+                height:240px !important;
             }
-
             .nav-text{
-
                 font-size:1.8rem;
-
                 letter-spacing:4px;
-
                 text-align:center;
             }
         }
-
     </style>
-
 </head>
 
 <body>
-
     <div class="wrapper">
 
-        <!-- NAVBAR -->
-
         <div class="navbar">
-
             <div class="nav-logo">
-
                 <img src="logo1.jpg" alt="NBX Logo Large">
-
             </div>
-
             <div class="nav-text">
-
                 NBX PROTOCOL
-
             </div>
-
         </div>
 
-        <!-- HERO -->
-
         <section class="hero">
-
             <div class="hero-grid">
-
-                <!-- LEFT -->
-
                 <div class="hero-left">
-
                     <h1 class="hero-title">
                         Institutional <span>Governance</span>
                     </h1>
@@ -374,74 +231,43 @@
                     </p>
 
                     <div class="btn-group">
-
                         <a href="dashboard.html" class="btn btn-primary">
                             Open Dashboard
                         </a>
 
-                        <a
-                            href="https://nbx-governance-api.onrender.com/votes"
-                            class="btn btn-secondary"
-                            target="_blank"
-                        >
+                        <a href="https://nbx-governance-api.onrender.com/votes" class="btn btn-secondary" target="_blank">
                             API / VOTES DATA
                         </a>
 
-                        <a
-                            href="whitepaper.pdf"
-                            class="btn btn-secondary"
-                            target="_blank"
-                        >
+                        <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">
                             Whitepaper
                         </a>
-
                     </div>
-
                 </div>
 
-                <!-- RIGHT -->
-
                 <div class="dashboard-preview">
-
                     <div class="vote-card">
-
                         <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-
                             <span>GOVERNANCE</span>
-
                             <span>72%</span>
-
                         </div>
-
                         <div class="bar">
                             <div class="fill" style="width:72%;"></div>
                         </div>
-
                     </div>
 
                     <div class="vote-card">
-
                         <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
-
                             <span>ANALYTICS</span>
-
                             <span>48%</span>
-
                         </div>
-
                         <div class="bar">
                             <div class="fill" style="width:48%;"></div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         </section>
-
     </div>
-
 </body>
 </html>
