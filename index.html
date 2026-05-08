@@ -25,10 +25,10 @@
             overflow-x:hidden;
         }
 
-        /* HEADER: Logo spostato più in basso e centrato */
+        /* HEADER: Logo centrato e spostato molto più in basso */
         .main-header {
             width: 100%;
-            padding: 100px 20px 50px 20px; /* Aumentato il margine superiore */
+            padding: 120px 20px 60px 20px; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,25 +36,25 @@
             text-align: center;
         }
 
-        /* LOGO: Dimensioni massime forzate e stile migliorato */
+        /* LOGO: Dimensioni XL forzate come richiesto */
         .big-logo-fix {
-            width: 420px !important; 
+            width: 450px !important; 
             height: auto !important;
-            max-width: 95%;
+            max-width: 90%;
             object-fit: contain;
             border-radius: 40px;
             border: 2px solid var(--primary);
-            box-shadow: 0 0 60px rgba(0, 217, 255, 0.25);
+            box-shadow: 0 0 70px rgba(0, 217, 255, 0.3);
             margin-bottom: 35px;
         }
 
         .protocol-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            letter-spacing: 8px;
+            font-size: 2.2rem;
+            letter-spacing: 10px;
             color: #f4fdff;
             text-transform: uppercase;
-            text-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+            text-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
         }
 
         /* HERO AREA */
@@ -62,21 +62,21 @@
             width:100%;
             display:flex;
             justify-content:center;
-            padding:40px 8% 100px 8%;
+            padding:60px 8% 120px 8%;
         }
 
         .hero-grid{
             width:100%;
             max-width:1300px;
             display:grid;
-            grid-template-columns:1.1fr 0.9fr;
-            gap:60px;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap:80px;
             align-items:center;
         }
 
         .hero-title{
             font-family:'Orbitron',sans-serif;
-            font-size:5rem;
+            font-size:4.8rem;
             line-height:1.05;
             margin-bottom:30px;
         }
@@ -86,7 +86,7 @@
         .hero-subtitle{
             color:var(--muted);
             line-height:1.9;
-            font-size:1.1rem;
+            font-size:1.15rem;
             margin-bottom:45px;
             max-width:600px;
         }
@@ -96,29 +96,32 @@
         
         .btn{
             text-decoration:none;
-            padding:20px 35px;
+            padding:22px 38px;
             border-radius:15px;
             font-weight:700;
             text-transform:uppercase;
-            letter-spacing:1px;
+            letter-spacing:1.5px;
             transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
         }
 
         .btn-primary{
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             color:#001018;
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.25);
         }
 
         .btn-secondary{
-            border: 1px solid rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
             background: rgba(255, 255, 255, 0.03);
             color: #dffcff;
+            backdrop-filter: blur(5px);
         }
 
         .btn:hover{
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 45px rgba(0, 217, 255, 0.2);
+            filter: brightness(1.1);
         }
 
         /* DASHBOARD PREVIEW */
@@ -126,8 +129,9 @@
             background: rgba(10, 20, 35, 0.8);
             border: 1px solid rgba(0, 217, 255, 0.15);
             border-radius: 40px;
-            padding: 45px;
-            backdrop-filter: blur(10px);
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         .vote-card{
@@ -135,11 +139,12 @@
             padding: 25px;
             border-radius: 20px;
             margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .bar{
             width:100%;
-            height:10px;
+            height:12px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             margin-top: 15px;
@@ -148,7 +153,7 @@
 
         .fill{
             height:100%;
-            background: var(--primary);
+            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             border-radius: 10px;
         }
 
@@ -157,7 +162,8 @@
             .hero-title{ font-size:3.5rem; }
             .btn-group{ justify-content: center; }
             .hero-subtitle{ margin: 0 auto 45px auto; }
-            .big-logo-fix { width: 300px !important; }
+            .big-logo-fix { width: 320px !important; }
+            .main-header { padding-top: 80px; }
         }
     </style>
 </head>
@@ -173,7 +179,7 @@
             <div class="hero-left">
                 <h1 class="hero-title">Institutional <span>Governance</span></h1>
                 <p class="hero-subtitle">
-                    Infrastruttura decentralizzata per il coordinamento della tesoreria e la gestione trasparente delle votazioni on-chain.
+                    Infrastruttura decentralizzata per il coordinamento della tesoreria e la gestione trasparente delle votazioni on-chain alimentata dall'architettura blockchain Waves.
                 </p>
                 
                 <div class="btn-group">
@@ -189,11 +195,15 @@
 
             <div class="dashboard-preview">
                 <div class="vote-card">
-                    <div style="display:flex; justify-content:space-between;"><span>GOVERNANCE</span><span>72%</span></div>
+                    <div style="display:flex; justify-content:space-between; font-family:'Orbitron'">
+                        <span>GOVERNANCE</span><span id="gov-val">72%</span>
+                    </div>
                     <div class="bar"><div class="fill" style="width:72%;"></div></div>
                 </div>
                 <div class="vote-card">
-                    <div style="display:flex; justify-content:space-between;"><span>ANALYTICS</span><span>48%</span></div>
+                    <div style="display:flex; justify-content:space-between; font-family:'Orbitron'">
+                        <span>ANALYTICS</span><span id="ana-val">48%</span>
+                    </div>
                     <div class="bar"><div class="fill" style="width:48%;"></div></div>
                 </div>
             </div>
