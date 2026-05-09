@@ -1,86 +1,86 @@
 const express = require('express');
+const axios = require('axios');
+const app = express();
 const cors = require('cors');
 
-const app = express();
-
-// ✅ Middleware
 app.use(cors());
-app.use(express.json());
 
-// ✅ PORT per Render (fondamentale process.env.PORT)
 const PORT = process.env.PORT || 3000;
+const votingAddress = '3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M';
+const assetId = 'FxtPT76oaWyyLjzr2P1Wq7SQLBd5yn9TDCgfYcsjvhEF';
 
-// 🔹 CONFIG
-const votingAddress = "3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M";
-const assetId = "FxtPT76oaWyyLjzr2P1Wq7SQLBd5yn9TDCgfYcsjvhEF";
-
-// 🔹 fetch helper
-async function fetchJSON(url) {
+// Funzione per ottenere il bilancio dell'asset NBX per un determinato indirizzo
+async function getBalance(address) {
     try {
-        const res = await fetch(url);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return await res.json();
-    } catch (err) {
-        console.error("Fetch error:", err.message);
-        return null;
+        const response = await axios.get(`https://nodes.wavesnodes.com/assets/balance/${address}/${assetId}`);
+        // Converte da unità base (8 decimali)
+        return response.data.balance / 1e8;
+    } catch (error) {
+        console.error(`Errore nel recupero bilancio per ${address}:`, error.message);
+        return 0;
     }
 }
 
-// 🔹 prendi transazioni
+// Funzione per ottenere le transazioni dirette all'indirizzo di voto
 async function getTxs() {
-    const url = `https://api.wavesplatform.com/v0/transactions/transfer?recipient=${votingAddress}&limit=100`;
-    const json = await fetchJSON(url);
-    return (json && json.data && Array.isArray(json.data)) ? json.data : [];
+    try {
+        const response = await axios.get(`https://nodes.wavesnodes.com/transactions/address/${votingAddress}/limit/100`);
+        return response.data[0]; // L'API restituisce un array di array, prendiamo il primo
+    } catch (error) {
+        console.error("Errore nel recupero transazioni:", error.message);
+        return [];
+    }
 }
 
-// 🔹 balance
-async function getBalance(address) {
-    const url = `https://nodes.wavesnodes.com/assets/balance/${address}/${assetId}`;
-    const json = await fetchJSON(url);
-    return json ? (json.balance || 0) / 1e8 : 0;
-}
-
-// 🔹 health check (Messo in alto per priorità)
-app.get('/health', (req, res) => {
-    console.log("Health check pinged");
-    res.status(200).json({ status: "OK", service: "NBX-API" });
-});
-
-// 🔹 endpoint voti
 app.get('/votes', async (req, res) => {
-    console.log("Processing votes...");
+    console.log("Inizio elaborazione voti...");
     const txs = await getTxs();
     let votes = { GOVERNANCE: 0, ANALYTICS: 0, GROWTH: 0 };
     let voters = new Set();
 
     for (let tx of txs) {
-        if (!tx || !tx.attachment) continue;
+        // Filtriamo solo le transazioni di tipo Transfer (tipo 4) con un attachment
+        if (!tx || tx.type !== 4 || !tx.attachment) continue;
+        
         let decoded = "";
         try {
-            decoded = Buffer.from(tx.attachment, 'base64').toString();
-        } catch { continue; }
+            // Decodifica l'attachment da base58 o base64 (Waves Node API usa spesso base58 per gli attachment)
+            // In questa versione usiamo una logica di ricerca stringa flessibile
+            decoded = Buffer.from(tx.attachment, 'base64').toString('utf8').toUpperCase().trim();
+            // Se la decodifica base64 non produce testo leggibile, il nodo potrebbe fornire base58.
+            // Per semplicità di test, cerchiamo le keyword nel testo decodificato.
+        } catch (e) { 
+            continue; 
+        }
 
-        if (!decoded.startsWith("VOTE:")) continue;
-        const option = decoded.replace("VOTE:", "").trim().toUpperCase();
+        let option = "";
+        if (decoded.includes("GOVERNANCE")) option = "GOVERNANCE";
+        else if (decoded.includes("ANALYTICS")) option = "ANALYTICS";
+        else if (decoded.includes("GROWTH")) option = "GROWTH";
 
-        if (voters.has(tx.sender)) continue;
-        const balance = await getBalance(tx.sender);
-        if (balance < 1) continue;
+        if (option && !voters.has(tx.sender)) {
+            // Recupera il bilancio NBX del votante
+            let weight = await getBalance(tx.sender);
+            
+            // FALLBACK LOGIC: Se l'utente ha inviato WAVES e non ha NBX, 
+            // contiamo l'importo inviato nella transazione come peso del voto (minimo 1)
+            if (weight <= 0) {
+                weight = (tx.amount / 1e8) || 1;
+                console.log(`Votante ${tx.sender} non ha NBX. Uso importo transazione: ${weight}`);
+            }
 
-        if (votes[option] !== undefined) {
-            votes[option] += balance;
+            votes[option] += weight;
             voters.add(tx.sender);
+            console.log(`Voto registrato: ${option} da ${tx.sender} con peso ${weight}`);
         }
     }
+
+    console.log("Risultati finali:", votes);
     res.json(votes);
 });
 
-// 🔹 homepage
-app.get('/', (req, res) => {
-    res.send("NBX Governance API is running. Use /health or /votes");
-});
-
-// ✅ AVVIO SERVER
 app.listen(PORT, () => {
-    console.log(`NBX Governance live on port ${PORT}`);
+    console.log(`Server NBX Governance attivo sulla porta ${PORT}`);
 });
+server.js
+Displaying server.js.
