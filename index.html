@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBX Protocol | Institutional Governance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root{
-            --primary:#00d9ff;
-            --primary-dark:#009dff;
-            --bg:#030712;
-            --text:#ffffff;
-            --muted:#94a3b8;
+        :root {
+            --primary: #00d9ff;
+            --primary-dark: #009dff;
+            --bg: #030712;
+            --text: #ffffff;
+            --muted: #94a3b8;
         }
 
-        *{ margin:0; padding:0; box-sizing:border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body{
-            font-family:'Inter',sans-serif;
-            background:
-                radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%),
-                var(--bg);
-            color:var(--text);
-            overflow-x:hidden;
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%), var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
         }
 
-        /* HEADER: Logo centrato e spostato molto più in basso */
+        /* HEADER: Logo spostato molto in basso e centrato */
         .main-header {
             width: 100%;
-            padding: 120px 20px 60px 20px; 
+            padding: 180px 20px 60px 20px; /* Spazio massiccio sopra il logo */
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,134 +34,130 @@
             text-align: center;
         }
 
-        /* LOGO: Dimensioni XL forzate come richiesto */
+        /* LOGO: Dimensioni GIGANTI (550px) */
         .big-logo-fix {
-            width: 450px !important; 
+            width: 550px !important; 
             height: auto !important;
-            max-width: 90%;
+            max-width: 95%;
             object-fit: contain;
-            border-radius: 40px;
-            border: 2px solid var(--primary);
-            box-shadow: 0 0 70px rgba(0, 217, 255, 0.3);
-            margin-bottom: 35px;
+            border-radius: 50px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 80px rgba(0, 217, 255, 0.3);
+            margin-bottom: 40px;
         }
 
         .protocol-name {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.2rem;
-            letter-spacing: 10px;
+            font-size: 2.5rem;
+            letter-spacing: 12px;
             color: #f4fdff;
             text-transform: uppercase;
-            text-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+            text-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
         }
 
         /* HERO AREA */
-        .hero{
-            width:100%;
-            display:flex;
-            justify-content:center;
-            padding:60px 8% 120px 8%;
+        .hero {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 60px 8% 120px 8%;
         }
 
-        .hero-grid{
-            width:100%;
-            max-width:1300px;
-            display:grid;
+        .hero-grid {
+            width: 100%;
+            max-width: 1300px;
+            display: grid;
             grid-template-columns: 1.1fr 0.9fr;
-            gap:80px;
-            align-items:center;
+            gap: 80px;
+            align-items: center;
         }
 
-        .hero-title{
-            font-family:'Orbitron',sans-serif;
-            font-size:4.8rem;
-            line-height:1.05;
-            margin-bottom:30px;
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.8rem;
+            line-height: 1.05;
+            margin-bottom: 30px;
         }
 
-        .hero-title span{ color:var(--primary); }
+        .hero-title span { color: var(--primary); }
 
-        .hero-subtitle{
-            color:var(--muted);
-            line-height:1.9;
-            font-size:1.15rem;
-            margin-bottom:45px;
-            max-width:600px;
+        .hero-subtitle {
+            color: var(--muted);
+            line-height: 1.9;
+            font-size: 1.15rem;
+            margin-bottom: 45px;
+            max-width: 600px;
         }
 
         /* BOTTONI */
-        .btn-group{ display:flex; gap:20px; flex-wrap:wrap; }
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
         
-        .btn{
-            text-decoration:none;
-            padding:22px 38px;
-            border-radius:15px;
-            font-weight:700;
-            text-transform:uppercase;
-            letter-spacing:1.5px;
-            transition:0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        .btn {
+            text-decoration: none;
+            padding: 22px 38px;
+            border-radius: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 0.9rem;
         }
 
-        .btn-primary{
+        .btn-primary {
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color:#001018;
+            color: #001018;
             box-shadow: 0 10px 30px rgba(0, 217, 255, 0.25);
         }
 
-        .btn-secondary{
-            border: 1px solid rgba(0, 217, 255, 0.3);
+        .btn-secondary {
+            border: 1px solid rgba(0, 217, 255, 0.4);
             background: rgba(255, 255, 255, 0.03);
             color: #dffcff;
             backdrop-filter: blur(5px);
         }
 
-        .btn:hover{
-            transform: translateY(-8px);
-            box-shadow: 0 15px 45px rgba(0, 217, 255, 0.2);
-            filter: brightness(1.1);
+        .btn:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0, 217, 255, 0.25);
         }
 
-        /* DASHBOARD PREVIEW */
-        .dashboard-preview{
+        /* PREVIEW SCHEDA VOTI */
+        .dashboard-preview {
             background: rgba(10, 20, 35, 0.8);
-            border: 1px solid rgba(0, 217, 255, 0.15);
+            border: 1px solid rgba(0, 217, 255, 0.2);
             border-radius: 40px;
             padding: 50px;
             backdrop-filter: blur(15px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        .vote-card{
+        .vote-card {
             background: rgba(255, 255, 255, 0.03);
             padding: 25px;
             border-radius: 20px;
             margin-bottom: 25px;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .bar{
-            width:100%;
-            height:12px;
+        .bar {
+            width: 100%;
+            height: 12px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
             margin-top: 15px;
             overflow: hidden;
         }
 
-        .fill{
-            height:100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+        .fill {
+            height: 100%;
+            background: var(--primary);
             border-radius: 10px;
         }
 
         @media(max-width:980px){
-            .hero-grid{ grid-template-columns:1fr; text-align: center; }
-            .hero-title{ font-size:3.5rem; }
-            .btn-group{ justify-content: center; }
-            .hero-subtitle{ margin: 0 auto 45px auto; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-title { font-size: 3.5rem; }
+            .btn-group { justify-content: center; }
             .big-logo-fix { width: 320px !important; }
-            .main-header { padding-top: 80px; }
+            .main-header { padding-top: 100px; }
         }
     </style>
 </head>
@@ -179,7 +173,7 @@
             <div class="hero-left">
                 <h1 class="hero-title">Institutional <span>Governance</span></h1>
                 <p class="hero-subtitle">
-                    Infrastruttura decentralizzata per il coordinamento della tesoreria e la gestione trasparente delle votazioni on-chain alimentata dall'architettura blockchain Waves.
+                    Infrastruttura decentralizzata per il coordinamento della tesoreria e la gestione trasparente delle votazioni on-chain su Waves.
                 </p>
                 
                 <div class="btn-group">
@@ -196,13 +190,13 @@
             <div class="dashboard-preview">
                 <div class="vote-card">
                     <div style="display:flex; justify-content:space-between; font-family:'Orbitron'">
-                        <span>GOVERNANCE</span><span id="gov-val">72%</span>
+                        <span>GOVERNANCE</span><span>72%</span>
                     </div>
                     <div class="bar"><div class="fill" style="width:72%;"></div></div>
                 </div>
                 <div class="vote-card">
                     <div style="display:flex; justify-content:space-between; font-family:'Orbitron'">
-                        <span>ANALYTICS</span><span id="ana-val">48%</span>
+                        <span>ANALYTICS</span><span>48%</span>
                     </div>
                     <div class="bar"><div class="fill" style="width:48%;"></div></div>
                 </div>
