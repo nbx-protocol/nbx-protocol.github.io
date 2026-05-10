@@ -1,130 +1,540 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Home</title>
+
+    <title>NBX Protocol | Institutional Governance</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
-        :root {
-            --gold: #d4af37;
-            --dark-bg: #050505;
+
+        :root{
+
+            --gold:#d4af37;
+
+            --gold-light:#f6d365;
+
+            --dark-bg:#040404;
+
+            --card:#0b0b0b;
+
+            --text:#ffffff;
+
+            --muted:#8d8d8d;
         }
 
-        body { 
-            background-color: var(--dark-bg); 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            overflow: hidden; /* Mantiene il focus sulla Hero */
+        *{
+
+            margin:0;
+
+            padding:0;
+
+            box-sizing:border-box;
         }
 
-        .bg-glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1a1505 0%, #050505 100%);
-            z-index: -1;
+        body{
+
+            background:var(--dark-bg);
+
+            color:var(--text);
+
+            font-family:'Inter',sans-serif;
+
+            overflow-x:hidden;
+
+            min-height:100vh;
+
+            position:relative;
         }
 
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+        /* ================= BACKGROUND ================= */
+
+        .bg-glow{
+
+            position:fixed;
+
+            inset:0;
+
+            z-index:-2;
+
+            background:
+                radial-gradient(circle at top, rgba(212,175,55,0.10), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(212,175,55,0.06), transparent 35%),
+                #040404;
         }
 
-        /* LOGO: Ingrandito e corretto su logo1.jpg */
-        .logo-central {
-            width: 280px; /* Dimensione aumentata come da richiesta */
-            height: auto;
-            margin-bottom: 30px;
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
-            border-radius: 15px;
+        .noise{
+
+            position:fixed;
+
+            inset:0;
+
+            opacity:0.03;
+
+            background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+
+            background-size:4px 4px;
+
+            z-index:-1;
         }
 
-        /* SCRITTA FUTURE OF FINANCE: Ingrandita */
-        .tagline {
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 10px; /* Spaziatura premium */
-            font-weight: 800;
-            font-size: 1.5rem; /* Decisamente più visibile */
-            margin-bottom: 20px;
-            display: block;
+        /* ================= HERO ================= */
+
+        .hero{
+
+            width:100%;
+
+            min-height:100vh;
+
+            display:flex;
+
+            justify-content:center;
+
+            align-items:center;
+
+            padding:80px 20px;
         }
 
-        .hero h1 {
-            font-size: clamp(3.5rem, 12vw, 7rem);
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 30px;
-            text-transform: uppercase;
+        .hero-container{
+
+            width:100%;
+
+            max-width:1350px;
+
+            display:grid;
+
+            grid-template-columns:1.1fr 0.9fr;
+
+            gap:80px;
+
+            align-items:center;
         }
 
-        .hero h1 span { color: var(--gold); }
+        /* ================= LEFT ================= */
 
-        .hero p {
-            color: #888;
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-bottom: 50px;
+        .hero-left{
+
+            position:relative;
         }
 
-        .btn-group { display: flex; gap: 20px; }
+        .tagline{
 
-        .btn-nbx {
-            padding: 20px 50px;
-            font-weight: bold;
-            text-transform: uppercase;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 1.1rem;
+            display:inline-block;
+
+            margin-bottom:25px;
+
+            color:var(--gold);
+
+            text-transform:uppercase;
+
+            letter-spacing:10px;
+
+            font-weight:800;
+
+            font-size:1rem;
         }
 
-        .btn-gold {
-            background: var(--gold);
-            color: #000;
-            border: 2px solid var(--gold);
+        .hero-title{
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:clamp(4rem,9vw,7rem);
+
+            line-height:0.95;
+
+            font-weight:900;
+
+            margin-bottom:35px;
+
+            text-transform:uppercase;
         }
 
-        .btn-gold:hover {
-            background: #fff;
-            border-color: #fff;
-            transform: scale(1.05);
+        .hero-title span{
+
+            color:var(--gold);
+
+            text-shadow:
+                0 0 25px rgba(212,175,55,0.25);
         }
 
-        .btn-outline {
-            border: 2px solid #333;
-            color: #fff;
+        .hero-subtitle{
+
+            color:var(--muted);
+
+            font-size:1.15rem;
+
+            line-height:1.9;
+
+            max-width:700px;
+
+            margin-bottom:50px;
         }
 
-        .btn-outline:hover {
-            border-color: var(--gold);
-            color: var(--gold);
-            transform: scale(1.05);
+        /* ================= BUTTONS ================= */
+
+        .btn-group-custom{
+
+            display:flex;
+
+            flex-wrap:wrap;
+
+            gap:20px;
         }
+
+        .btn-nbx{
+
+            padding:18px 42px;
+
+            border-radius:60px;
+
+            text-decoration:none;
+
+            text-transform:uppercase;
+
+            font-weight:700;
+
+            letter-spacing:1px;
+
+            transition:0.3s ease;
+
+            font-size:0.95rem;
+        }
+
+        .btn-gold{
+
+            background:linear-gradient(
+                90deg,
+                var(--gold),
+                var(--gold-light)
+            );
+
+            color:#000;
+
+            border:2px solid var(--gold);
+
+            box-shadow:
+                0 10px 35px rgba(212,175,55,0.18);
+        }
+
+        .btn-gold:hover{
+
+            transform:translateY(-3px);
+
+            color:#000;
+
+            box-shadow:
+                0 15px 45px rgba(212,175,55,0.30);
+        }
+
+        .btn-outline-custom{
+
+            border:2px solid rgba(255,255,255,0.10);
+
+            color:#fff;
+
+            background:rgba(255,255,255,0.02);
+        }
+
+        .btn-outline-custom:hover{
+
+            border-color:var(--gold);
+
+            color:var(--gold);
+
+            transform:translateY(-3px);
+        }
+
+        /* ================= RIGHT PANEL ================= */
+
+        .hero-right{
+
+            position:relative;
+        }
+
+        .dashboard-card{
+
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(18,18,18,0.95),
+                    rgba(8,8,8,0.98)
+                );
+
+            border:1px solid rgba(212,175,55,0.12);
+
+            border-radius:34px;
+
+            padding:40px;
+
+            backdrop-filter:blur(12px);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,0.65);
+        }
+
+        .logo-wrapper{
+
+            text-align:center;
+
+            margin-bottom:40px;
+        }
+
+        .logo-central{
+
+            width:420px;
+
+            max-width:100%;
+
+            border-radius:34px;
+
+            filter:
+                drop-shadow(0 0 35px rgba(212,175,55,0.22));
+
+            border:2px solid rgba(212,175,55,0.18);
+        }
+
+        .stats-grid{
+
+            display:grid;
+
+            grid-template-columns:repeat(3,1fr);
+
+            gap:15px;
+
+            margin-top:35px;
+        }
+
+        .stat-card{
+
+            background:rgba(255,255,255,0.025);
+
+            border:1px solid rgba(255,255,255,0.06);
+
+            border-radius:18px;
+
+            padding:20px;
+
+            text-align:center;
+        }
+
+        .stat-value{
+
+            font-family:'Orbitron',sans-serif;
+
+            font-size:1.3rem;
+
+            color:var(--gold);
+
+            margin-bottom:8px;
+        }
+
+        .stat-label{
+
+            color:#666;
+
+            font-size:0.72rem;
+
+            text-transform:uppercase;
+
+            letter-spacing:1px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        .footer{
+
+            position:absolute;
+
+            bottom:20px;
+
+            width:100%;
+
+            text-align:center;
+
+            color:#555;
+
+            font-size:0.75rem;
+
+            letter-spacing:1px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:980px){
+
+            .hero-container{
+
+                grid-template-columns:1fr;
+
+                gap:60px;
+            }
+
+            .hero{
+
+                padding:60px 20px;
+            }
+
+            .hero-title{
+
+                font-size:3.5rem;
+            }
+
+            .logo-central{
+
+                width:280px;
+            }
+
+            .btn-group-custom{
+
+                flex-direction:column;
+            }
+
+            .stats-grid{
+
+                grid-template-columns:1fr;
+            }
+
+            .tagline{
+
+                letter-spacing:5px;
+
+                font-size:0.85rem;
+            }
+        }
+
     </style>
+
 </head>
+
 <body>
+
     <div class="bg-glow"></div>
 
-    <section class="hero">
-        <img src="logo1.jpg" alt="NBX Protocol" class="logo-central">
+    <div class="noise"></div>
 
-        <span class="tagline">Future of Finance</span>
-        
-        <h1>DECENTRALIZED<br><span>GOVERNANCE HUB</span></h1>
-        
-        <p>Monitoraggio real-time e trasparenza on-chain. Gestione asset e votazioni decentralizzate su rete Waves.</p>
-        
-        <div class="btn-group">
-            <a href="dashboard.html" class="btn-nbx btn-gold">OPEN DASHBOARD</a>
-            <a href="whitepaper.pdf" class="btn-nbx btn-outline" target="_blank">WHITEPAPER</a>
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-container">
+
+            <!-- LEFT -->
+
+            <div class="hero-left">
+
+                <span class="tagline">
+                    Future of Finance
+                </span>
+
+                <h1 class="hero-title">
+                    Decentralized<br>
+                    <span>Governance Hub</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Monitoraggio real-time, governance on-chain e treasury decentralizzata powered by Waves blockchain infrastructure.
+                </p>
+
+                <div class="btn-group-custom">
+
+                    <a href="dashboard.html" class="btn-nbx btn-gold">
+                        Open Dashboard
+                    </a>
+
+                    <a href="votes.html" class="btn-nbx btn-outline-custom">
+                        Live Votes
+                    </a>
+
+                    <a href="whitepaper.pdf"
+                       target="_blank"
+                       class="btn-nbx btn-outline-custom">
+
+                        Whitepaper
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="hero-right">
+
+                <div class="dashboard-card">
+
+                    <div class="logo-wrapper">
+
+                        <img
+                            src="logo1.jpg"
+                            alt="NBX Protocol"
+                            class="logo-central"
+                        >
+
+                    </div>
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card">
+
+                            <div class="stat-value">
+                                DAO
+                            </div>
+
+                            <div class="stat-label">
+                                Governance
+                            </div>
+
+                        </div>
+
+                        <div class="stat-card">
+
+                            <div class="stat-value">
+                                ON-CHAIN
+                            </div>
+
+                            <div class="stat-label">
+                                Treasury
+                            </div>
+
+                        </div>
+
+                        <div class="stat-card">
+
+                            <div class="stat-value">
+                                LIVE
+                            </div>
+
+                            <div class="stat-label">
+                                Voting
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
+
     </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <div class="footer">
+        © 2026 NBX Protocol — Institutional Governance Infrastructure
+    </div>
+
 </body>
+
 </html>
