@@ -19,7 +19,7 @@
         
         body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; line-height: 1.6; }
 
-        /* HEADER / NAV */
+        /* NAVBAR */
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
             padding: 25px 5%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
@@ -30,7 +30,7 @@
         .nav-links a { color: #fff; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold-bright); }
 
-        /* HERO SECTION (IMG 1 FIX) */
+        /* HERO */
         .hero { 
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
             text-align: center; background: radial-gradient(circle at center, #151208 0%, #050505 100%); padding: 120px 20px 60px;
@@ -46,27 +46,23 @@
             font-weight: 900; font-size: 0.6rem; border-radius: 5px; white-space: nowrap;
         }
         .logo-img { width: 350px; max-width: 80vw; display: block; border-radius: 10px; }
-
-        .hero h1 { font-family: 'Orbitron'; font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; margin: 20px 0; color: #fff; text-transform: uppercase; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; margin: 20px 0; color: #fff; }
         .hero h1 span { color: var(--gold); }
-        .hero p { color: var(--text-dim); max-width: 800px; font-size: 1.2rem; margin-bottom: 40px; font-weight: 400; }
+        .hero p { color: var(--text-dim); max-width: 800px; font-size: 1.2rem; margin-bottom: 40px; }
 
-        /* ARCHITECTURE (IMG 2 FIX) */
+        /* ARCHITECTURE */
         .section-arch { padding: 100px 5%; background: #080808; border-top: 1px solid #151515; text-align: center; }
-        .arch-grid { 
-            max-width: 900px; margin: 60px auto; display: flex; flex-direction: column; align-items: center; 
-        }
+        .arch-grid { max-width: 900px; margin: 60px auto; display: flex; flex-direction: column; align-items: center; }
         .layer-box {
             background: var(--card); border: 2px solid var(--border); padding: 35px; border-radius: 15px;
             width: 100%; transition: 0.3s; position: relative;
         }
-        .layer-box:hover { border-color: var(--gold-bright); transform: scale(1.02); }
         .layer-box i { color: var(--gold); font-size: 2rem; margin-bottom: 15px; display: block; }
         .layer-box h3 { font-family: 'Orbitron'; color: #fff; font-size: 1.3rem; margin: 10px 0; letter-spacing: 2px; }
         .layer-box p { color: var(--gold); font-family: monospace; font-weight: bold; font-size: 1rem; margin: 0; }
         .connector { width: 3px; height: 50px; background: linear-gradient(var(--gold), transparent); }
 
-        /* FOOTER SOCIAL (IMG 3 FIX) */
+        /* FOOTER PREMIUM (LINKS FIXED) */
         .footer-premium { 
             padding: 100px 5% 50px; background: #000; border-top: 1px solid var(--border); text-align: center;
         }
@@ -80,6 +76,10 @@
         .social-item i { font-size: 1.8rem; color: var(--gold); }
         .social-item span { font-family: 'Orbitron'; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
         .social-item:hover { opacity: 1; transform: translateY(-5px); color: var(--gold-bright); }
+        
+        /* Tooltip per "In Costruzione" */
+        .social-item.coming-soon { cursor: help; }
+        .social-item.coming-soon:hover span::after { content: ' (SOON)'; color: #555; font-size: 0.6rem; }
 
         .btn-main { background: var(--gold); color: #000; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: 900; font-family: 'Orbitron'; transition: 0.3s; display: inline-block; }
         .btn-main:hover { background: var(--gold-bright); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
@@ -90,7 +90,7 @@
 <body>
 
     <nav class="navbar">
-        <a href="#" class="nav-logo">NBX PROTOCOL</a>
+        <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
         <div class="nav-links">
             <a href="dashboard.html">Dashboard</a>
             <a href="votes.html">Governance</a>
@@ -133,27 +133,27 @@
 
     <footer class="footer-premium">
         <div class="social-container">
-            <a href="https://github.com" class="social-item">
+            <a href="https://github.com/nbx-protocol" target="_blank" class="social-item">
                 <i class="fab fa-github"></i>
                 <span>GITHUB</span>
             </a>
-            <a href="#" class="social-item">
-                <i class="fab fa-telegram"></i>
-                <span>TELEGRAM</span>
-            </a>
-            <a href="#" class="social-item">
-                <i class="fab fa-instagram"></i>
-                <span>INSTAGRAM</span>
-            </a>
-            <a href="#" class="social-item">
+            <a href="https://www.facebook.com/NBXProjectOfficial/" target="_blank" class="social-item">
                 <i class="fab fa-facebook"></i>
                 <span>FACEBOOK</span>
             </a>
-            <a href="#" class="social-item">
+            <a href="javascript:void(0)" class="social-item coming-soon">
+                <i class="fab fa-telegram"></i>
+                <span>TELEGRAM</span>
+            </a>
+            <a href="javascript:void(0)" class="social-item coming-soon">
+                <i class="fab fa-instagram"></i>
+                <span>INSTAGRAM</span>
+            </a>
+            <a href="javascript:void(0)" class="social-item coming-soon">
                 <i class="fab fa-tiktok"></i>
                 <span>TIKTOK</span>
             </a>
-            <a href="whitepaper.pdf" class="social-item">
+            <a href="whitepaper.pdf" target="_blank" class="social-item">
                 <i class="fas fa-file-pdf"></i>
                 <span>DOCS</span>
             </a>
