@@ -3,83 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Governance - API Data</title>
+    <title>NBX Governance | Data Feed</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
-            --nbx-gold: #d4af37;
-            --nbx-dark: #0a0a0a;
+            --gold: #d4af37;
+            --dark-bg: #050505;
         }
         body { 
-            background-color: var(--nbx-dark); 
+            background: radial-gradient(circle at 50% 50%, #1a1505 0%, #050505 100%);
             color: #ffffff; 
-            font-family: monospace;
-            padding: 20px;
-        }
-        .json-container {
-            background-color: #141414;
-            border: 1px solid #333;
-            padding: 20px;
-            border-radius: 8px;
-            color: #00ff00; /* Stile terminale */
-            font-size: 1.2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            font-family: 'Courier New', Courier, monospace;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
         .back-link {
-            color: var(--nbx-gold);
+            margin-bottom: 30px;
+        }
+        .back-link a {
+            color: var(--gold);
             text-decoration: none;
             font-weight: bold;
-            display: inline-block;
-            margin-bottom: 20px;
+            font-family: sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             transition: 0.3s;
         }
-        .back-link:hover {
-            color: #ffffff;
-            text-shadow: 0 0 5px var(--nbx-gold);
+        .back-link a:hover { color: #fff; text-shadow: 0 0 10px var(--gold); }
+        
+        .json-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #222;
+            border-left: 4px solid var(--gold);
+            padding: 25px;
+            border-radius: 4px;
+            color: #00ff41; /* Green Matrix style */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            overflow-x: auto;
         }
-        .title-gold { color: var(--nbx-gold); }
+        .label { color: var(--gold); font-family: sans-serif; font-size: 0.8rem; margin-bottom: 10px; display: block; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <a href="https://nbx-protocol.github.io/nbx-site/index.html" class="back-link">
-            ← BACK TO NBX
-        </a>
-
-        <h2 class="title-gold mb-4">RAW VOTING DATA (JSON)</h2>
-        
-        <div class="json-container">
-            <pre id="raw-data">Caricamento dati blockchain...</pre>
+        <div class="back-link">
+            <a href="https://nbx-protocol.github.io/">
+                ← BACK TO NBX
+            </a>
         </div>
 
-        <div class="mt-4 text-muted small">
-            <p>Endpoint: <span class="text-info">https://nbx-governance-api.onrender.com/votes</span></p>
-            <p>Status: <span id="status" class="text-success">CONNESSO</span></p>
+        <span class="label text-uppercase">System Data Feed</span>
+        <h2 class="mb-4" style="font-family: sans-serif; font-weight: 800;">RAW VOTING JSON</h2>
+        
+        <div class="json-box">
+            <pre id="raw-output">Requesting data from blockchain...</pre>
+        </div>
+
+        <div class="mt-4 small text-secondary" style="font-family: sans-serif;">
+            Endpoint: <span style="color: #666;">https://nbx-governance-api.onrender.com/votes</span>
         </div>
     </div>
 
     <script>
-        async function fetchRawData() {
-            const dataEl = document.getElementById('raw-data');
-            const statusEl = document.getElementById('status');
-            
+        async function loadData() {
+            const output = document.getElementById('raw-output');
             try {
                 const response = await fetch('https://nbx-governance-api.onrender.com/votes');
                 const data = await response.json();
-                
-                // Formatta il JSON per una lettura pulita
-                dataEl.innerText = JSON.stringify(data, null, 4);
-            } catch (error) {
-                dataEl.innerText = "ERRORE: Impossibile recuperare i dati dal server Render.";
-                dataEl.style.color = "#ff4444";
-                statusEl.innerText = "OFFLINE";
-                statusEl.className = "text-danger";
+                output.innerText = JSON.stringify(data, null, 4);
+            } catch (err) {
+                output.innerText = ">> Error: Connection to Render API failed.";
+                output.style.color = "#ff4444";
             }
         }
-
-        // Esegui al caricamento
-        fetchRawData();
+        loadData();
     </script>
 </body>
 </html>
