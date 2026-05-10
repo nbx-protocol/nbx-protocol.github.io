@@ -1,208 +1,121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | Institutional Governance</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>NBX Protocol - Governance Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary: #00d9ff;
-            --primary-dark: #009dff;
-            --bg: #030712;
-            --text: #ffffff;
-            --muted: #94a3b8;
+            --nbx-gold: #d4af37;
+            --nbx-dark: #0a0a0a;
+            --nbx-card: #141414;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background: radial-gradient(circle at top left, rgba(0,217,255,0.08), transparent 30%), var(--bg);
-            color: var(--text);
-            overflow-x: hidden;
+        body { 
+            background-color: var(--nbx-dark); 
+            color: #ffffff; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        /* HEADER: Logo abbassato e centrato */
-        .main-header {
-            width: 100%;
-            padding: 180px 20px 60px 20px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+        .navbar { border-bottom: 1px solid #333; background-color: var(--nbx-card); }
+        .card { 
+            background-color: var(--nbx-card); 
+            border: 1px solid #333; 
+            transition: transform 0.3s;
         }
-
-        /* LOGO: Dimensioni GIGANTI (550px) come richiesto */
-        .big-logo-fix {
-            width: 550px !important; 
-            height: auto !important;
-            max-width: 95%;
-            object-fit: contain;
-            border-radius: 50px;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 80px rgba(0, 217, 255, 0.3);
-            margin-bottom: 40px;
+        .card:hover { transform: translateY(-5px); border-color: var(--nbx-gold); }
+        .vote-count { font-size: 2.5rem; font-weight: bold; color: var(--nbx-gold); }
+        .btn-nbx { 
+            background-color: var(--nbx-gold); 
+            color: #000; 
+            font-weight: bold; 
+            border: none;
         }
-
-        .protocol-name {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            letter-spacing: 12px;
-            color: #f4fdff;
-            text-transform: uppercase;
-            text-shadow: 0 0 25px rgba(0, 217, 255, 0.5);
-        }
-
-        /* HERO SECTION */
-        .hero {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            padding: 60px 8% 120px 8%;
-        }
-
-        .hero-grid {
-            width: 100%;
-            max-width: 1300px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .hero-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 4.8rem;
-            line-height: 1.05;
-            margin-bottom: 30px;
-        }
-
-        .hero-title span { color: var(--primary); }
-
-        .hero-subtitle {
-            color: var(--muted);
-            line-height: 1.9;
-            font-size: 1.15rem;
-            margin-bottom: 45px;
-            max-width: 600px;
-        }
-
-        /* BOTTONI */
-        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
-        
-        .btn {
-            text-decoration: none;
-            padding: 22px 38px;
-            border-radius: 15px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 0.9rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            color: #001018;
-            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.25);
-        }
-
-        .btn-secondary {
-            border: 1px solid rgba(0, 217, 255, 0.4);
-            background: rgba(255, 255, 255, 0.03);
-            color: #dffcff;
-            backdrop-filter: blur(5px);
-        }
-
-        .btn:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 45px rgba(0, 217, 255, 0.25);
-        }
-
-        /* DASHBOARD PREVIEW */
-        .dashboard-preview {
-            background: rgba(10, 20, 35, 0.8);
-            border: 1px solid rgba(0, 217, 255, 0.2);
-            border-radius: 40px;
-            padding: 50px;
-            backdrop-filter: blur(15px);
-        }
-
-        .vote-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 25px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-        }
-
-        .bar {
-            width: 100%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            margin-top: 15px;
-            overflow: hidden;
-        }
-
-        .fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 10px;
-        }
-
-        @media(max-width:980px){
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-title { font-size: 3.5rem; }
-            .btn-group { justify-content: center; }
-            .big-logo-fix { width: 320px !important; }
-            .main-header { padding-top: 100px; }
-        }
+        .btn-nbx:hover { background-color: #b8962d; color: #000; }
+        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <img src="logo1.jpg" alt="NBX Logo" class="big-logo-fix">
-        <div class="protocol-name">NBX PROTOCOL</div>
-    </header>
+<nav class="navbar navbar-dark p-3">
+    <div class="container">
+        <span class="navbar-brand mb-0 h1 text-gold">NBX PROTOCOL</span>
+        <div class="d-flex align-items-center">
+            <span class="status-dot bg-success me-2"></span>
+            <small class="text-muted">SERVER LIVE</small>
+        </div>
+    </div>
+</nav>
 
-    <section class="hero">
-        <div class="hero-grid">
-            <div class="hero-left">
-                <h1 class="hero-title">Institutional <span>Governance</span></h1>
-                <p class="hero-subtitle">
-                    Infrastruttura decentralizzata per il coordinamento della tesoreria e la gestione trasparente delle votazioni on-chain su Waves.
-                </p>
-                
-                <div class="btn-group">
-                    <a href="dashboard.html" class="btn btn-primary">Open Dashboard</a>
-                    
-                    <a href="https://nbx-governance-api.onrender.com/votes" class="btn btn-secondary" target="_blank">
-                        API / VOTES DATA
-                    </a>
-                    
-                    <a href="whitepaper.pdf" class="btn btn-secondary" target="_blank">Whitepaper</a>
-                </div>
-            </div>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Governance Dashboard</h1>
+        <p class="text-muted text-uppercase tracking-widest">Monitoraggio Voti in Tempo Reale</p>
+    </div>
 
-            <div class="dashboard-preview">
-                <div class="vote-card">
-                    <div style="display:flex; justify-content:space-between; font-family:'Orbitron'">
-                        <span>GOVERNANCE</span><span>72%</span>
-                    </div>
-                    <div class="bar"><div class="fill" style="width:72%;"></div></div>
-                </div>
-                <div class="vote-card">
-                    <div style="display:flex; justify-content:space-between; font-family:'Orbitron'">
-                        <span>ANALYTICS</span><span>48%</span>
-                    </div>
-                    <div class="bar"><div class="fill" style="width:48%;"></div></div>
-                </div>
+    <div class="row text-center g-4">
+        <div class="col-md-4">
+            <div class="card p-4">
+                <h3>GOVERNANCE</h3>
+                <div id="gov-votes" class="vote-count">--</div>
+                <p class="text-muted">Peso Totale NBX</p>
             </div>
         </div>
-    </section>
+        <div class="col-md-4">
+            <div class="card p-4">
+                <h3>ANALYTICS</h3>
+                <div id="ana-votes" class="vote-count">--</div>
+                <p class="text-muted">Peso Totale NBX</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card p-4">
+                <h3>GROWTH</h3>
+                <div id="gro-votes" class="vote-count">--</div>
+                <p class="text-muted">Peso Totale NBX</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 text-center">
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+            <a href="votes.html" class="btn btn-secondary btn-lg px-5">
+                API / VOTES DATA
+            </a>
+            <button onclick="updateVotes()" class="btn btn-nbx btn-lg px-5">
+                AGGIORNA DATI
+            </button>
+        </div>
+        <p class="mt-4"><a href="https://nbx-protocol.com" class="text-gold text-decoration-none">← Torna al sito principale</a></p>
+    </div>
+</div>
+
+<script>
+    async function updateVotes() {
+        const govEl = document.getElementById('gov-votes');
+        const anaEl = document.getElementById('ana-votes');
+        const groEl = document.getElementById('gro-votes');
+
+        try {
+            // URL della tua API su Render
+            const response = await fetch('https://nbx-governance-api.onrender.com/votes');
+            const data = await response.json();
+
+            govEl.innerText = data.GOVERNANCE || 0;
+            anaEl.innerText = data.ANALYTICS || 0;
+            groEl.innerText = data.GROWTH || 0;
+        } catch (error) {
+            console.error("Errore caricamento dati:", error);
+            govEl.innerText = "!";
+            anaEl.innerText = "!";
+            groEl.innerText = "!";
+        }
+    }
+
+    // Aggiorna al caricamento della pagina
+    updateVotes();
+    // Aggiorna ogni 60 secondi
+    setInterval(updateVotes, 60000);
+</script>
 
 </body>
 </html>
