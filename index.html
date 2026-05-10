@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NBX Protocol | Institutional Governance</title>
+    <title>NBX Protocol | Home</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -19,15 +19,13 @@
 
             --gold:#d4af37;
 
-            --gold-light:#f6d365;
-
-            --dark-bg:#040404;
+            --dark-bg:#050505;
 
             --card:#0b0b0b;
 
             --text:#ffffff;
 
-            --muted:#8d8d8d;
+            --muted:#8a8a8a;
         }
 
         *{
@@ -62,75 +60,56 @@
 
             inset:0;
 
-            z-index:-2;
+            z-index:-1;
 
             background:
                 radial-gradient(circle at top, rgba(212,175,55,0.10), transparent 30%),
                 radial-gradient(circle at bottom right, rgba(212,175,55,0.06), transparent 35%),
-                #040404;
-        }
-
-        .noise{
-
-            position:fixed;
-
-            inset:0;
-
-            opacity:0.03;
-
-            background-image:
-                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-
-            background-size:4px 4px;
-
-            z-index:-1;
+                #050505;
         }
 
         /* ================= HERO ================= */
 
         .hero{
 
-            width:100%;
-
             min-height:100vh;
 
             display:flex;
+
+            flex-direction:column;
 
             justify-content:center;
 
             align-items:center;
 
-            padding:80px 20px;
+            text-align:center;
+
+            padding:50px 20px;
         }
 
-        .hero-container{
+        /* ================= LOGO ================= */
 
-            width:100%;
+        .logo-central{
 
-            max-width:1350px;
+            width:460px;
 
-            display:grid;
+            max-width:90%;
 
-            grid-template-columns:1.1fr 0.9fr;
+            height:auto;
 
-            gap:80px;
+            margin-bottom:40px;
 
-            align-items:center;
+            border-radius:28px;
+
+            border:2px solid rgba(212,175,55,0.18);
+
+            filter:
+                drop-shadow(0 0 35px rgba(212,175,55,0.28));
         }
 
-        /* ================= LEFT ================= */
-
-        .hero-left{
-
-            position:relative;
-        }
+        /* ================= TAGLINE ================= */
 
         .tagline{
-
-            display:inline-block;
-
-            margin-bottom:25px;
 
             color:var(--gold);
 
@@ -140,33 +119,41 @@
 
             font-weight:800;
 
-            font-size:1rem;
+            font-size:1.2rem;
+
+            margin-bottom:22px;
+
+            display:block;
         }
 
-        .hero-title{
+        /* ================= TITLE ================= */
+
+        .hero h1{
 
             font-family:'Orbitron',sans-serif;
 
-            font-size:clamp(4rem,9vw,7rem);
-
-            line-height:0.95;
+            font-size:clamp(4rem,10vw,7rem);
 
             font-weight:900;
 
-            margin-bottom:35px;
+            line-height:0.95;
+
+            margin-bottom:30px;
 
             text-transform:uppercase;
         }
 
-        .hero-title span{
+        .hero h1 span{
 
             color:var(--gold);
 
             text-shadow:
-                0 0 25px rgba(212,175,55,0.25);
+                0 0 20px rgba(212,175,55,0.20);
         }
 
-        .hero-subtitle{
+        /* ================= TEXT ================= */
+
+        .hero p{
 
             color:var(--muted);
 
@@ -174,9 +161,9 @@
 
             line-height:1.9;
 
-            max-width:700px;
+            max-width:850px;
 
-            margin-bottom:50px;
+            margin-bottom:55px;
         }
 
         /* ================= BUTTONS ================= */
@@ -187,12 +174,14 @@
 
             flex-wrap:wrap;
 
+            justify-content:center;
+
             gap:20px;
         }
 
         .btn-nbx{
 
-            padding:18px 42px;
+            padding:18px 40px;
 
             border-radius:60px;
 
@@ -202,20 +191,16 @@
 
             font-weight:700;
 
-            letter-spacing:1px;
-
             transition:0.3s ease;
 
             font-size:0.95rem;
+
+            letter-spacing:1px;
         }
 
         .btn-gold{
 
-            background:linear-gradient(
-                90deg,
-                var(--gold),
-                var(--gold-light)
-            );
+            background:var(--gold);
 
             color:#000;
 
@@ -227,17 +212,18 @@
 
         .btn-gold:hover{
 
-            transform:translateY(-3px);
+            background:#fff;
+
+            border-color:#fff;
 
             color:#000;
 
-            box-shadow:
-                0 15px 45px rgba(212,175,55,0.30);
+            transform:translateY(-3px);
         }
 
         .btn-outline-custom{
 
-            border:2px solid rgba(255,255,255,0.10);
+            border:2px solid #333;
 
             color:#fff;
 
@@ -253,97 +239,57 @@
             transform:translateY(-3px);
         }
 
-        /* ================= RIGHT PANEL ================= */
+        /* ================= STATUS ================= */
 
-        .hero-right{
+        .status-grid{
 
-            position:relative;
-        }
+            width:100%;
 
-        .dashboard-card{
-
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(18,18,18,0.95),
-                    rgba(8,8,8,0.98)
-                );
-
-            border:1px solid rgba(212,175,55,0.12);
-
-            border-radius:34px;
-
-            padding:40px;
-
-            backdrop-filter:blur(12px);
-
-            box-shadow:
-                0 30px 80px rgba(0,0,0,0.65);
-        }
-
-        .logo-wrapper{
-
-            text-align:center;
-
-            margin-bottom:40px;
-        }
-
-        .logo-central{
-
-            width:420px;
-
-            max-width:100%;
-
-            border-radius:34px;
-
-            filter:
-                drop-shadow(0 0 35px rgba(212,175,55,0.22));
-
-            border:2px solid rgba(212,175,55,0.18);
-        }
-
-        .stats-grid{
+            max-width:900px;
 
             display:grid;
 
             grid-template-columns:repeat(3,1fr);
 
-            gap:15px;
+            gap:18px;
 
-            margin-top:35px;
+            margin-top:70px;
         }
 
-        .stat-card{
+        .status-card{
 
-            background:rgba(255,255,255,0.025);
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(20,20,20,0.95),
+                    rgba(10,10,10,0.98)
+                );
 
-            border:1px solid rgba(255,255,255,0.06);
+            border:1px solid rgba(212,175,55,0.08);
 
-            border-radius:18px;
+            border-radius:24px;
 
-            padding:20px;
-
-            text-align:center;
+            padding:28px;
         }
 
-        .stat-value{
+        .status-title{
 
             font-family:'Orbitron',sans-serif;
 
-            font-size:1.3rem;
-
             color:var(--gold);
 
-            margin-bottom:8px;
+            font-size:1.2rem;
+
+            margin-bottom:10px;
         }
 
-        .stat-label{
+        .status-sub{
 
             color:#666;
 
-            font-size:0.72rem;
-
             text-transform:uppercase;
+
+            font-size:0.75rem;
 
             letter-spacing:1px;
         }
@@ -363,34 +309,20 @@
             color:#555;
 
             font-size:0.75rem;
-
-            letter-spacing:1px;
         }
 
         /* ================= MOBILE ================= */
 
-        @media(max-width:980px){
-
-            .hero-container{
-
-                grid-template-columns:1fr;
-
-                gap:60px;
-            }
-
-            .hero{
-
-                padding:60px 20px;
-            }
-
-            .hero-title{
-
-                font-size:3.5rem;
-            }
+        @media(max-width:900px){
 
             .logo-central{
 
-                width:280px;
+                width:300px;
+            }
+
+            .hero h1{
+
+                font-size:3.5rem;
             }
 
             .btn-group-custom{
@@ -398,7 +330,7 @@
                 flex-direction:column;
             }
 
-            .stats-grid{
+            .status-grid{
 
                 grid-template-columns:1fr;
             }
@@ -407,7 +339,7 @@
 
                 letter-spacing:5px;
 
-                font-size:0.85rem;
+                font-size:0.9rem;
             }
         }
 
@@ -419,108 +351,95 @@
 
     <div class="bg-glow"></div>
 
-    <div class="noise"></div>
-
-    <!-- ================= HERO ================= -->
-
     <section class="hero">
 
-        <div class="hero-container">
+        <!-- LOGO -->
 
-            <!-- LEFT -->
+        <img
+            src="logo1.jpg"
+            alt="NBX Protocol"
+            class="logo-central"
+        >
 
-            <div class="hero-left">
+        <!-- TAGLINE -->
 
-                <span class="tagline">
-                    Future of Finance
-                </span>
+        <span class="tagline">
+            Future of Finance
+        </span>
 
-                <h1 class="hero-title">
-                    Decentralized<br>
-                    <span>Governance Hub</span>
-                </h1>
+        <!-- TITLE -->
 
-                <p class="hero-subtitle">
-                    Monitoraggio real-time, governance on-chain e treasury decentralizzata powered by Waves blockchain infrastructure.
-                </p>
+        <h1>
+            Decentralized<br>
+            <span>Governance Hub</span>
+        </h1>
 
-                <div class="btn-group-custom">
+        <!-- TEXT -->
 
-                    <a href="dashboard.html" class="btn-nbx btn-gold">
-                        Open Dashboard
-                    </a>
+        <p>
+            Monitoraggio real-time e trasparenza on-chain.
+            Gestione asset, treasury e votazioni decentralizzate
+            powered by Waves blockchain infrastructure.
+        </p>
 
-                    <a href="votes.html" class="btn-nbx btn-outline-custom">
-                        Live Votes
-                    </a>
+        <!-- BUTTONS -->
 
-                    <a href="whitepaper.pdf"
-                       target="_blank"
-                       class="btn-nbx btn-outline-custom">
+        <div class="btn-group-custom">
 
-                        Whitepaper
-                    </a>
+            <a href="dashboard.html" class="btn-nbx btn-gold">
+                Open Dashboard
+            </a>
 
+            <a href="votes.html" class="btn-nbx btn-outline-custom">
+                API / Votes
+            </a>
+
+            <a
+                href="whitepaper.pdf"
+                class="btn-nbx btn-outline-custom"
+                target="_blank">
+
+                Whitepaper
+            </a>
+
+        </div>
+
+        <!-- STATUS -->
+
+        <div class="status-grid">
+
+            <div class="status-card">
+
+                <div class="status-title">
+                    DAO
+                </div>
+
+                <div class="status-sub">
+                    Governance
                 </div>
 
             </div>
 
-            <!-- RIGHT -->
+            <div class="status-card">
 
-            <div class="hero-right">
+                <div class="status-title">
+                    ON-CHAIN
+                </div>
 
-                <div class="dashboard-card">
+                <div class="status-sub">
+                    Treasury
+                </div>
 
-                    <div class="logo-wrapper">
+            </div>
 
-                        <img
-                            src="logo1.jpg"
-                            alt="NBX Protocol"
-                            class="logo-central"
-                        >
+            <div class="status-card">
 
-                    </div>
+                <div class="status-title">
+                    LIVE
+                </div>
 
-                    <div class="stats-grid">
-
-                        <div class="stat-card">
-
-                            <div class="stat-value">
-                                DAO
-                            </div>
-
-                            <div class="stat-label">
-                                Governance
-                            </div>
-
-                        </div>
-
-                        <div class="stat-card">
-
-                            <div class="stat-value">
-                                ON-CHAIN
-                            </div>
-
-                            <div class="stat-label">
-                                Treasury
-                            </div>
-
-                        </div>
-
-                        <div class="stat-card">
-
-                            <div class="stat-value">
-                                LIVE
-                            </div>
-
-                            <div class="stat-label">
-                                Voting
-                            </div>
-
-                        </div>
-
-                    </div>
-
+                <div class="status-sub">
+                    Voting
                 </div>
 
             </div>
@@ -528,8 +447,6 @@
         </div>
 
     </section>
-
-    <!-- ================= FOOTER ================= -->
 
     <div class="footer">
         © 2026 NBX Protocol — Institutional Governance Infrastructure
