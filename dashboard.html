@@ -33,6 +33,13 @@
         .address-label { color: var(--gold); font-size: 1.2rem; font-weight: bold; display: block; margin-bottom: 10px; }
         .address-box { font-family: monospace; font-size: 1.2rem; color: #eee; background: #000; padding: 18px; border-radius: 8px; border: 1px solid #333; word-break: break-all; }
 
+        /* Network Links Styling */
+        .network-links { margin-top: 50px; padding-top: 40px; border-top: 1px solid #333; display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .btn-network { text-decoration: none; font-family: 'Orbitron'; font-size: 1.1rem; padding: 15px 30px; border-radius: 10px; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .btn-wx { color: var(--gold); border: 1px solid var(--gold); }
+        .btn-explorer { color: #ffffff; border: 1px solid #ffffff; }
+        .btn-network:hover { transform: translateY(-5px); background: rgba(212, 175, 55, 0.1); box-shadow: 0 0 20px rgba(212, 175, 55, 0.2); }
+
         .btn-refresh { background: var(--gold); color: #000; border: none; padding: 15px 40px; border-radius: 30px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-bottom: 20px; }
         .btn-refresh:hover { background: #fff; transform: scale(1.05); }
         .btn-back { display: inline-block; margin-top: 50px; text-decoration: none; color: #888; font-size: 1.2rem; transition: 0.3s; }
@@ -99,6 +106,15 @@
                     <span class="address-label">PhilipLaban (PARTNER)</span>
                     <div class="address-box">3P99Q2zAMthyqnW8pZZqAGX7cqvD1mKMTv6</div>
                 </div>
+            </div>
+
+            <div class="network-links">
+                <a href="https://wx.network/" target="_blank" class="btn-network btn-wx">
+                    <i class="fas fa-exchange-alt"></i> WX.NETWORK
+                </a>
+                <a href="https://wavesexplorer.com/addresses/3P2t6ysJoNhjLdWQFsY9sVxYgidUdZbiXzb" target="_blank" class="btn-network btn-explorer">
+                    <i class="fas fa-search"></i> VIEW SMART CONTRACT
+                </a>
             </div>
         </div>
 
