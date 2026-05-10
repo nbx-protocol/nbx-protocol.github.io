@@ -5,42 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBX Protocol | Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --dark-bg: #050505; }
-        body { background-color: var(--dark-bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, #1a1505 0%, #050505 100%); z-index: -1; }
-        .navbar { background: rgba(0,0,0,0.8); border-bottom: 1px solid #222; padding: 15px 0; }
-        .logo-img { height: 45px; width: auto; }
-        .navbar-brand { color: var(--gold) !important; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; }
-        .hero { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); font-weight: 900; margin-bottom: 20px; }
-        .btn-gold { background: var(--gold); color: #000; font-weight: bold; border-radius: 30px; padding: 15px 35px; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn-gold:hover { background: #fff; transform: translateY(-3px); }
-        .btn-outline { border: 1px solid #333; color: #fff; border-radius: 30px; padding: 15px 35px; text-decoration: none; display: inline-block; transition: 0.3s; }
-        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+        :root {
+            --gold: #d4af37;
+            --dark-bg: #050505;
+            --text-gray: #a0a0a0;
+        }
+
+        body { 
+            background-color: var(--dark-bg); 
+            color: #ffffff; 
+            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Effetto sfumatura di sfondo radiale */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1505 0%, #050505 100%);
+            z-index: -1;
+        }
+
+        /* HERO SECTION - Monumentale e Centrale */
+        .hero {
+            height: 100vh; /* Occupa tutta l'altezza dello schermo */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centra verticalmente */
+            align-items: center;    /* Centra orizzontalmente */
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        /* LOGO - Enorme e Centrale */
+        .logo-central {
+            width: 150px; /* Molto più grande di prima */
+            height: auto;
+            margin-bottom: 40px; /* Spazio sotto il logo */
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)); /* Bagliore oro */
+            transition: transform 0.3s ease;
+        }
+        .logo-central:hover {
+            transform: scale(1.05);
+        }
+
+        /* TITOLO HERO - Decisamente più grande */
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 6rem); /* Scalabile, fino a 6rem */
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .hero h1 span {
+            color: var(--gold);
+        }
+
+        /* SOTTOTITOLO */
+        .hero p {
+            color: var(--text-gray);
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+
+        /* BOTTONI - Più grandi e stilizzati */
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-nbx {
+            border-radius: 50px;
+            padding: 18px 45px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-gold {
+            background-color: var(--gold);
+            color: #000;
+            border: 2px solid var(--gold);
+        }
+        .btn-gold:hover {
+            background-color: #fff;
+            border-color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #333;
+        }
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: translateY(-3px);
+        }
+
     </style>
 </head>
 <body>
     <div class="bg-glow"></div>
-    <nav class="navbar sticky-top">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
-                <img src="logo.jpg" alt="NBX" class="logo-img" onerror="this.src='logo1.jpg'">
-                <span class="ms-3 text-white">NBX PROTOCOL</span>
-            </a>
-        </div>
-    </nav>
+
     <section class="hero">
         <div class="container">
-            <h6 class="text-gold text-uppercase mb-3" style="letter-spacing: 7px;">Future of Finance</h6>
-            <h1>DECENTRALIZED<br><span style="color:var(--gold)">GOVERNANCE HUB</span></h1>
-            <p class="text-secondary mb-5">Trasparenza on-chain e monitoraggio real-time del protocollo.</p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="dashboard.html" class="btn-gold">OPEN DASHBOARD</a>
-                <a href="whitepaper.pdf" class="btn-outline" target="_blank">WHITEPAPER</a>
+            
+            <img src="logo.jpg" alt="NBX Protocol Logo" class="logo-central" onerror="this.src='logo1.jpg'">
+
+            <h6 class="text-gold text-uppercase mb-3" style="letter-spacing: 7px; font-weight: 700;">Future of Finance</h6>
+            
+            <h1>DECENTRALIZED<br><span>GOVERNANCE HUB</span></h1>
+            
+            <p>Accedi al monitoraggio real-time del protocollo NBX. Trasparenza on-chain per la gestione dei voti e della struttura aziendale.</p>
+            
+            <div class="btn-group">
+                <a href="dashboard.html" class="btn-nbx btn-gold">OPEN DASHBOARD</a>
+                <a href="whitepaper.pdf" class="btn-nbx btn-outline" target="_blank">WHITEPAPER</a>
             </div>
         </div>
     </section>
+
 </body>
 </html>
