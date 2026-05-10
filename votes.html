@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NBX Votes</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    background:#030712;
+    color:white;
+    font-family:'Inter',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.container{
+    width:90%;
+    max-width:700px;
+    background:#08111f;
+    border:1px solid rgba(0,217,255,0.15);
+    border-radius:24px;
+    padding:40px;
+}
+
+h1{
+    font-family:'Orbitron',sans-serif;
+    text-align:center;
+    margin-bottom:40px;
+    color:#00d9ff;
+}
+
+.vote{
+    margin-bottom:25px;
+}
+
+.vote-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:10px;
+}
+
+.bar{
+    width:100%;
+    height:14px;
+    border-radius:999px;
+    background:#111827;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    background:linear-gradient(90deg,#00d9ff,#009dff);
+    border-radius:999px;
+}
+
+.back{
+    display:block;
+    text-align:center;
+    margin-top:30px;
+    color:#00d9ff;
+    text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>NBX LIVE GOVERNANCE</h1>
+
+<div class="vote">
+    <div class="vote-header">
+        <span>GOVERNANCE</span>
+        <span id="govValue">0</span>
+    </div>
+    <div class="bar">
+        <div class="fill" id="govBar" style="width:0%"></div>
+    </div>
+</div>
+
+<div class="vote">
+    <div class="vote-header">
+        <span>ANALYTICS</span>
+        <span id="analyticsValue">0</span>
+    </div>
+    <div class="bar">
+        <div class="fill" id="analyticsBar" style="width:0%"></div>
+    </div>
+</div>
+
+<div class="vote">
+    <div class="vote-header">
+        <span>GROWTH</span>
+        <span id="growthValue">0</span>
+    </div>
+    <div class="bar">
+        <div class="fill" id="growthBar" style="width:0%"></div>
+    </div>
+</div>
+
+<a class="back" href="index.html">← BACK TO NBX</a>
+
+</div>
+
+<script>
+
+async function loadVotes(){
+
+    const res = await fetch("https://nbx-governance-api.onrender.com/votes");
+    const data = await res.json();
+
+    const total =
+        data.GOVERNANCE +
+        data.ANALYTICS +
+        data.GROWTH;
+
+    const gov = total ? (data.GOVERNANCE / total) * 100 : 0;
+    const analytics = total ? (data.ANALYTICS / total) * 100 : 0;
+    const growth = total ? (data.GROWTH / total) * 100 : 0;
+
+    document.getElementById("govValue").innerText =
+        data.GOVERNANCE;
+
+    document.getElementById("analyticsValue").innerText =
+        data.ANALYTICS;
+
+    document.getElementById("growthValue").innerText =
+        data.GROWTH;
+
+    document.getElementById("govBar").style.width =
+        gov + "%";
+
+    document.getElementById("analyticsBar").style.width =
+        analytics + "%";
+
+    document.getElementById("growthBar").style.width =
+        growth + "%";
+}
+
+loadVotes();
+
+</script>
+
+</body>
+</html>
