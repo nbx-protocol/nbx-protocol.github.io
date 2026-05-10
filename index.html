@@ -9,18 +9,16 @@
         :root {
             --gold: #d4af37;
             --dark-bg: #050505;
-            --text-gray: #a0a0a0;
         }
 
         body { 
             background-color: var(--dark-bg); 
             color: #ffffff; 
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden; /* Mantiene il focus sulla Hero */
         }
 
-        /* Effetto sfumatura di sfondo radiale */
         .bg-glow {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -28,115 +26,105 @@
             z-index: -1;
         }
 
-        /* HERO SECTION - Monumentale e Centrale */
         .hero {
-            height: 100vh; /* Occupa tutta l'altezza dello schermo */
+            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Centra verticalmente */
-            align-items: center;    /* Centra orizzontalmente */
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 20px;
         }
 
-        /* LOGO - Enorme e Centrale */
+        /* LOGO: Ingrandito e corretto su logo1.jpg */
         .logo-central {
-            width: 150px; /* Molto più grande di prima */
+            width: 280px; /* Dimensione aumentata come da richiesta */
             height: auto;
-            margin-bottom: 40px; /* Spazio sotto il logo */
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5)); /* Bagliore oro */
-            transition: transform 0.3s ease;
-        }
-        .logo-central:hover {
-            transform: scale(1.05);
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+            border-radius: 15px;
         }
 
-        /* TITOLO HERO - Decisamente più grande */
+        /* SCRITTA FUTURE OF FINANCE: Ingrandita */
+        .tagline {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 10px; /* Spaziatura premium */
+            font-weight: 800;
+            font-size: 1.5rem; /* Decisamente più visibile */
+            margin-bottom: 20px;
+            display: block;
+        }
+
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 6rem); /* Scalabile, fino a 6rem */
+            font-size: clamp(3.5rem, 12vw, 7rem);
             font-weight: 900;
-            line-height: 1.1;
-            letter-spacing: -2px;
-            margin-bottom: 25px;
+            line-height: 1;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
-        .hero h1 span {
-            color: var(--gold);
-        }
 
-        /* SOTTOTITOLO */
+        .hero h1 span { color: var(--gold); }
+
         .hero p {
-            color: var(--text-gray);
-            font-size: clamp(1rem, 4vw, 1.5rem);
+            color: #888;
+            font-size: 1.2rem;
             max-width: 800px;
-            margin: 0 auto 50px;
-            font-weight: 300;
+            margin-bottom: 50px;
         }
 
-        /* BOTTONI - Più grandi e stilizzati */
-        .btn-group {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-        }
+        .btn-group { display: flex; gap: 20px; }
 
         .btn-nbx {
-            border-radius: 50px;
-            padding: 18px 45px;
+            padding: 20px 50px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
+            border-radius: 50px;
             text-decoration: none;
-            display: inline-block;
+            transition: 0.3s;
+            font-size: 1.1rem;
         }
 
         .btn-gold {
-            background-color: var(--gold);
+            background: var(--gold);
             color: #000;
             border: 2px solid var(--gold);
         }
+
         .btn-gold:hover {
-            background-color: #fff;
+            background: #fff;
             border-color: #fff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+            transform: scale(1.05);
         }
 
         .btn-outline {
-            background-color: transparent;
-            color: #fff;
             border: 2px solid #333;
+            color: #fff;
         }
+
         .btn-outline:hover {
             border-color: var(--gold);
             color: var(--gold);
-            transform: translateY(-3px);
+            transform: scale(1.05);
         }
-
     </style>
 </head>
 <body>
     <div class="bg-glow"></div>
 
     <section class="hero">
-        <div class="container">
-            
-            <img src="logo.jpg" alt="NBX Protocol Logo" class="logo-central" onerror="this.src='logo1.jpg'">
+        <img src="logo1.jpg" alt="NBX Protocol" class="logo-central">
 
-            <h6 class="text-gold text-uppercase mb-3" style="letter-spacing: 7px; font-weight: 700;">Future of Finance</h6>
-            
-            <h1>DECENTRALIZED<br><span>GOVERNANCE HUB</span></h1>
-            
-            <p>Accedi al monitoraggio real-time del protocollo NBX. Trasparenza on-chain per la gestione dei voti e della struttura aziendale.</p>
-            
-            <div class="btn-group">
-                <a href="dashboard.html" class="btn-nbx btn-gold">OPEN DASHBOARD</a>
-                <a href="whitepaper.pdf" class="btn-nbx btn-outline" target="_blank">WHITEPAPER</a>
-            </div>
+        <span class="tagline">Future of Finance</span>
+        
+        <h1>DECENTRALIZED<br><span>GOVERNANCE HUB</span></h1>
+        
+        <p>Monitoraggio real-time e trasparenza on-chain. Gestione asset e votazioni decentralizzate su rete Waves.</p>
+        
+        <div class="btn-group">
+            <a href="dashboard.html" class="btn-nbx btn-gold">OPEN DASHBOARD</a>
+            <a href="whitepaper.pdf" class="btn-nbx btn-outline" target="_blank">WHITEPAPER</a>
         </div>
     </section>
-
 </body>
 </html>
