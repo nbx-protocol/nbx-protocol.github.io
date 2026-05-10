@@ -3,119 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol - Governance Dashboard</title>
+    <title>NBX Protocol | Governance Hub</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --nbx-gold: #d4af37;
-            --nbx-dark: #0a0a0a;
-            --nbx-card: #141414;
+            --gold: #d4af37;
+            --dark-bg: #050505;
+            --card-bg: #111111;
+            --text-gray: #a0a0a0;
         }
+
         body { 
-            background-color: var(--nbx-dark); 
+            background-color: var(--dark-bg); 
             color: #ffffff; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
+            overflow-x: hidden;
         }
-        .navbar { border-bottom: 1px solid #333; background-color: var(--nbx-card); }
-        .card { 
-            background-color: var(--nbx-card); 
-            border: 1px solid #333; 
-            transition: transform 0.3s;
+
+        /* Effetto sfumatura di sfondo */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1505 0%, #050505 100%);
+            z-index: -1;
         }
-        .card:hover { transform: translateY(-5px); border-color: var(--nbx-gold); }
-        .vote-count { font-size: 2.5rem; font-weight: bold; color: var(--nbx-gold); }
-        .btn-nbx { 
-            background-color: var(--nbx-gold); 
-            color: #000; 
-            font-weight: bold; 
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #222;
+        }
+
+        .navbar-brand { color: var(--gold) !important; font-weight: 800; letter-spacing: 2px; }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid #222;
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+
+        .stat-card::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--gold);
+        }
+
+        .vote-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(to bottom, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+            font-weight: bold;
+            border-radius: 30px;
+            padding: 12px 30px;
             border: none;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
-        .btn-nbx:hover { background-color: #b8962d; color: #000; }
-        .status-dot { height: 10px; width: 10px; border-radius: 50%; display: inline-block; }
+
+        .btn-gold:hover { background: #fff; color: #000; transform: scale(1.05); }
+
+        .btn-outline {
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 30px;
+            padding: 12px 30px;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
 
-<nav class="navbar navbar-dark p-3">
-    <div class="container">
-        <span class="navbar-brand mb-0 h1 text-gold">NBX PROTOCOL</span>
-        <div class="d-flex align-items-center">
-            <span class="status-dot bg-success me-2"></span>
-            <small class="text-muted">SERVER LIVE</small>
-        </div>
-    </div>
-</nav>
-
-<div class="container mt-5">
-    <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold">Governance Dashboard</h1>
-        <p class="text-muted text-uppercase tracking-widest">Monitoraggio Voti in Tempo Reale</p>
-    </div>
-
-    <div class="row text-center g-4">
-        <div class="col-md-4">
-            <div class="card p-4">
-                <h3>GOVERNANCE</h3>
-                <div id="gov-votes" class="vote-count">--</div>
-                <p class="text-muted">Peso Totale NBX</p>
+    <nav class="navbar sticky-top">
+        <div class="container">
+            <span class="navbar-brand">NBX PROTOCOL</span>
+            <div id="connection-status">
+                <span class="badge rounded-pill bg-dark border border-secondary text-secondary">
+                    <i class="fas fa-circle me-1" style="font-size: 8px;"></i> CHECKING API
+                </span>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-4">
-                <h3>ANALYTICS</h3>
-                <div id="ana-votes" class="vote-count">--</div>
-                <p class="text-muted">Peso Totale NBX</p>
+    </nav>
+
+    <div class="container mt-5 pt-5">
+        <div class="text-center mb-5">
+            <h6 class="text-gold text-uppercase mb-3" style="letter-spacing: 5px;">Active Governance</h6>
+            <h1 class="display-3 fw-bold">PROPOSALS MONITOR</h1>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <p class="text-secondary small fw-bold">PROPOSAL 01</p>
+                    <h4>GOVERNANCE</h4>
+                    <div id="gov-votes" class="vote-number">0.00</div>
+                    <p class="text-secondary small">Total NBX Power</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <p class="text-secondary small fw-bold">PROPOSAL 02</p>
+                    <h4>ANALYTICS</h4>
+                    <div id="ana-votes" class="vote-number">0.00</div>
+                    <p class="text-secondary small">Total NBX Power</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="stat-card">
+                    <p class="text-secondary small fw-bold">PROPOSAL 03</p>
+                    <h4>GROWTH</h4>
+                    <div id="gro-votes" class="vote-number">0.00</div>
+                    <p class="text-secondary small">Total NBX Power</p>
+                </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="card p-4">
-                <h3>GROWTH</h3>
-                <div id="gro-votes" class="vote-count">--</div>
-                <p class="text-muted">Peso Totale NBX</p>
+
+        <div class="text-center mt-5 py-5">
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <button onclick="updateVotes()" class="btn btn-gold shadow">
+                    <i class="fas fa-sync-alt me-2"></i>Refresh Data
+                </button>
+                <a href="votes.html" class="btn btn-outline">
+                    <i class="fas fa-code me-2"></i>View JSON API
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="mt-5 text-center">
-        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-            <a href="votes.html" class="btn btn-secondary btn-lg px-5">
-                API / VOTES DATA
-            </a>
-            <button onclick="updateVotes()" class="btn btn-nbx btn-lg px-5">
-                AGGIORNA DATI
-            </button>
-        </div>
-        <p class="mt-4"><a href="https://nbx-protocol.com" class="text-gold text-decoration-none">← Torna al sito principale</a></p>
-    </div>
-</div>
+    <script>
+        async function updateVotes() {
+            const statusBadge = document.getElementById('connection-status');
+            try {
+                const response = await fetch('https://nbx-governance-api.onrender.com/votes');
+                const data = await response.json();
 
-<script>
-    async function updateVotes() {
-        const govEl = document.getElementById('gov-votes');
-        const anaEl = document.getElementById('ana-votes');
-        const groEl = document.getElementById('gro-votes');
+                document.getElementById('gov-votes').innerText = parseFloat(data.GOVERNANCE || 0).toFixed(2);
+                document.getElementById('ana-votes').innerText = parseFloat(data.ANALYTICS || 0).toFixed(2);
+                document.getElementById('gro-votes').innerText = parseFloat(data.GROWTH || 0).toFixed(2);
 
-        try {
-            // URL della tua API su Render
-            const response = await fetch('https://nbx-governance-api.onrender.com/votes');
-            const data = await response.json();
-
-            govEl.innerText = data.GOVERNANCE || 0;
-            anaEl.innerText = data.ANALYTICS || 0;
-            groEl.innerText = data.GROWTH || 0;
-        } catch (error) {
-            console.error("Errore caricamento dati:", error);
-            govEl.innerText = "!";
-            anaEl.innerText = "!";
-            groEl.innerText = "!";
+                statusBadge.innerHTML = '<span class="badge rounded-pill bg-dark border border-success text-success"><i class="fas fa-circle me-1" style="font-size: 8px;"></i> API LIVE</span>';
+            } catch (error) {
+                statusBadge.innerHTML = '<span class="badge rounded-pill bg-dark border border-danger text-danger"><i class="fas fa-circle me-1" style="font-size: 8px;"></i> API OFFLINE</span>';
+                console.error("Fetch error:", error);
+            }
         }
-    }
 
-    // Aggiorna al caricamento della pagina
-    updateVotes();
-    // Aggiorna ogni 60 secondi
-    setInterval(updateVotes, 60000);
-</script>
-
+        updateVotes();
+        setInterval(updateVotes, 30000);
+    </script>
 </body>
 </html>
