@@ -17,74 +17,84 @@
         }
         
         * { box-sizing: border-box; }
-        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* NAVBAR STICKY PREMIUM */
+        /* NAVBAR */
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; background: rgba(5, 5, 5, 0.85); 
             backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border); position: fixed; width: 100%; z-index: 1000;
-            transition: 0.4s ease;
         }
         .nav-logo { font-family: 'Orbitron'; color: var(--gold); font-weight: 900; text-decoration: none; font-size: 1rem; letter-spacing: 4px; }
         .nav-links { display: flex; gap: 30px; }
-        .nav-links a { 
-            color: #ffffff !important; text-decoration: none; font-size: 0.7rem; 
-            text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s;
-        }
+        .nav-links a { color: #fff !important; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold) !important; text-shadow: 0 0 10px var(--gold-glow); }
 
-        /* SCROLL REVEAL ANIMATION */
+        /* ANIMATIONS */
         .reveal { opacity: 0; transform: translateY(30px); transition: 1.2s all cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* HERO SECTION - REFINED BRANDING */
+        /* HERO */
         .hero { 
             min-height: 100vh; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; text-align: center; padding: 120px 20px 80px;
             background: radial-gradient(circle at 50% 50%, #151108 0%, #050505 100%);
         }
         .hero-frame {
-            background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            background: var(--glass); backdrop-filter: blur(20px);
             padding: 60px; border-radius: 40px; border: 1px solid var(--border);
-            box-shadow: 0 0 80px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.05);
-            margin-bottom: 50px; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 0 80px rgba(0, 0, 0, 0.6); margin-bottom: 50px;
         }
-        .logo-img {
-            width: 360px; max-width: 80vw; height: auto; display: block; border-radius: 12px;
-            filter: drop-shadow(0 0 45px var(--gold-glow));
-        }
-        .hero-frame:hover { border-color: var(--gold); box-shadow: 0 0 100px rgba(212, 175, 55, 0.2); transform: translateY(-5px); }
-
-        .hero h1 { 
-            font-family: 'Orbitron'; font-size: clamp(2.2rem, 7.5vw, 4.2rem); 
-            font-weight: 900; margin: 0; letter-spacing: -2px; line-height: 1.1;
-        }
-        .hero h1 span { color: var(--gold); text-shadow: 0 0 40px rgba(212,175,55,0.2); }
+        .logo-img { width: 360px; max-width: 80vw; filter: drop-shadow(0 0 45px var(--gold-glow)); border-radius: 12px; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(2.2rem, 7.5vw, 4.2rem); font-weight: 900; line-height: 1.1; margin: 0; }
+        .hero h1 span { color: var(--gold); }
         .hero p { color: #666; letter-spacing: 5px; font-weight: 700; margin-top: 25px; text-transform: uppercase; font-size: 0.8rem; }
 
-        /* FEATURES & ARCHITECTURE GRID */
+        /* SECTIONS */
         .section { padding: 100px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 60px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 60px; }
+        
         .card { 
-            background: var(--card); border: 1px solid var(--border); padding: 45px; border-radius: 25px; 
-            transition: 0.4s; position: relative; overflow: hidden;
+            background: var(--card); border: 1px solid var(--border); padding: 50px; border-radius: 30px; 
+            transition: 0.4s; position: relative;
         }
-        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0; transition: 0.4s; }
-        .card:hover { border-color: var(--gold); transform: translateY(-10px); background: #0f0f0f; }
-        .card:hover::before { opacity: 1; }
-        .card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 25px; }
-        .card h3 { font-family: 'Orbitron'; font-size: 1rem; margin-bottom: 15px; letter-spacing: 1px; }
-        .card p { color: #888; font-size: 0.9rem; }
+        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card i { color: var(--gold); font-size: 2rem; margin-bottom: 30px; display: block; }
+        .card h3 { font-family: 'Orbitron'; font-size: 1.1rem; margin-bottom: 20px; letter-spacing: 1px; }
+        
+        /* FIX A: Testo più grande e leggibile */
+        .card p { 
+            color: #999; 
+            font-size: 1.05rem; 
+            line-height: 1.8; 
+        }
 
-        /* FOOTER */
-        .footer { padding: 80px 10% 40px; border-top: 1px solid var(--border); text-align: center; background: #000; }
-        .social-link { display: inline-flex; flex-direction: column; align-items: center; margin: 0 25px; text-decoration: none; color: #fff; transition: 0.3s; }
-        .social-link i { color: var(--gold); font-size: 1.8rem; margin-bottom: 12px; }
-        .social-link span { font-family: 'Orbitron'; font-size: 0.7rem; font-weight: 700; }
-        .coming-soon { font-size: 0.55rem; color: #444; font-weight: 900; margin-top: 5px; letter-spacing: 1px; }
-        .social-link:hover { color: var(--gold); transform: translateY(-5px); }
+        /* SECTION C: WOW FINAL (PROTOCOL MONITOR) */
+        .wow-section {
+            background: #080808; border: 1px solid var(--border); padding: 60px; border-radius: 40px;
+            max-width: 1100px; margin: 0 auto 100px; position: relative; overflow: hidden;
+        }
+        .terminal-header { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 15px; }
+        .t-dot { width: 12px; height: 12px; border-radius: 50%; background: #333; }
+        .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; text-align: left; }
+        .stat-box h4 { font-family: 'Orbitron'; font-size: 0.7rem; color: #444; margin-bottom: 10px; letter-spacing: 2px; }
+        .stat-box div { font-family: 'Orbitron'; font-size: 1.5rem; color: var(--gold); text-shadow: 0 0 15px var(--gold-glow); }
+
+        /* FOOTER PREMIUM */
+        .footer { padding: 80px 10% 40px; border-top: 1px solid var(--border); background: #000; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; text-align: left; margin-bottom: 60px; }
+        .footer-brand h2 { font-family: 'Orbitron'; color: var(--gold); margin-bottom: 20px; }
+        .footer-brand p { color: #555; font-size: 0.9rem; max-width: 300px; }
+        .footer-links h5 { font-family: 'Orbitron'; color: #fff; margin-bottom: 20px; font-size: 0.8rem; }
+        .footer-links a { display: block; color: #555; text-decoration: none; margin-bottom: 12px; font-size: 0.85rem; transition: 0.3s; }
+        .footer-links a:hover { color: var(--gold); }
+
+        .social-flex { display: flex; gap: 30px; margin-top: 40px; border-top: 1px solid #111; padding-top: 40px; justify-content: center; }
+        .social-item { color: #fff; text-decoration: none; text-align: center; transition: 0.3s; opacity: 0.6; }
+        .social-item:hover { opacity: 1; color: var(--gold); transform: translateY(-3px); }
+        .social-item i { font-size: 1.5rem; margin-bottom: 8px; display: block; color: var(--gold); }
+        .social-item span { font-family: 'Orbitron'; font-size: 0.6rem; letter-spacing: 1px; }
 
     </style>
 </head>
@@ -93,7 +103,7 @@
     <nav class="navbar">
         <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
         <div class="nav-links">
-            <a href="#features">Architecture</a>
+            <a href="#architecture">Architecture</a>
             <a href="votes.html">Dashboard</a>
             <a href="whitepaper.pdf" target="_blank">Whitepaper</a>
             <a href="https://github.com/nbx-protocol" target="_blank">GitHub</a>
@@ -106,53 +116,100 @@
         </div>
         <h1 class="reveal">INSTITUTIONAL <span>DAO</span></h1>
         <p class="reveal">Waves Infrastructure Layer</p>
-        <div class="reveal" style="margin-top: 40px;">
-            <a href="dashboard.html" style="background: var(--gold); color: #000; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: 900; font-family: 'Orbitron'; font-size: 0.8rem;">LAUNCH SYSTEM</a>
-        </div>
     </section>
 
-    <section id="features" class="section">
-        <div class="reveal" style="text-align: center;">
-            <p style="color:var(--gold); font-family:'Orbitron'; letter-spacing:6px; font-size:0.7rem;">INFRASTRUCTURE STACK</p>
-            <h2 style="font-family:'Orbitron'; font-size:2rem; margin:10px 0;">CORE ARCHITECTURE</h2>
+    <section id="architecture" class="section">
+        <div class="reveal" style="text-align: center; margin-bottom: 80px;">
+            <p style="color:var(--gold); font-family:'Orbitron'; letter-spacing:6px; font-size:0.7rem;">SYSTEM STACK</p>
+            <h2 style="font-family:'Orbitron'; font-size:2.2rem; margin:10px 0;">CORE ARCHITECTURE</h2>
         </div>
         <div class="grid">
             <div class="card reveal">
                 <i class="fas fa-layer-group"></i>
                 <h3>FRONTEND LAYER</h3>
-                <p>Enterprise React dashboard with real-time WebSocket connectivity and sub-second latency.</p>
+                <p>Enterprise React dashboard featuring real-time data streaming and a neomorphic institutional UI.</p>
             </div>
             <div class="card reveal">
                 <i class="fas fa-server"></i>
-                <h3>API (RENDER)</h3>
-                <p>Proprietary backend aggregator indexing the Waves Blockchain for high-performance data delivery.</p>
+                <h3>API INFRASTRUCTURE</h3>
+                <p>Dedicated Render-hosted backend aggregator designed for high-throughput blockchain indexing.</p>
             </div>
             <div class="card reveal">
                 <i class="fas fa-link"></i>
-                <h3>BLOCKCHAIN LAYER</h3>
-                <p>Immutable RIDE Smart Contracts managing protocol governance and multi-sig asset distribution.</p>
+                <h3>SMART CONTRACTS</h3>
+                <p>Immutable RIDE governance logic on Waves Mainnet, securing multi-asset treasury operations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section reveal">
+        <div class="wow-section">
+            <div class="terminal-header">
+                <div class="t-dot" style="background:#ff5f56"></div>
+                <div class="t-dot" style="background:#ffbd2e"></div>
+                <div class="t-dot" style="background:#27c93f"></div>
+                <span style="margin-left: 20px; font-family:'Orbitron'; font-size:0.6rem; color:#444;">NETWORK_TERMINAL // LIVE_METRICS</span>
+            </div>
+            <div class="stats-row">
+                <div class="stat-box">
+                    <h4>TOTAL VALUE LOCKED</h4>
+                    <div>$1.24M+</div>
+                </div>
+                <div class="stat-box">
+                    <h4>ACTIVE PROPOSALS</h4>
+                    <div>04</div>
+                </div>
+                <div class="stat-box">
+                    <h4>VOTING POWER</h4>
+                    <div>892K WX</div>
+                </div>
+                <div class="stat-box">
+                    <h4>UPTIME</h4>
+                    <div>99.99%</div>
+                </div>
             </div>
         </div>
     </section>
 
     <footer class="footer">
-        <div class="social-container">
-            <a href="https://github.com/nbx-protocol" target="_blank" class="social-link">
+        <div class="footer-grid reveal">
+            <div class="footer-brand">
+                <h2>NBX</h2>
+                <p>The standard infrastructure for institutional-grade DAO governance on the Waves Network.</p>
+            </div>
+            <div class="footer-links">
+                <h5>PROTOCOL</h5>
+                <a href="votes.html">Governance Hub</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="#">Security Audit</a>
+            </div>
+            <div class="footer-links">
+                <h5>RESOURCES</h5>
+                <a href="whitepaper.pdf">Whitepaper</a>
+                <a href="https://github.com/nbx-protocol">Documentation</a>
+                <a href="coming-soon.html">Media Kit</a>
+            </div>
+        </div>
+
+        <div class="social-flex reveal">
+            <a href="https://github.com/nbx-protocol" target="_blank" class="social-item">
                 <i class="fab fa-github"></i>
                 <span>GITHUB</span>
             </a>
-            <a href="https://www.facebook.com/NBXProjectOfficial/" target="_blank" class="social-link">
+            <a href="https://www.facebook.com/NBXProjectOfficial/" target="_blank" class="social-item">
                 <i class="fab fa-facebook"></i>
                 <span>FACEBOOK</span>
             </a>
-            <a href="coming-soon.html" target="_blank" class="social-link">
+            <a href="coming-soon.html" target="_blank" class="social-item">
                 <i class="fab fa-telegram"></i>
                 <span>TELEGRAM</span>
-                <span class="coming-soon">COMING SOON</span>
+                <div class="coming-soon">COMING SOON</div>
             </a>
-        </div>
-        <div style="margin-top:50px; font-family:'Orbitron'; font-size:0.6rem; color:#333; letter-spacing:3px;">
-            NBX PROTOCOL © 2026 | BUILT ON WAVES NETWORK
+            <a href="coming-soon.html" target="_blank" class="social-item">
+                <i class="fab fa-instagram"></i>
+                <span>INSTAGRAM</span>
+                <div class="coming-soon">COMING SOON</div>
+            </a>
         </div>
     </footer>
 
