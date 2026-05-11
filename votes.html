@@ -5,83 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBX | Governance Monitor</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         :root { --gold: #d4af37; --bg: #050505; --card: #0e0e0e; --border: #1a1a1a; }
         body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 40px; box-sizing: border-box; }
-        .container { max-width: 1000px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 60px; }
-        header h1 { font-family: 'Orbitron'; font-size: 2.2rem; color: var(--gold); margin: 0; letter-spacing: 2px; }
         
-        .api-tag {
-            display: inline-flex; align-items: center; background: rgba(255,255,255,0.03);
-            padding: 8px 20px; border-radius: 50px; border: 1px solid #222;
-            margin-top: 20px; font-family: 'Orbitron'; font-size: 0.65rem; letter-spacing: 2px;
+        .container { max-width: 1100px; margin: 0 auto; }
+        
+        header { text-align: center; margin-bottom: 80px; }
+        header p { letter-spacing: 8px; color: #444; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; }
+        header h1 { font-family: 'Orbitron'; font-size: 3rem; color: var(--gold); margin: 0; }
+        
+        .api-status {
+            display: inline-flex; align-items: center; background: rgba(0,255,0,0.05);
+            padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(0,255,0,0.1);
+            margin-top: 25px; color: #00ff00; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px;
         }
-        .dot { width: 8px; height: 8px; border-radius: 50%; margin-right: 12px; }
-        .online { background: #00ff00; box-shadow: 0 0 10px #00ff00; }
-        .offline { background: #ff4444; box-shadow: 0 0 10px #ff4444; }
+        .dot { width: 8px; height: 8px; background: #00ff00; border-radius: 50%; margin-right: 12px; box-shadow: 0 0 10px #00ff00; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
 
         .vote-card {
-            background: var(--card); border: 1px solid var(--border); padding: 45px;
-            border-radius: 25px; margin-bottom: 30px; transition: 0.4s;
+            background: var(--card); border: 1px solid var(--border); padding: 50px;
+            border-radius: 30px; margin-bottom: 35px; transition: 0.4s;
         }
-        .vote-card:hover { border-color: var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.05); }
-        .vote-info { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; }
-        .vote-label h2 { font-family: 'Orbitron'; font-size: 1rem; margin: 0; color: #fff; }
-        .perc-val { font-family: 'Orbitron'; font-size: 2.2rem; font-weight: 900; color: var(--gold); }
+        .vote-card:hover { border-color: var(--gold); background: #121212; }
+        
+        .vote-info { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; }
+        .vote-label h2 { font-family: 'Orbitron'; font-size: 1.1rem; color: #fff; margin: 0; letter-spacing: 1px; }
+        
+        .perc-display { font-family: 'Orbitron'; font-size: 2.2rem; font-weight: 900; color: var(--gold); }
 
-        .progress-bar { background: #000; height: 12px; border-radius: 6px; border: 1px solid #222; overflow: hidden; margin-bottom: 25px; }
-        .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #8a6d1d, var(--gold)); transition: width 1.5s ease-out; }
+        .bar-container { background: #000; height: 16px; border-radius: 8px; border: 1px solid #222; overflow: hidden; margin-bottom: 25px; }
+        .bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #8a6d1d, var(--gold)); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); }
 
         .stats-row { display: flex; justify-content: space-between; padding-top: 20px; border-top: 1px solid #1a1a1a; }
-        .stat-box label { display: block; font-size: 0.6rem; color: #444; text-transform: uppercase; margin-bottom: 5px; }
-        .stat-box span { font-family: 'Orbitron'; color: #eee; font-size: 0.9rem; }
-        
-        .back { display: block; text-align: center; margin-top: 50px; color: #333; text-decoration: none; font-family: 'Orbitron'; font-size: 0.75rem; letter-spacing: 2px; }
-        .back:hover { color: var(--gold); }
+        .stat-item span { font-family: 'Orbitron'; color: #bbb; }
+
+        /* Correzione IMG 2: Link di ritorno grande e leggibile */
+        .back-link { 
+            display: block; text-align: center; margin-top: 80px; 
+            color: #bbb; /* Più chiaro di prima */
+            text-decoration: none; 
+            font-size: 1.2rem; /* Molto più grande */
+            font-weight: 700; 
+            font-family: 'Orbitron'; 
+            letter-spacing: 2px;
+            transition: 0.3s; 
+        }
+        .back-link:hover { color: var(--gold); }
     </style>
 </head>
 <body>
+
 <div class="container">
     <header>
-        <h1>GOVERNANCE MONITOR</h1>
-        <div class="api-tag"><div id="dot" class="dot"></div>API STATUS: <span id="st-text">SYNCING...</span></div>
+        <p>Governance Infrastructure</p>
+        <h1>VOTING DASHBOARD</h1>
+        <div class="api-status">
+            <span class="dot"></span> LIVE PROTOCOL FEED
+        </div>
     </header>
 
     <div class="vote-card">
-        <div class="vote-info"><div class="vote-label"><span>PROPOSAL #001</span><h2>TREASURY ALLOCATION</h2></div><div class="perc-val" id="gov-p">0.0%</div></div>
-        <div class="progress-bar"><div class="progress-fill" id="gov-f"></div></div>
+        <div class="vote-info">
+            <div class="vote-label">
+                <span style="color:#555; text-transform: uppercase; font-size: 0.75rem;">NBX-001</span>
+                <h2>TREASURY GOVERNANCE</h2>
+            </div>
+            <div class="perc-display" id="gov-perc">0.0%</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-fill" id="gov-bar"></div>
+        </div>
         <div class="stats-row">
-            <div class="stat-box"><label>Voted Weight</label><span id="gov-v">0.00</span> WX</div>
-            <div class="stat-box" style="text-align:right;"><label>Status</label><span style="color:#00ff00">ACTIVE</span></div>
+            <div class="stat-item"><label style="color:#444; text-transform:uppercase; font-size:0.7rem; display:block;">Weight</label><span id="gov-val">0.00</span> WX</div>
+            <div class="stat-item" style="text-align:right;"><label style="color:#444; text-transform:uppercase; font-size:0.7rem; display:block;">Status</label><span style="color:#00ff00;">Active</span></div>
         </div>
     </div>
 
     <div class="vote-card">
-        <div class="vote-info"><div class="vote-label"><span>PROPOSAL #002</span><h2>ANALYTICS LAYER</h2></div><div class="perc-val" id="ana-p">0.0%</div></div>
-        <div class="progress-bar"><div class="progress-fill" id="ana-f"></div></div>
+        <div class="vote-info">
+            <div class="vote-label">
+                <span style="color:#555; text-transform: uppercase; font-size: 0.75rem;">NBX-002</span>
+                <h2>ANALYTICS LAYER CONSENSUS</h2>
+            </div>
+            <div class="perc-display" id="ana-perc">0.0%</div>
+        </div>
+        <div class="bar-container">
+            <div class="bar-fill" id="ana-bar"></div>
+        </div>
         <div class="stats-row">
-            <div class="stat-box"><label>Voted Weight</label><span id="ana-v">0.00</span> WX</div>
-            <div class="stat-box" style="text-align:right;"><label>Status</label><span style="color:#00ff00">ACTIVE</span></div>
+            <div class="stat-item"><label style="color:#444; text-transform:uppercase; font-size:0.7rem; display:block;">Weight</label><span id="ana-val">0.00</span> WX</div>
+            <div class="stat-item" style="text-align:right;"><label style="color:#444; text-transform:uppercase; font-size:0.7rem; display:block;">Status</label><span style="color:#00ff00;">Active</span></div>
         </div>
     </div>
 
-    <a href="index.html" class="back">← RETURN TO MAIN INTERFACE</a>
+    <a href="index.html" class="back-link">← RETURN TO MAIN INTERFACE</a>
 </div>
+
 <script>
-    async function sync() {
-        const d = document.getElementById('dot'), t = document.getElementById('st-text');
+    async function updateDAO() {
         try {
-            const r = await fetch('https://nbx-governance-api.onrender.com/votes?t=' + Date.now());
-            const j = await r.json();
-            const g = parseFloat(j.GOVERNANCE || 0), a = parseFloat(j.ANALYTICS || 0);
-            const gp = Math.min((g / 10).toFixed(1), 100), ap = Math.min((a / 10).toFixed(1), 100);
-            document.getElementById('gov-v').innerText = g.toFixed(2); document.getElementById('gov-p').innerText = gp + "%"; document.getElementById('gov-f').style.width = gp + "%";
-            document.getElementById('ana-v').innerText = a.toFixed(2); document.getElementById('ana-p').innerText = ap + "%"; document.getElementById('ana-f').style.width = ap + "%";
-            d.className = "dot online"; t.innerText = "ONLINE";
-        } catch(e) { d.className = "dot offline"; t.innerText = "OFFLINE"; }
+            const response = await fetch('https://nbx-governance-api.onrender.com/votes?t=' + Date.now());
+            const data = await response.json();
+
+            const govVal = parseFloat(data.GOVERNANCE || 0);
+            const anaVal = parseFloat(data.ANALYTICS || 0);
+
+            // Calcolo percentuali basate su target per visualizzare barre
+            const govP = Math.min((govVal / 10).toFixed(1), 100); 
+            const anaP = Math.min((anaVal / 5).toFixed(1), 100);
+
+            // Aggiornamento DOM
+            document.getElementById('gov-val').innerText = govVal.toFixed(2);
+            document.getElementById('gov-perc').innerText = govP + "%";
+            document.getElementById('gov-bar').style.width = govP + "%";
+
+            document.getElementById('ana-val').innerText = anaVal.toFixed(2);
+            document.getElementById('ana-perc').innerText = anaP + "%";
+            document.getElementById('ana-bar').style.width = anaP + "%";
+
+        } catch (error) { console.error("Sync Error"); }
     }
-    sync(); setInterval(sync, 15000);
+    updateDAO();
+    setInterval(updateDAO, 15000); // Refresh ogni 15s
 </script>
+
 </body>
 </html>
