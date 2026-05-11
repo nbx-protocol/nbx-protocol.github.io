@@ -5,62 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBX Protocol | Institutional DAO Infrastructure</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --gold: #d4af37; --bg: #050505; --card: #0e0e0e; --border: rgba(212, 175, 55, 0.2); --glass: rgba(255, 255, 255, 0.02); }
-        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
+        :root { 
+            --gold: #d4af37; 
+            --bg: #050505; 
+            --card: #0e0e0e; 
+            --border: rgba(212, 175, 55, 0.2); 
+            --glass: rgba(255, 255, 255, 0.02);
+            --text-dim: #a0a0a0;
+        }
+        
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; line-height: 1.6; }
 
-        /* NAVBAR */
+        /* NAVBAR - FIX: Scritte bianche in alto a DX */
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 5%; background: rgba(0,0,0,0.9); backdrop-filter: blur(15px);
+            padding: 20px 5%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--border); position: fixed; width: 100%; z-index: 1000; box-sizing: border-box;
         }
         .nav-logo { font-family: 'Orbitron'; color: var(--gold); font-weight: 700; text-decoration: none; font-size: 1.2rem; letter-spacing: 2px; }
         .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: #888; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; font-weight: 600; }
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a { color: #ffffff !important; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold) !important; }
 
-        /* HERO & LOGO PREMIUM */
+        /* HERO SECTION */
         .hero { 
-            height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
-            text-align: center; background: radial-gradient(circle at center, #1a1505 0%, #050505 100%); padding-top: 80px;
+            min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; 
+            text-align: center; background: radial-gradient(circle at center, #1a1505 0%, #050505 100%); padding: 120px 20px 60px;
         }
         .logo-panel {
-            background: var(--glass); backdrop-filter: blur(25px); padding: 50px; border-radius: 40px;
-            border: 1px solid var(--border); box-shadow: 0 0 60px rgba(0,0,0,0.8);
-            animation: float 6s ease-in-out infinite; margin-bottom: 30px;
+            background: var(--glass); backdrop-filter: blur(25px); padding: 40px; border-radius: 30px;
+            border: 1px solid var(--border); box-shadow: 0 0 60px rgba(0,0,0,0.8); margin-bottom: 40px;
         }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        .logo-img { width: 400px; max-width: 85%; height: auto; border-radius: 15px; }
+        .logo-img { width: 320px; max-width: 80vw; border-radius: 15px; }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; margin: 20px 0; }
+        .hero h1 span { color: var(--gold); }
+        .hero p { color: var(--text-dim); max-width: 700px; margin-bottom: 40px; font-size: 1.1rem; }
+        .btn-main { background: var(--gold); color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-family: 'Orbitron'; transition: 0.3s; }
+        .btn-main:hover { background: #fff; transform: translateY(-3px); }
 
-        .hero h1 { font-family: 'Orbitron'; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; margin: 20px 0; letter-spacing: -1px; }
-        .hero h1 span { color: var(--gold); text-shadow: 0 0 30px rgba(212,175,55,0.3); }
+        /* FEATURES */
+        .section { padding: 100px 10%; text-align: center; }
+        .section-tag { color: var(--gold); text-transform: uppercase; font-size: 0.8rem; font-weight: 800; letter-spacing: 5px; display: block; margin-bottom: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .card { background: var(--card); border: 1px solid #1a1a1a; padding: 40px; border-radius: 20px; text-align: left; transition: 0.3s; }
+        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card i { color: var(--gold); font-size: 2rem; margin-bottom: 20px; }
+        .card h3 { font-family: 'Orbitron'; font-size: 1.2rem; margin-bottom: 15px; }
 
-        /* Rimossa la descrizione p italiana qui per IMG 1 */
+        /* ARCHITECTURE */
+        .arch-box { max-width: 900px; margin: 50px auto; border: 1px solid var(--border); padding: 40px; border-radius: 20px; background: rgba(212,175,55,0.02); }
+        .arch-item { padding: 20px; border-bottom: 1px solid #222; display: flex; align-items: center; gap: 20px; }
+        .arch-item:last-child { border: none; }
+        .arch-num { font-family: 'Orbitron'; color: var(--gold); font-size: 1.5rem; font-weight: 900; }
 
-        .btn-group { display: flex; gap: 20px; }
-        .btn-main { background: var(--gold); color: #000; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: 800; font-family: 'Orbitron'; transition: 0.3s; font-size: 0.9rem; }
-        .btn-main:hover { transform: scale(1.05); background: #fff; }
-        .btn-sub { border: 1px solid #333; color: #fff; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
-        .btn-sub:hover { border-color: var(--gold); color: var(--gold); }
+        /* ROADMAP */
+        .roadmap-list { max-width: 600px; margin: 40px auto; text-align: left; border-left: 1px solid var(--gold); padding-left: 30px; }
+        .roadmap-step { position: relative; margin-bottom: 40px; }
+        .roadmap-step::before { content: ''; position: absolute; left: -36px; top: 0; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold); }
 
-        /* FOOTER SOCIAL */
-        footer { padding: 60px 10%; background: #000; border-top: 1px solid #111; text-align: center; }
-        .social-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 30px; flex-wrap: wrap; }
-        .social-links a { color: #555; text-decoration: none; font-family: 'Orbitron'; font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s; }
-        .social-links a:hover { color: var(--gold); }
-        .copy { color: #222; font-size: 0.7rem; font-family: 'Orbitron'; margin-top: 20px; letter-spacing: 2px; }
+        /* FOOTER - FIX: Icone e scritte COMING SOON */
+        .footer { padding: 80px 10% 40px; background: #000; border-top: 1px solid var(--border); text-align: center; }
+        .social-container { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; margin-bottom: 50px; }
+        .social-link { color: #fff; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: 0.3s; }
+        .social-link i { font-size: 1.8rem; color: var(--gold); }
+        .social-link span { font-family: 'Orbitron'; font-size: 0.7rem; font-weight: 700; }
+        .coming-soon-tag { font-size: 0.55rem; color: #555; letter-spacing: 1px; font-weight: 900; }
+        .social-link:hover { transform: translateY(-5px); color: var(--gold); }
+
     </style>
 </head>
 <body>
+
     <nav class="navbar">
         <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
         <div class="nav-links">
             <a href="dashboard.html">Dashboard</a>
             <a href="votes.html">Governance</a>
             <a href="whitepaper.pdf" target="_blank">Whitepaper</a>
-            <a href="https://github.com" target="_blank">GitHub</a>
+            <a href="https://github.com/nbx-protocol" target="_blank">GitHub</a>
         </div>
     </nav>
 
@@ -68,23 +92,132 @@
         <div class="logo-panel">
             <img src="logo1.jpg" alt="NBX" class="logo-img">
         </div>
-        <h6 style="color:var(--gold); letter-spacing: 10px; text-transform: uppercase; font-weight: 800; font-size: 0.7rem; margin-bottom: 10px;">Waves Infrastructure Layer</h6>
-        <h1>THE <span>DAO</span> ENGINE</h1>
-        <div class="btn-group">
-            <a href="dashboard.html" class="btn-main">ENTER APP</a>
-            <a href="whitepaper.pdf" target="_blank" class="btn-sub">WHITEPAPER</a>
+        <span class="section-tag">Waves Infrastructure Layer</span>
+        <h1>INSTITUTIONAL <span>DAO</span></h1>
+        <p>Decentralized asset management and governance protocol. Automated treasury, on-chain voting, and real-time analytics powered by Waves Network.</p>
+        <a href="dashboard.html" class="btn-main">LAUNCH PROTOCOL</a>
+    </section>
+
+    <section class="section">
+        <span class="section-tag">Core Capabilities</span>
+        <h2 style="font-family: 'Orbitron'; font-size: 2.5rem;">PROTOCOL FEATURES</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-vault"></i>
+                <h3>Treasury Management</h3>
+                <p>Secure multi-sig infrastructure for corporate and community-led asset distribution.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-vote-yea"></i>
+                <h3>Adaptive Governance</h3>
+                <p>On-chain voting mechanisms with weighted influence based on protocol participation.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-microchip"></i>
+                <h3>API Integration</h3>
+                <p>Direct live feeds for external platforms to monitor DAO health and analytics.</p>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://github.com" target="_blank">GITHUB</a>
-            <a href="#">FACEBOOK</a>
-            <a href="#">TELEGRAM</a>
-            <a href="#">INSTAGRAM</a>
-            <a href="#">TIKTOK</a>
+    <section class="section" style="background: #080808;">
+        <span class="section-tag">System Stack</span>
+        <h2 style="font-family: 'Orbitron';">ARCHITECTURE</h2>
+        <div class="arch-box">
+            <div class="arch-item">
+                <div class="arch-num">01</div>
+                <div>
+                    <b style="font-family: 'Orbitron';">Frontend Layer:</b>
+                    <span style="color:var(--text-dim);"> React-based Dashboard and Governance Monitor.</span>
+                </div>
+            </div>
+            <div class="arch-item">
+                <div class="arch-num">02</div>
+                <div>
+                    <b style="font-family: 'Orbitron';">API Layer:</b>
+                    <span style="color:var(--text-dim);"> Render-hosted backend aggregating Waves Mainnet data.</span>
+                </div>
+            </div>
+            <div class="arch-item">
+                <div class="arch-num">03</div>
+                <div>
+                    <b style="font-family: 'Orbitron';">Smart Contract Layer:</b>
+                    <span style="color:var(--text-dim);"> Ride-based contracts for immutable voting and asset lock.</span>
+                </div>
+            </div>
         </div>
-        <div class="copy">NBX PROTOCOL © 2026 | INSTITUTIONAL DAO</div>
+    </section>
+
+    <section class="section">
+        <span class="section-tag">Utility</span>
+        <h2 style="font-family: 'Orbitron';">USE CASES</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-building"></i>
+                <h3>VC DAOs</h3>
+                <p>Manage venture capital investments with transparent, voted distributions.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-users"></i>
+                <h3>Community Grants</h3>
+                <p>Automate funding for ecosystem developers through community consensus.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #080808;">
+        <span class="section-tag">The Journey</span>
+        <h2 style="font-family: 'Orbitron';">PROJECT ROADMAP</h2>
+        <div class="roadmap-list">
+            <div class="roadmap-step">
+                <h4 style="font-family: 'Orbitron'; color:var(--gold); margin:0;">Q1 2026: GENESIS</h4>
+                <p style="color:var(--text-dim);">Core infrastructure launch and Governance Dashboard beta.</p>
+            </div>
+            <div class="roadmap-step">
+                <h4 style="font-family: 'Orbitron'; color:var(--gold); margin:0;">Q2 2026: SCALING</h4>
+                <p style="color:var(--text-dim);">Multi-asset treasury support and WX Network integration.</p>
+            </div>
+            <div class="roadmap-step">
+                <h4 style="font-family: 'Orbitron'; color:var(--gold); margin:0;">Q4 2026: EXPANSION</h4>
+                <p style="color:var(--text-dim);">Cross-chain governance bridges and mobile interface.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="social-container">
+            <a href="https://github.com/nbx-protocol" target="_blank" class="social-link">
+                <i class="fab fa-github"></i>
+                <span>GITHUB</span>
+            </a>
+            <a href="https://www.facebook.com/NBXProjectOfficial/" target="_blank" class="social-link">
+                <i class="fab fa-facebook"></i>
+                <span>FACEBOOK</span>
+            </a>
+            <a href="coming-soon.html" target="_blank" class="social-link">
+                <i class="fab fa-telegram"></i>
+                <span>TELEGRAM</span>
+                <span class="coming-soon-tag">COMING SOON</span>
+            </a>
+            <a href="coming-soon.html" target="_blank" class="social-link">
+                <i class="fab fa-instagram"></i>
+                <span>INSTAGRAM</span>
+                <span class="coming-soon-tag">COMING SOON</span>
+            </a>
+            <a href="coming-soon.html" target="_blank" class="social-link">
+                <i class="fab fa-tiktok"></i>
+                <span>TIKTOK</span>
+                <span class="coming-soon-tag">COMING SOON</span>
+            </a>
+            <a href="whitepaper.pdf" target="_blank" class="social-link">
+                <i class="fas fa-file-pdf"></i>
+                <span>DOCS</span>
+            </a>
+        </div>
+        <div style="font-family: 'Orbitron'; font-size: 0.7rem; color: #333; letter-spacing: 2px;">
+            NBX PROTOCOL © 2026 | INSTITUTIONAL DAO ECOSYSTEM
+        </div>
     </footer>
+
 </body>
 </html>
