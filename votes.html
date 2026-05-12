@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +25,6 @@
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
         .dash-header h1 { font-family: 'Orbitron'; font-size: 2rem; letter-spacing: 5px; margin: 20px 0 10px; font-weight: 900; }
-
-        /* FIX IMG 4: Etichetta "NBX MONITORING" ora leggibile */
         .header-sub-tag { color: var(--text-light); font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px; font-family: 'Inter'; text-transform: uppercase; }
 
         .container { max-width: 950px; margin: 40px auto 100px; padding: 0 25px; }
@@ -42,20 +40,14 @@
         .bar-outer { background: #000; height: 12px; border-radius: 50px; border: 1px solid #222; overflow: hidden; position: relative; }
         .bar-inner { height: 100%; width: 0%; background: linear-gradient(90deg, #8a6d1d, var(--gold)); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 1; }
         
-        /* FIX IMG 4: Testi bar desc "Synced/Distributed" ora in grigio chiaro */
         .vote-desc { margin-top:15px; font-size:0.65rem; font-weight:600; color:var(--text-light); font-family:'Orbitron'; letter-spacing: 1px; text-transform: uppercase; }
 
         .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 50px; }
         .infra-item { background: #080808; border: 1px solid #151515; padding: 20px; border-radius: 12px; }
-        
-        /* FIX IMG 4: Etichette infrastruttura "Tesoro/Nodo" ora in grigio chiaro */
         .infra-item-tag { font-size: 0.6rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; font-family: 'Orbitron'; }
         .infra-item b { color: var(--gold); display: block; margin-top: 5px; font-family: 'Orbitron'; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
 
-        /* FOOTER DEFI STYLE */
         .exit-footer { text-align: center; padding: 50px 0; border-top: 1px solid var(--border); }
-        
-        /* FIX IMG 4: Pulsante "EXIT MONITOR" centrato, più visibile in grigio chiaro */
         .back-btn { display: inline-block; color: var(--text-light); text-decoration: none; font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; transition: 0.3s; padding: 12px 30px; border: 1px solid transparent; border-radius: 4px; }
         .back-btn:hover { color: #fff; border-color: #333; background: #111; }
     </style>
@@ -63,7 +55,7 @@
 <body>
 
     <div class="dash-header">
-        <div class="api-status"><span class="pulse"></span> COLLEGATO</div>
+        <div class="api-status"><span class="pulse"></span> CONNECTED</div>
         <h1>GOVERNANCE HUB</h1>
         <div class="header-sub-tag">NBX MONITORING</div>
     </div>
@@ -72,22 +64,22 @@
         <div class="vote-card">
             <div class="bar-label"><span>TREASURY GOVERNANCE NBX-01</span><span id="v1-perc" class="percentage-tag">0%</span></div>
             <div class="bar-outer"><div id="v1-bar" class="bar-inner"></div></div>
-            <p class="vote-desc">SINCRONIZZATO // PESO: <span id="v1-val" style="color:#d4af37">0.00</span> WX</p>
+            <p class="vote-desc">SYNCED // WEIGHT: <span id="v1-val" style="color:#d4af37">0.00</span> WX</p>
         </div>
 
         <div class="vote-card">
             <div class="bar-label"><span>API LAYER CONSENSUS NBX-02</span><span id="v2-perc" class="percentage-tag">0%</span></div>
             <div class="bar-outer"><div id="v2-bar" class="bar-inner"></div></div>
-            <p class="vote-desc">DISTRIBUITO // PESO: <span id="v2-val" style="color:#d4af37">0.00</span> WX</p>
+            <p class="vote-desc">DISTRIBUTED // WEIGHT: <span id="v2-val" style="color:#d4af37">0.00</span> WX</p>
         </div>
 
         <div class="infra-grid">
             <div class="infra-item">
-                <div class="infra-item-tag">Tesoro</div>
+                <div class="infra-item-tag">Treasury</div>
                 <b>3P4k...8s9W</b>
             </div>
             <div class="infra-item">
-                <div class="infra-item-tag">Nodo</div>
+                <div class="infra-item-tag">Node</div>
                 <b>ACTIVE</b>
             </div>
             <div class="infra-item">
@@ -108,7 +100,6 @@
                 const data = await response.json();
                 const val1 = parseFloat(data.GOVERNANCE || 0);
                 const val2 = parseFloat(data.ANALYTICS || 0);
-                // Calcolo semplice percentuale (es. max 100 WX per bar)
                 const p1 = Math.min((val1 / 1.0).toFixed(1), 100); 
                 const p2 = Math.min((val2 / 1.0).toFixed(1), 100); 
                 document.getElementById('v1-bar').style.width = p1 + "%";
@@ -120,7 +111,7 @@
             } catch(e) { console.warn("Sync Lag"); }
         }
         updateDashboard();
-        setInterval(updateDashboard, 15000); // Aggiorna ogni 15s
+        setInterval(updateDashboard, 15000);
     </script>
 </body>
 </html>
