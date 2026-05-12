@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBX Protocol | Institutional DAO Infrastructure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { 
@@ -34,7 +34,7 @@
         .reveal { opacity: 0; transform: translateY(20px); transition: 1s all cubic-bezier(0.2, 0.8, 0.2, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* HERO - Ridotta altezza per laptop */
+        /* HERO */
         .hero { 
             min-height: 90vh; display: flex; flex-direction: column; justify-content: center; 
             align-items: center; text-align: center; padding: 100px 20px 60px;
@@ -50,20 +50,28 @@
         .hero h1 span { color: var(--gold); }
         .hero p { color: #666; letter-spacing: 5px; font-weight: 700; margin-top: 20px; text-transform: uppercase; font-size: 0.75rem; }
 
-        /* SECTIONS - Compressione padding verticale */
-        .section { padding: 70px 10%; } /* Da 100px a 70px per ridurre spazio morto */
+        /* SECTIONS */
+        .section { padding: 70px 10%; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
         
         .card { 
-            background: var(--card); border: 1px solid var(--border); padding: 40px; border-radius: 25px; 
+            background: var(--card); border: 1px solid var(--border); padding: 45px; border-radius: 25px; 
             transition: 0.4s; position: relative;
         }
         .card:hover { border-color: var(--gold); transform: translateY(-5px); }
         .card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; display: block; }
         .card h3 { font-family: 'Orbitron'; font-size: 1.05rem; margin-bottom: 15px; letter-spacing: 1px; }
-        .card p { color: #999; font-size: 1.05rem; line-height: 1.8; margin: 0; }
+        
+        /* FIX: Miglioramento Leggibilità Descrittiva */
+        .card p { 
+            color: #aaa; 
+            font-size: 1.05rem; 
+            font-weight: 500; 
+            line-height: 1.8; 
+            margin: 0; 
+        }
 
-        /* PROTOCOL MONITOR - Riduzione margini */
+        /* PROTOCOL MONITOR */
         .wow-section {
             background: #080808; border: 1px solid var(--border); padding: 45px; border-radius: 35px;
             max-width: 1100px; margin: 0 auto 60px; position: relative;
@@ -74,7 +82,7 @@
         .stat-box h4 { font-family: 'Orbitron'; font-size: 0.65rem; color: #444; margin-bottom: 8px; letter-spacing: 2px; }
         .stat-box div { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
 
-        /* FOOTER PREMIUM - Compressione */
+        /* FOOTER */
         .footer { padding: 60px 10% 30px; border-top: 1px solid var(--border); background: #000; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; text-align: left; margin-bottom: 40px; }
         .footer-brand h2 { font-family: 'Orbitron'; color: var(--gold); margin-bottom: 15px; font-size: 1.5rem; }
