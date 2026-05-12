@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX | Governance Dashboard</title>
+    <title>NBX | Governance Monitoring Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root { --gold: #d4af37; --bg: #050505; --card: #0d0d0d; --border: rgba(212, 175, 55, 0.15); }
-        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
+        :root { --gold: #d4af37; --bg: #050505; --card: #0d0d0d; --border: rgba(212, 175, 55, 0.15); --text-light: #aaaaaa; }
+        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; font-weight: 500; }
 
         .dash-header {
             padding: 70px 5% 40px; text-align: center;
@@ -24,7 +24,12 @@
         .pulse { width: 8px; height: 8px; background: #00ff00; border-radius: 50%; box-shadow: 0 0 10px #00ff00; animation: blink 1.5s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
 
-        .container { max-width: 950px; margin: 40px auto; padding: 0 25px; }
+        .dash-header h1 { font-family: 'Orbitron'; font-size: 2rem; letter-spacing: 5px; margin: 20px 0 10px; font-weight: 900; }
+
+        /* FIX IMG 4: Etichetta "NBX MONITORING" ora leggibile */
+        .header-sub-tag { color: var(--text-light); font-size: 0.7rem; font-weight: 700; letter-spacing: 2.5px; font-family: 'Inter'; text-transform: uppercase; }
+
+        .container { max-width: 950px; margin: 40px auto 100px; padding: 0 25px; }
         
         .vote-card { 
             background: var(--card); border: 1px solid var(--border); border-radius: 25px;
@@ -32,48 +37,68 @@
         }
         .vote-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 
-        .bar-label { display: flex; justify-content: space-between; margin-bottom: 15px; font-family: 'Orbitron'; font-size: 0.85rem; }
-        .bar-outer { background: #000; height: 12px; border-radius: 50px; border: 1px solid #222; overflow: hidden; }
-        .bar-inner { height: 100%; width: 0%; background: linear-gradient(90deg, #8a6d1d, var(--gold)); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); }
+        .bar-label { display: flex; justify-content: space-between; margin-bottom: 15px; font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 1px; color: #eee; text-transform: uppercase; }
+        .percentage-tag { color: var(--gold); font-weight: 700; font-size: 0.9rem; }
+        .bar-outer { background: #000; height: 12px; border-radius: 50px; border: 1px solid #222; overflow: hidden; position: relative; }
+        .bar-inner { height: 100%; width: 0%; background: linear-gradient(90deg, #8a6d1d, var(--gold)); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); position: relative; z-index: 1; }
+        
+        /* FIX IMG 4: Testi bar desc "Synced/Distributed" ora in grigio chiaro */
+        .vote-desc { margin-top:15px; font-size:0.65rem; font-weight:600; color:var(--text-light); font-family:'Orbitron'; letter-spacing: 1px; text-transform: uppercase; }
 
-        .vote-card p { margin-top:15px; font-size:0.7rem; font-weight:500; color:#444; font-family:'Orbitron'; letter-spacing: 1px; }
+        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 50px; }
+        .infra-item { background: #080808; border: 1px solid #151515; padding: 20px; border-radius: 12px; }
+        
+        /* FIX IMG 4: Etichette infrastruttura "Tesoro/Nodo" ora in grigio chiaro */
+        .infra-item-tag { font-size: 0.6rem; color: var(--text-light); text-transform: uppercase; font-weight: 600; font-family: 'Orbitron'; }
+        .infra-item b { color: var(--gold); display: block; margin-top: 5px; font-family: 'Orbitron'; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
 
-        .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
-        .infra-item { background: #080808; border: 1px solid #151515; padding: 20px; border-radius: 12px; font-size: 0.6rem; color: #444; }
-        .infra-item b { color: var(--gold); display: block; margin-top: 5px; font-family: 'Orbitron'; font-size: 0.7rem; }
-
-        .back-btn { display: inline-block; margin-top: 40px; color: #444; text-decoration: none; font-family: 'Orbitron'; font-size: 0.6rem; letter-spacing: 3px; transition: 0.3s; }
-        .back-btn:hover { color: #fff; }
+        /* FOOTER DEFI STYLE */
+        .exit-footer { text-align: center; padding: 50px 0; border-top: 1px solid var(--border); }
+        
+        /* FIX IMG 4: Pulsante "EXIT MONITOR" centrato, più visibile in grigio chiaro */
+        .back-btn { display: inline-block; color: var(--text-light); text-decoration: none; font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; transition: 0.3s; padding: 12px 30px; border: 1px solid transparent; border-radius: 4px; }
+        .back-btn:hover { color: #fff; border-color: #333; background: #111; }
     </style>
 </head>
 <body>
 
     <div class="dash-header">
-        <div class="api-status"><span class="pulse"></span> CONNECTED</div>
-        <h1 style="font-family:'Orbitron'; font-size:2rem; letter-spacing:5px; margin: 20px 0 10px;">GOVERNANCE HUB</h1>
-        <p style="color:#555; font-size:0.75rem; font-weight:700; letter-spacing:2px;">NBX MONITORING</p>
+        <div class="api-status"><span class="pulse"></span> COLLEGATO</div>
+        <h1>GOVERNANCE HUB</h1>
+        <div class="header-sub-tag">NBX MONITORING</div>
     </div>
 
     <div class="container">
         <div class="vote-card">
-            <div class="bar-label"><span>TREASURY GOVERNANCE NBX-01</span><span id="v1-perc" style="color:var(--gold)">0%</span></div>
+            <div class="bar-label"><span>TREASURY GOVERNANCE NBX-01</span><span id="v1-perc" class="percentage-tag">0%</span></div>
             <div class="bar-outer"><div id="v1-bar" class="bar-inner"></div></div>
-            <p>SYNCED // WEIGHT: <span id="v1-val" style="color:#888">0.00</span> WX</p>
+            <p class="vote-desc">SINCRONIZZATO // PESO: <span id="v1-val" style="color:#d4af37">0.00</span> WX</p>
         </div>
 
         <div class="vote-card">
-            <div class="bar-label"><span>API LAYER CONSENSUS NBX-02</span><span id="v2-perc" style="color:var(--gold)">0%</span></div>
+            <div class="bar-label"><span>API LAYER CONSENSUS NBX-02</span><span id="v2-perc" class="percentage-tag">0%</span></div>
             <div class="bar-outer"><div id="v2-bar" class="bar-inner"></div></div>
-            <p>DISTRIBUTED // WEIGHT: <span id="v2-val" style="color:#888">0.00</span> WX</p>
+            <p class="vote-desc">DISTRIBUITO // PESO: <span id="v2-val" style="color:#d4af37">0.00</span> WX</p>
         </div>
 
         <div class="infra-grid">
-            <div class="infra-item">TREASURY <b>3P4k...8s9W</b></div>
-            <div class="infra-item">NODE <b>ACTIVE</b></div>
-            <div class="infra-item">UPTIME <b>99.98%</b></div>
+            <div class="infra-item">
+                <div class="infra-item-tag">Tesoro</div>
+                <b>3P4k...8s9W</b>
+            </div>
+            <div class="infra-item">
+                <div class="infra-item-tag">Nodo</div>
+                <b>ACTIVE</b>
+            </div>
+            <div class="infra-item">
+                <div class="infra-item-tag">Uptime</div>
+                <b>99.98%</b>
+            </div>
         </div>
+    </div>
 
-        <div style="text-align: center;"><a href="index.html" class="back-btn">← EXIT MONITOR</a></div>
+    <div class="exit-footer">
+        <a href="index.html" class="back-btn">← EXIT MONITOR</a>
     </div>
 
     <script>
@@ -83,8 +108,9 @@
                 const data = await response.json();
                 const val1 = parseFloat(data.GOVERNANCE || 0);
                 const val2 = parseFloat(data.ANALYTICS || 0);
-                const p1 = Math.min((val1 / 10).toFixed(1), 100);
-                const p2 = Math.min((val2 / 5).toFixed(1), 100);
+                // Calcolo semplice percentuale (es. max 100 WX per bar)
+                const p1 = Math.min((val1 / 1.0).toFixed(1), 100); 
+                const p2 = Math.min((val2 / 1.0).toFixed(1), 100); 
                 document.getElementById('v1-bar').style.width = p1 + "%";
                 document.getElementById('v1-perc').innerText = p1 + "%";
                 document.getElementById('v1-val').innerText = val1.toFixed(2);
@@ -94,7 +120,7 @@
             } catch(e) { console.warn("Sync Lag"); }
         }
         updateDashboard();
-        setInterval(updateDashboard, 15000);
+        setInterval(updateDashboard, 15000); // Aggiorna ogni 15s
     </script>
 </body>
 </html>
