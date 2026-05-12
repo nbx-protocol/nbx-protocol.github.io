@@ -27,8 +27,8 @@
             border-bottom: 1px solid var(--border); position: fixed; width: 100%; z-index: 1000;
         }
         .nav-logo { font-family: 'Orbitron'; color: var(--gold); font-weight: 900; text-decoration: none; font-size: 0.95rem; letter-spacing: 4px; }
-        .nav-links { display: flex; gap: 25px; }
-        .nav-links a { color: #fff !important; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: #fff !important; text-decoration: none; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold) !important; text-shadow: 0 0 10px var(--gold-glow); }
 
         .reveal { opacity: 0; transform: translateY(20px); transition: 1s all cubic-bezier(0.2, 0.8, 0.2, 1); }
@@ -50,27 +50,20 @@
         .hero h1 span { color: var(--gold); }
         .hero p { color: #666; letter-spacing: 5px; font-weight: 700; margin-top: 20px; text-transform: uppercase; font-size: 0.75rem; }
 
-        /* SECTIONS & CARD REFINEMENT */
+        /* SECTIONS */
         .section { padding: 70px 10%; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
         
         .card { 
             background: var(--card); border: 1px solid var(--border); padding: 45px; border-radius: 25px; 
-            position: relative;
-            /* 1. Micro-hover animation */
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            position: relative; transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        .card:hover { 
-            border-color: var(--gold); 
-            transform: translateY(-4px); 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
-        .card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; display: block; transition: 0.3s; }
-        .card:hover i { transform: scale(1.1); }
+        .card:hover { border-color: var(--gold); transform: translateY(-4px); }
+        .card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; display: block; }
         .card h3 { font-family: 'Orbitron'; font-size: 1.05rem; margin-bottom: 15px; letter-spacing: 1px; }
         .card p { color: #aaa; font-size: 1.05rem; font-weight: 500; line-height: 1.8; margin: 0; }
 
-        /* PROTOCOL MONITOR */
+        /* WOW SECTION: METRICS & LIVE GOVERNANCE */
         .wow-section {
             background: #080808; border: 1px solid var(--border); padding: 45px; border-radius: 35px;
             max-width: 1100px; margin: 0 auto 60px; position: relative;
@@ -79,34 +72,24 @@
         .t-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
         .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; text-align: left; }
         .stat-box h4 { font-family: 'Orbitron'; font-size: 0.65rem; color: #444; margin-bottom: 8px; letter-spacing: 2px; }
-        /* 2. Glow più leggero (smorzato) */
-        .stat-box div { 
-            font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); 
-            text-shadow: 0 0 10px rgba(212, 175, 55, 0.35); 
-            opacity: 0.9;
-        }
+        .stat-box div { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); text-shadow: 0 0 10px rgba(212, 175, 55, 0.35); }
 
-        /* FOOTER PREMIUM */
+        /* FOOTER */
         .footer { padding: 60px 10% 30px; border-top: 1px solid var(--border); background: #000; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; text-align: left; margin-bottom: 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; text-align: left; margin-bottom: 40px; }
         .footer-brand h2 { font-family: 'Orbitron'; color: var(--gold); margin-bottom: 15px; font-size: 1.5rem; }
         .footer-brand p { color: #555; font-size: 0.85rem; max-width: 280px; }
-        .footer-links h5 { font-family: 'Orbitron'; color: #fff; margin-bottom: 15px; font-size: 0.75rem; }
+        .footer-links h5 { font-family: 'Orbitron'; color: #fff; margin-bottom: 15px; font-size: 0.75rem; letter-spacing: 1px; }
         .footer-links a { display: block; color: #555; text-decoration: none; margin-bottom: 10px; font-size: 0.8rem; transition: 0.3s; }
         .footer-links a:hover { color: var(--gold); }
 
-        /* 3. Social icons hover Oro -> Bianco */
         .social-flex { display: flex; gap: 35px; margin-top: 30px; border-top: 1px solid #111; padding-top: 30px; justify-content: center; }
         .social-item { color: #fff; text-decoration: none; text-align: center; transition: 0.3s; opacity: 0.6; }
         .social-item i { font-size: 1.4rem; margin-bottom: 5px; display: block; color: var(--gold); transition: 0.3s ease; }
-        .social-item span { font-family: 'Orbitron'; font-size: 0.55rem; letter-spacing: 1px; color: #555; transition: 0.3s; }
-        
+        .social-item span { font-family: 'Orbitron'; font-size: 0.55rem; letter-spacing: 1px; color: #555; }
         .social-item:hover { opacity: 1; transform: translateY(-3px); }
-        .social-item:hover i { color: #ffffff; filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
-        .social-item:hover span { color: #ffffff; }
+        .social-item:hover i { color: #fff; }
         
-        .coming-soon { font-size: 0.5rem; color: #333; font-weight: 900; margin-top: 3px; letter-spacing: 1px; }
-
     </style>
 </head>
 <body>
@@ -115,9 +98,9 @@
         <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
         <div class="nav-links">
             <a href="#architecture">Architecture</a>
-            <a href="votes.html">Dashboard</a>
-            <a href="whitepaper.pdf" target="_blank">Whitepaper</a>
-            <a href="https://github.com/nbx-protocol" target="_blank">GitHub</a>
+            <a href="votes.html">Live Governance</a>
+            <a href="https://github.com/nbx-protocol" target="_blank">GitHub Activity</a>
+            <a href="whitepaper.pdf">Docs</a>
         </div>
     </nav>
 
@@ -159,7 +142,7 @@
                 <div class="t-dot" style="background:#ff5f56"></div>
                 <div class="t-dot" style="background:#ffbd2e"></div>
                 <div class="t-dot" style="background:#27c93f"></div>
-                <span style="margin-left: 15px; font-family:'Orbitron'; font-size:0.55rem; color:#444;">NETWORK_TERMINAL // LIVE_METRICS</span>
+                <span style="margin-left: 15px; font-family:'Orbitron'; font-size:0.55rem; color:#444;">PROTOCOL_METRICS // STATUS_OK</span>
             </div>
             <div class="stats-row">
                 <div class="stat-box">
@@ -167,12 +150,12 @@
                     <div>$1.24M+</div>
                 </div>
                 <div class="stat-box">
-                    <h4>ACTIVE PROPOSALS</h4>
+                    <h4>ACTIVE VOTES</h4>
                     <div>04</div>
                 </div>
                 <div class="stat-box">
-                    <h4>VOTING POWER</h4>
-                    <div>892K WX</div>
+                    <h4>TX THROUGHPUT</h4>
+                    <div>High</div>
                 </div>
                 <div class="stat-box">
                     <h4>UPTIME</h4>
@@ -186,19 +169,25 @@
         <div class="footer-grid reveal">
             <div class="footer-brand">
                 <h2>NBX</h2>
-                <p>Infrastructure for institutional-grade DAO governance on the Waves Network.</p>
+                <p>Institutional-grade DAO organization structure for the Waves Network.</p>
             </div>
             <div class="footer-links">
                 <h5>PROTOCOL</h5>
-                <a href="votes.html">Governance Hub</a>
-                <a href="dashboard.html">Dashboard</a>
-                <a href="#">Security Audit</a>
+                <a href="votes.html">Governance Activity</a>
+                <a href="#">Audit Report</a>
+                <a href="#">Tokenomics</a>
             </div>
             <div class="footer-links">
-                <h5>RESOURCES</h5>
-                <a href="whitepaper.pdf">Whitepaper</a>
-                <a href="https://github.com/nbx-protocol">Documentation</a>
-                <a href="coming-soon.html">Media Kit</a>
+                <h5>DEVELOPMENT</h5>
+                <a href="https://github.com/nbx-protocol">GitHub Activity</a>
+                <a href="whitepaper.pdf">Docs / WP</a>
+                <a href="#">Roadmap 2026</a>
+            </div>
+            <div class="footer-links">
+                <h5>ORGANIZATION</h5>
+                <a href="#">Team Structure</a>
+                <a href="#">Legal Foundation</a>
+                <a href="#">Partners</a>
             </div>
         </div>
 
@@ -211,15 +200,13 @@
                 <i class="fab fa-facebook"></i>
                 <span>FACEBOOK</span>
             </a>
-            <a href="coming-soon.html" target="_blank" class="social-item">
+            <a href="#" class="social-item">
                 <i class="fab fa-telegram"></i>
                 <span>TELEGRAM</span>
-                <div class="coming-soon">COMING SOON</div>
             </a>
-            <a href="coming-soon.html" target="_blank" class="social-item">
+            <a href="#" class="social-item">
                 <i class="fab fa-instagram"></i>
                 <span>INSTAGRAM</span>
-                <div class="coming-soon">COMING SOON</div>
             </a>
         </div>
         <div style="margin-top:30px; font-family:'Orbitron'; font-size:0.55rem; color:#222; text-align:center; letter-spacing:2px;">
