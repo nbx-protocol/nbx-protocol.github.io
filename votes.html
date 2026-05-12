@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NBX | Governance Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root { --gold: #d4af37; --bg: #050505; --card: #0d0d0d; --border: #1a1a1a; }
@@ -28,13 +28,15 @@
         
         .vote-card { 
             background: var(--card); border: 1px solid var(--border); border-radius: 25px;
-            padding: 40px; margin-bottom: 30px; transition: 0.4s;
+            padding: 40px; margin-bottom: 30px; transition: 0.3s ease;
         }
-        .vote-card:hover { border-color: var(--gold); }
+        .vote-card:hover { border-color: var(--gold); transform: translateY(-3px); }
 
         .bar-label { display: flex; justify-content: space-between; margin-bottom: 15px; font-family: 'Orbitron'; font-size: 0.85rem; }
         .bar-outer { background: #000; height: 12px; border-radius: 50px; border: 1px solid #222; overflow: hidden; }
         .bar-inner { height: 100%; width: 0%; background: linear-gradient(90deg, #8a6d1d, var(--gold)); transition: width 2s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        .vote-card p { margin-top:15px; font-size:0.7rem; font-weight:500; color:#444; font-family:'Orbitron'; letter-spacing: 1px; }
 
         .infra-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 40px; }
         .infra-item { background: #080808; border: 1px solid #151515; padding: 20px; border-radius: 12px; font-size: 0.6rem; color: #444; }
@@ -56,13 +58,13 @@
         <div class="vote-card">
             <div class="bar-label"><span>TREASURY GOVERNANCE NBX-01</span><span id="v1-perc" style="color:var(--gold)">0%</span></div>
             <div class="bar-outer"><div id="v1-bar" class="bar-inner"></div></div>
-            <p style="margin-top:15px; font-size:0.65rem; color:#444; font-family:'Orbitron';">SYNCED // WEIGHT: <span id="v1-val" style="color:#888">0.00</span> WX</p>
+            <p>SYNCED // WEIGHT: <span id="v1-val" style="color:#888">0.00</span> WX</p>
         </div>
 
         <div class="vote-card">
             <div class="bar-label"><span>API LAYER CONSENSUS NBX-02</span><span id="v2-perc" style="color:var(--gold)">0%</span></div>
             <div class="bar-outer"><div id="v2-bar" class="bar-inner"></div></div>
-            <p style="margin-top:15px; font-size:0.65rem; color:#444; font-family:'Orbitron';">DISTRIBUTED // WEIGHT: <span id="v2-val" style="color:#888">0.00</span> WX</p>
+            <p>DISTRIBUTED // WEIGHT: <span id="v2-val" style="color:#888">0.00</span> WX</p>
         </div>
 
         <div class="infra-grid">

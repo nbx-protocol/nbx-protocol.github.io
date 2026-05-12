@@ -50,26 +50,25 @@
         .hero h1 span { color: var(--gold); }
         .hero p { color: #666; letter-spacing: 5px; font-weight: 700; margin-top: 20px; text-transform: uppercase; font-size: 0.75rem; }
 
-        /* SECTIONS */
+        /* SECTIONS & CARD REFINEMENT */
         .section { padding: 70px 10%; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
         
         .card { 
             background: var(--card); border: 1px solid var(--border); padding: 45px; border-radius: 25px; 
-            transition: 0.4s; position: relative;
+            position: relative;
+            /* 1. Micro-hover animation */
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .card:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; display: block; }
+        .card:hover { 
+            border-color: var(--gold); 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+        .card i { color: var(--gold); font-size: 1.8rem; margin-bottom: 20px; display: block; transition: 0.3s; }
+        .card:hover i { transform: scale(1.1); }
         .card h3 { font-family: 'Orbitron'; font-size: 1.05rem; margin-bottom: 15px; letter-spacing: 1px; }
-        
-        /* FIX: Miglioramento Leggibilità Descrittiva */
-        .card p { 
-            color: #aaa; 
-            font-size: 1.05rem; 
-            font-weight: 500; 
-            line-height: 1.8; 
-            margin: 0; 
-        }
+        .card p { color: #aaa; font-size: 1.05rem; font-weight: 500; line-height: 1.8; margin: 0; }
 
         /* PROTOCOL MONITOR */
         .wow-section {
@@ -80,9 +79,14 @@
         .t-dot { width: 10px; height: 10px; border-radius: 50%; background: #333; }
         .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 25px; text-align: left; }
         .stat-box h4 { font-family: 'Orbitron'; font-size: 0.65rem; color: #444; margin-bottom: 8px; letter-spacing: 2px; }
-        .stat-box div { font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); text-shadow: 0 0 10px var(--gold-glow); }
+        /* 2. Glow più leggero (smorzato) */
+        .stat-box div { 
+            font-family: 'Orbitron'; font-size: 1.3rem; color: var(--gold); 
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.35); 
+            opacity: 0.9;
+        }
 
-        /* FOOTER */
+        /* FOOTER PREMIUM */
         .footer { padding: 60px 10% 30px; border-top: 1px solid var(--border); background: #000; }
         .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; text-align: left; margin-bottom: 40px; }
         .footer-brand h2 { font-family: 'Orbitron'; color: var(--gold); margin-bottom: 15px; font-size: 1.5rem; }
@@ -91,11 +95,16 @@
         .footer-links a { display: block; color: #555; text-decoration: none; margin-bottom: 10px; font-size: 0.8rem; transition: 0.3s; }
         .footer-links a:hover { color: var(--gold); }
 
+        /* 3. Social icons hover Oro -> Bianco */
         .social-flex { display: flex; gap: 35px; margin-top: 30px; border-top: 1px solid #111; padding-top: 30px; justify-content: center; }
         .social-item { color: #fff; text-decoration: none; text-align: center; transition: 0.3s; opacity: 0.6; }
-        .social-item:hover { opacity: 1; color: var(--gold); transform: translateY(-3px); }
-        .social-item i { font-size: 1.4rem; margin-bottom: 5px; display: block; color: var(--gold); }
-        .social-item span { font-family: 'Orbitron'; font-size: 0.55rem; letter-spacing: 1px; }
+        .social-item i { font-size: 1.4rem; margin-bottom: 5px; display: block; color: var(--gold); transition: 0.3s ease; }
+        .social-item span { font-family: 'Orbitron'; font-size: 0.55rem; letter-spacing: 1px; color: #555; transition: 0.3s; }
+        
+        .social-item:hover { opacity: 1; transform: translateY(-3px); }
+        .social-item:hover i { color: #ffffff; filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
+        .social-item:hover span { color: #ffffff; }
+        
         .coming-soon { font-size: 0.5rem; color: #333; font-weight: 900; margin-top: 3px; letter-spacing: 1px; }
 
     </style>
