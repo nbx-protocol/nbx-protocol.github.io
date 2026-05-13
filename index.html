@@ -3,64 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX Protocol | NEBULA-X Infrastructure</title>
+    <title>NBX Protocol | NEBULA-X Core</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --bg: #050505; --border: rgba(212, 175, 55, 0.25); --text-bright: #eee; --text-dim: #888; }
+        :root { --gold: #d4af37; --bg: #050505; --border: rgba(212, 175, 55, 0.3); --text-main: #ffffff; --text-dim: #cccccc; }
         * { box-sizing: border-box; }
-        body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; scroll-behavior: smooth; overflow-x: hidden; }
+        body { background: var(--bg); color: var(--text-main); font-family: 'Inter', sans-serif; margin: 0; scroll-behavior: smooth; }
 
-        /* HEADER */
+        /* NAVBAR */
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; background: rgba(5, 5, 5, 0.98); 
-            backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); position: fixed; width: 100%; z-index: 1000;
+            padding: 15px 5%; background: rgba(0, 0, 0, 0.95); border-bottom: 1px solid var(--border);
+            position: fixed; width: 100%; z-index: 1000;
         }
         .nav-logo { font-family: 'Orbitron'; color: var(--gold); font-weight: 900; text-decoration: none; font-size: 0.85rem; letter-spacing: 3px; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-left: 20px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold); }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; margin-left: 20px; }
 
         /* HERO */
-        .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 140px 20px 80px; }
-        .logo-img { width: 300px; margin-bottom: 30px; filter: drop-shadow(0 0 20px rgba(212,175,55,0.1)); }
-        .hero-badge { color: var(--gold); font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 5px; margin-bottom: 20px; border: 1px solid var(--border); padding: 8px 20px; border-radius: 4px; background: rgba(212, 175, 55, 0.05); }
-        .hero h1 { font-family: 'Orbitron'; font-size: clamp(1.8rem, 6vw, 3.5rem); font-weight: 900; line-height: 1.1; margin: 0; text-transform: uppercase; }
-        .hero p { color: var(--text-dim); max-width: 700px; font-size: 1rem; margin-top: 30px; line-height: 1.8; }
+        .hero { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 20px 60px; }
+        .logo-img { width: 280px; margin-bottom: 25px; border-radius: 8px; border: 1px solid var(--border); }
+        .hero h1 { font-family: 'Orbitron'; font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 900; margin: 0; }
+        .hero-badge { color: var(--gold); font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 5px; margin-bottom: 15px; }
 
         /* CORPORATE STRUCTURE */
-        .corp-section { padding: 80px 10%; border-top: 1px solid var(--border); background: #070707; }
-        .section-title { font-family: 'Orbitron'; font-size: 1rem; letter-spacing: 5px; text-align: center; margin-bottom: 50px; color: var(--gold); }
-        .corp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
-        .corp-card { background: #000; border: 1px solid #151515; padding: 30px; border-radius: 8px; text-align: left; border-left: 3px solid #222; transition: 0.3s; }
-        .corp-card:hover { border-left-color: var(--gold); background: #0a0a0a; }
-        .corp-card h4 { font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 12px; color: #fff; }
-        .corp-card p { font-size: 0.75rem; color: var(--text-dim); line-height: 1.5; margin: 0; }
+        .corp-section { padding: 60px 10%; border-top: 1px solid var(--border); background: #080808; }
+        .corp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .corp-card { background: #000; border: 1px solid #333; padding: 25px; border-radius: 6px; text-align: center; }
+        .corp-card h4 { font-family: 'Orbitron'; font-size: 0.65rem; color: var(--gold); margin-bottom: 10px; }
+        .corp-card p { font-size: 0.75rem; color: var(--text-dim); margin: 0; }
 
-        /* ECOSYSTEM MAP (INTERACTIVE) */
-        .map-section { padding: 100px 10%; border-top: 1px solid var(--border); }
-        .tree-box {
-            max-width: 600px; margin: 0 auto;
-            font-family: 'JetBrains Mono', monospace; background: #000; padding: 45px;
-            border-radius: 12px; border: 1px solid #151515; line-height: 2.2;
+        /* INTERACTIVE MAP */
+        .map-section { padding: 80px 10%; border-top: 1px solid var(--border); }
+        .tree-container { max-width: 600px; margin: 0 auto; font-family: 'JetBrains Mono', monospace; background: #000; padding: 40px; border: 1px solid #222; }
+        .tree-item { cursor: pointer; color: var(--gold); text-decoration: underline; }
+        #map-detail { margin-top: 25px; padding: 20px; background: #0a0a0a; border-left: 2px solid var(--gold); color: #fff; font-size: 0.85rem; line-height: 1.6; }
+
+        /* FOOTER FIX: Cambiato colore da blu a ORO per leggibilità */
+        .footer { 
+            padding: 60px; text-align: center; border-top: 1px solid var(--border); 
+            color: var(--gold); /* Ora è color oro acceso */
+            font-family: 'Orbitron'; font-size: 0.75rem; letter-spacing: 4px; font-weight: 900;
         }
-        .tree-root { color: #fff; font-weight: 900; margin-bottom: 10px; font-size: 1.1rem; }
-        .tree-link { color: var(--gold); cursor: pointer; text-decoration: none; padding: 2px 8px; transition: 0.2s; }
-        .tree-link:hover { background: var(--gold); color: #000; }
-        
-        #map-description { 
-            margin-top: 35px; padding: 25px; background: #080808; border: 1px solid #111; 
-            border-radius: 6px; font-size: 0.85rem; color: var(--text-bright); min-height: 100px;
-        }
-
-        /* LIVE ACTIVITY */
-        .live-section { padding: 100px 10%; border-top: 1px solid var(--border); }
-        .live-grid { display: grid; grid-template-columns: 1.4fr 0.6fr; gap: 40px; }
-        .terminal { background: #000; border: 1px solid #151515; border-radius: 10px; padding: 30px; min-height: 380px; }
-        .log-row { font-family: 'JetBrains Mono'; font-size: 0.75rem; padding: 8px 0; border-bottom: 1px solid #0a0a0a; display: flex; justify-content: space-between; }
-        .log-ts { color: #333; margin-right: 15px; }
-        .log-status { color: var(--gold); font-weight: bold; }
-
-        footer { padding: 80px 10% 40px; border-top: 1px solid var(--border); text-align: center; color: #333; font-family: 'Orbitron'; font-size: 0.6rem; letter-spacing: 5px; }
     </style>
 </head>
 <body>
@@ -68,7 +51,7 @@
     <nav class="navbar">
         <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
         <div class="nav-links">
-            <a href="whitepaper.pdf" target="_blank">Whitepaper</a>
+            <a href="whitepaper.pdf">Whitepaper</a>
             <a href="#topology">Topology</a>
             <a href="votes.html">Monitoring</a>
             <a href="https://github.com/nbx-protocol">GitHub</a>
@@ -77,76 +60,46 @@
 
     <section class="hero">
         <img src="logo1.jpg" alt="NBX" class="logo-img">
-        <div class="hero-badge">POWERED BY NEBULA-X</div>
-        <h1>Governance Execution<br><span style="color:var(--gold)">Protocol Infrastructure.</span></h1>
-        <p>Il sistema di gestione istituzionale progettato per la coordinazione on-chain, il controllo del tesoro e l'automazione dei flussi di voto sulla rete Waves.</p>
+        <span class="hero-badge">POWERED BY NEBULA-X</span>
+        <h1>Institutional Governance <br><span style="color:var(--gold)">Execution Layer.</span></h1>
     </section>
 
     <section class="corp-section">
-        <h2 class="section-title">CORPORATE STRUCTURE</h2>
+        <div style="text-align:center; margin-bottom:30px;"><h2 style="font-family:'Orbitron'; font-size:1rem; letter-spacing:4px;">CORPORATE STRUCTURE</h2></div>
         <div class="corp-grid">
-            <div class="corp-card"><h4>CORE GOVERNANCE</h4><p>Algoritmi di voto decentralizzati e gestione del quorum istituzionale.</p></div>
-            <div class="corp-card"><h4>TREASURY OPS</h4><p>Custodia smart contract e ribilanciamento degli asset on-chain.</p></div>
-            <div class="corp-card"><h4>ANALYTICS ENGINE</h4><p>Monitoraggio in tempo reale dei flussi di voto e metriche di rete.</p></div>
-            <div class="corp-card"><h4>API GATEWAY</h4><p>Infrastruttura di distribuzione dati per ecosistemi esterni.</p></div>
+            <div class="corp-card"><h4>GOVERNANCE</h4><p>VOTING LOGIC ENGINE</p></div>
+            <div class="corp-card"><h4>TREASURY</h4><p>CRYPT LAYER STRATUM</p></div>
+            <div class="corp-card"><h4>ANALYSIS</h4><p>REAL-TIME INDEXING</p></div>
+            <div class="corp-card"><h4>CORE API</h4><p>DATA DELIVERY SYSTEM</p></div>
         </div>
     </section>
 
     <section id="topology" class="map-section">
-        <h2 class="section-title">ECOSYSTEM MAP</h2>
-        <div class="tree-box">
-            <div class="tree-root">NEBULA-X Core System</div>
-            <div><span style="color:#222;">├──</span> <span class="tree-link" onclick="updateMap('gov')">NBX Governance Layer</span></div>
-            <div><span style="color:#222;">├──</span> <span class="tree-link" onclick="updateMap('trs')">Treasury Management</span></div>
-            <div><span style="color:#222;">├──</span> <span class="tree-link" onclick="updateMap('api')">API High-Latency Infra</span></div>
-            <div><span style="color:#222;">├──</span> <span class="tree-link" onclick="updateMap('anl')">Analytics Node Core</span></div>
-            <div><span style="color:#222;">└──</span> <span class="tree-link" onclick="updateMap('wav')">Waves Native Integration</span></div>
-            
-            <div id="map-description">Clicca su una voce per visualizzare i dettagli tecnici del modulo...</div>
+        <div style="text-align:center; margin-bottom:30px;"><h2 style="font-family:'Orbitron'; font-size:1rem; letter-spacing:4px;">ECOSYSTEM MAP</h2></div>
+        <div class="tree-container">
+            <div style="color:#fff; margin-bottom:10px; font-weight:bold;">NEBULA-X Core</div>
+            <div>├── <span class="tree-item" onclick="sm('gov')">NBX Governance</span></div>
+            <div>├── <span class="tree-item" onclick="sm('trs')">Treasury Layer</span></div>
+            <div>├── <span class="tree-item" onclick="sm('api')">API Infrastructure</span></div>
+            <div>├── <span class="tree-item" onclick="sm('anl')">Analytics Core</span></div>
+            <div>└── <span class="tree-item" onclick="sm('wav')">Waves Integration</span></div>
+            <div id="map-detail">Seleziona una voce per visualizzare la spiegazione tecnica.</div>
         </div>
     </section>
 
-    <section class="live-section">
-        <div class="live-grid">
-            <div class="terminal">
-                <div style="font-family:'Orbitron'; font-size:0.6rem; color:#444; margin-bottom:20px; letter-spacing:2px;">LIVE_INFRASTRUCTURE_PULSE</div>
-                <div id="log-anchor"></div>
-            </div>
-            <div class="stats">
-                <div style="background:#0a0a0a; padding:25px; border:1px solid #111; border-radius:8px;">
-                    <span style="font-family:'Orbitron'; font-size:0.55rem; color:#444; display:block; margin-bottom:10px;">NETWORK STATUS</span>
-                    <span style="font-family:'JetBrains Mono'; color:#00ff00; font-weight:900;">OPERATIONAL</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>A NEBULA-X ECOSYSTEM PROJECT | 2026</footer>
+    <footer class="footer">
+        A NEBULA-X ECOSYSTEM PROJECT | 2026
+    </footer>
 
     <script>
-        const info = {
-            gov: "NBX Governance: Gestisce l'esecuzione dei voti e le logiche di quorum on-chain per le proposte di protocollo.",
-            trs: "Treasury Management: Strato di sicurezza per il controllo e il movimento degli asset del tesoro senza intermediari.",
-            api: "API Infra: Infrastruttura dedicata alla consegna rapida dei dati di governance ad applicazioni di terze parti.",
-            anl: "Analytics Core: Nodo di indicizzazione per l'analisi storica e in tempo reale di tutte le transazioni NBX.",
-            wav: "Waves Integration: Integrazione nativa con smart contract Waves per garantire immutabilità e trasparenza."
+        const d = {
+            gov: "NBX Governance: Motore per la gestione dei voti on-chain e convalida delle proposte.",
+            trs: "Treasury Layer: Gestione sicura e automatizzata degli asset dell'ecosistema.",
+            api: "API Infra: Layer di comunicazione per l'accesso rapido ai dati del protocollo.",
+            anl: "Analytics Core: Indicizzazione in tempo reale per monitorare le attività di rete.",
+            wav: "Waves Integration: Collegamento diretto alla blockchain Waves per smart contract."
         };
-
-        function updateMap(key) {
-            document.getElementById('map-description').innerText = info[key];
-        }
-
-        const events = ["Governance block synced", "Treasury rebalance confirmed", "Validator sync complete", "API cache refreshed"];
-        function addLog() {
-            const anchor = document.getElementById('log-anchor');
-            const now = new Date().toLocaleTimeString();
-            const div = document.createElement('div');
-            div.className = 'log-row';
-            div.innerHTML = `<span><span class="log-ts">[${now}]</span> ${events[Math.floor(Math.random()*events.length)]}</span> <span class="log-status">SUCCESS</span>`;
-            anchor.prepend(div);
-            if(anchor.children.length > 8) anchor.lastChild.remove();
-        }
-        setInterval(addLog, 4000); addLog();
+        function sm(k) { document.getElementById('map-detail').innerText = d[k]; }
     </script>
 </body>
 </html>
