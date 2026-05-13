@@ -3,85 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NBX | System Monitoring</title>
+    <title>NBX | Real-Time Monitoring</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=JetBrains+Mono&display=swap" rel="stylesheet">
     <style>
-        :root { --gold: #d4af37; --bg: #050505; --border: rgba(212, 175, 55, 0.3); }
+        :root { --gold: #d4af37; --bg: #050505; --border: rgba(212, 175, 55, 0.4); }
         body { background: var(--bg); color: #fff; font-family: 'Inter', sans-serif; margin: 0; }
         
-        .navbar { display: flex; justify-content: space-between; padding: 15px 5%; border-bottom: 1px solid var(--border); background: #000; }
-        .nav-logo { font-family: 'Orbitron'; color: var(--gold); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; }
+        .header { padding: 80px 5% 40px; text-align: center; border-bottom: 1px solid var(--border); }
+        .container { max-width: 900px; margin: 50px auto; padding: 0 20px; }
         
-        .header { padding: 80px 5% 40px; text-align: center; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        /* BOX MONITORING - CONTRASTO ELEVATO */
+        .monitor-card { background: #0a0a0a; border: 1px solid #222; padding: 40px; border-radius: 12px; margin-bottom: 30px; }
+        .label { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.8rem; color: #fff; margin-bottom: 20px; letter-spacing: 2px; }
         
-        /* FIX: Increased contrast for readability in rectangles */
-        .monitor-card { background: #0d0d0d; border: 1px solid #222; padding: 40px; border-radius: 12px; margin-bottom: 30px; }
-        .label { display: flex; justify-content: space-between; font-family: 'Orbitron'; font-size: 0.75rem; color: #fff; margin-bottom: 20px; }
-        
-        .bar-bg { background: #000; height: 8px; border-radius: 4px; border: 1px solid #1a1a1a; overflow: hidden; }
+        .bar-bg { background: #000; height: 10px; border-radius: 5px; border: 1px solid #1a1a1a; overflow: hidden; }
         .bar-fill { height: 100%; width: 0%; background: var(--gold); transition: width 2s ease-in-out; }
         
-        /* FIX: Brightened metadata text */
-        .meta { margin-top: 18px; font-family: 'JetBrains Mono'; font-size: 0.75rem; color: #ccc; letter-spacing: 1px; }
+        /* TESTO META - ORA VISIBILE */
+        .meta { margin-top: 18px; font-family: 'JetBrains Mono'; font-size: 0.8rem; color: #aaa; }
         .highlight { color: var(--gold); font-weight: bold; }
 
-        .footer-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-        .small-box { background: #0a0a0a; padding: 20px; border: 1px solid #151515; border-radius: 8px; text-align: center; }
-        .small-box span { display: block; font-family: 'Orbitron'; font-size: 0.55rem; color: #666; margin-bottom: 10px; }
-        .small-box b { font-family: 'JetBrains Mono'; color: var(--gold); font-size: 0.9rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 50px; }
+        .stat-box { background: #000; padding: 25px; border: 1px solid #111; border-radius: 8px; text-align: center; }
+        .stat-box small { display: block; font-family: 'Orbitron'; font-size: 0.55rem; color: #555; margin-bottom: 10px; letter-spacing: 1px; }
+        .stat-box span { font-family: 'JetBrains Mono'; font-size: 0.9rem; color: var(--gold); font-weight: 700; }
 
-        /* FIX: High contrast for Exit button and Hover */
+        /* EXIT BUTTON - CONTRASTO ELEVATO */
         .exit-btn { 
-            display: block; width: fit-content; margin: 60px auto; padding: 15px 40px;
-            color: #fff; text-decoration: none; font-family: 'Orbitron'; font-size: 0.7rem; 
-            letter-spacing: 3px; border: 1px solid #333; border-radius: 4px; transition: 0.3s;
-            background: rgba(255,255,255,0.02);
+            display: block; width: fit-content; margin: 80px auto; padding: 18px 50px;
+            color: #fff; text-decoration: none; font-family: 'Orbitron'; font-size: 0.75rem; 
+            letter-spacing: 4px; border: 1px solid #333; border-radius: 4px; transition: 0.3s;
+            background: #000; font-weight: 700;
         }
-        .exit-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); font-weight: 900; }
+        .exit-btn:hover { background: var(--gold); color: #000; border-color: var(--gold); box-shadow: 0 0 20px rgba(212,175,55,0.2); }
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
-        <div style="font-family:'Orbitron'; font-size:0.6rem; color:#444;">SYSTEM MONITORING V.2.4</div>
-    </nav>
-
     <div class="header">
-        <h1 style="font-family:'Orbitron'; letter-spacing:10px; margin:0; font-size: 1.8rem;">GOVERNANCE HUB</h1>
+        <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:4px; margin-bottom:10px;">SYSTEM_STATUS: ACTIVE</div>
+        <h1 style="font-family:'Orbitron'; letter-spacing:10px; margin:0; font-size: 2rem;">GOVERNANCE MONITOR</h1>
     </div>
 
     <div class="container">
         <div class="monitor-card">
-            <div class="label"><span>TREASURY_VOTE_SYNC</span><span id="p1">0%</span></div>
+            <div class="label"><span>GOVERNANCE_SYNC_WEIGHT</span><span id="p1" style="color:var(--gold)">0%</span></div>
             <div class="bar-bg"><div id="b1" class="bar-fill"></div></div>
-            <div class="meta">BLOCKCHAIN STATUS // WEIGHT: <span id="v1" class="highlight">0.00</span> WX</div>
+            <div class="meta">BLOCKCHAIN SYNC // WEIGHT: <span id="v1" class="highlight">0.00</span> WX</div>
         </div>
 
         <div class="monitor-card">
-            <div class="label"><span>API_CONSENSUS_LAYER</span><span id="p2">0%</span></div>
+            <div class="label"><span>API_CONSENSUS_LEVEL</span><span id="p2" style="color:var(--gold)">0%</span></div>
             <div class="bar-bg"><div id="b2" class="bar-fill"></div></div>
-            <div class="meta">DISTRIBUTED DATA // WEIGHT: <span id="v2" class="highlight">0.00</span> WX</div>
+            <div class="meta">INDEXER STATUS // WEIGHT: <span id="v2" class="highlight">0.00</span> WX</div>
         </div>
 
-        <div class="footer-stats">
-            <div class="small-box"><span>TREASURY</span><b>3P4k...8s9W</b></div>
-            <div class="small-box"><span>NODE_STATUS</span><b style="color:#00ff00;">ACTIVE</b></div>
-            <div class="small-box"><span>UPTIME</span><b>99.982%</b></div>
+        <div class="footer-grid">
+            <div class="stat-box"><small>TREASURY</small><span>3P4k...8s9W</span></div>
+            <div class="stat-box"><small>NODE</small><span style="color:#00ff00;">ONLINE</span></div>
+            <div class="stat-box"><small>UPTIME</small><span>99.98%</span></div>
         </div>
 
         <a href="index.html" class="exit-btn">← EXIT MONITOR</a>
     </div>
 
     <script>
-        async function update() {
+        async function fetchVotes() {
             try {
                 const r = await fetch('https://nbx-governance-api.onrender.com/votes?t=' + Date.now());
                 const d = await r.json();
                 const g = parseFloat(d.GOVERNANCE || 0);
                 const a = parseFloat(d.ANALYTICS || 0);
-                
+
                 document.getElementById('b1').style.width = Math.min(g*100, 100) + "%";
                 document.getElementById('p1').innerText = (g*100).toFixed(1) + "%";
                 document.getElementById('v1').innerText = g.toFixed(2);
@@ -89,9 +82,9 @@
                 document.getElementById('b2').style.width = Math.min(a*100, 100) + "%";
                 document.getElementById('p2').innerText = (a*100).toFixed(1) + "%";
                 document.getElementById('v2').innerText = a.toFixed(2);
-            } catch(e) {}
+            } catch(e) { console.log("Sync..."); }
         }
-        setInterval(update, 8000); update();
+        setInterval(fetchVotes, 10000); fetchVotes();
     </script>
 </body>
 </html>
