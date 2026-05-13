@@ -1,4 +1,4 @@
-K<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -36,10 +36,11 @@ K<!DOCTYPE html>
         .btn-outline { border: 1px solid #333; color: #fff; }
         .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
-        /* VOTES WALLET SECTION */
+        /* VOTES WALLET SECTION (Interactive Link) */
         .wallet-highlight { background: #080808; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 50px 10%; text-align: center; margin: 40px 0; }
         .wallet-label { font-family: 'Orbitron'; font-size: 0.7rem; color: var(--gold); letter-spacing: 4px; margin-bottom: 15px; display: block; font-weight: 900; }
-        .wallet-addr { font-family: 'JetBrains Mono'; font-size: 1.1rem; color: #fff; font-weight: 500; word-break: break-all; max-width: 900px; margin: 0 auto; }
+        .wallet-link { font-family: 'JetBrains Mono'; font-size: 1.1rem; color: #fff; font-weight: 500; word-break: break-all; max-width: 900px; margin: 0 auto; text-decoration: none; border-bottom: 1px dashed var(--border); transition: 0.3s; display: inline-block; }
+        .wallet-link:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
         /* CORPORATE STRUCTURE */
         .section-wrap { padding: 90px 10%; }
@@ -83,8 +84,10 @@ K<!DOCTYPE html>
     </section>
 
     <section class="wallet-highlight">
-        <span class="wallet-label">VOTING WALLET ADDRESS</span>
-        <div class="wallet-addr">3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M</div>
+        <span class="wallet-label">VOTING WALLET ADDRESS (CLICK TO VIEW)</span>
+        <a href="https://wx.network/address/3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M" target="_blank" class="wallet-link">
+            3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M
+        </a>
     </section>
 
     <section id="structure" class="section-wrap">
