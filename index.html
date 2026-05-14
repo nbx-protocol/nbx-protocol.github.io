@@ -17,7 +17,8 @@
             position: fixed; width: 100%; z-index: 1000; backdrop-filter: blur(10px);
         }
         .nav-logo { font-family: 'Orbitron'; color: var(--gold); font-weight: 900; text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; }
-        .nav-links a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; margin-left: 25px; transition: 0.3s; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: #fff; text-decoration: none; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; margin-left: 25px; transition: 0.3s; display: flex; align-items: center; gap: 5px; }
         .nav-links a:hover { color: var(--gold); }
 
         /* HERO SECTION */
@@ -26,9 +27,10 @@
         .hero-badge { color: var(--gold); font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 6px; margin-bottom: 20px; }
         .hero h1 { font-family: 'Orbitron'; font-size: clamp(2rem, 6vw, 3.5rem); font-weight: 900; line-height: 1.1; margin: 0; text-transform: uppercase; }
         
-        .network-links { margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
-        .net-link { color: var(--gold); font-family: 'JetBrains Mono'; font-size: 0.8rem; text-decoration: none; border: 1px solid var(--border); padding: 10px 20px; border-radius: 4px; transition: 0.3s; letter-spacing: 1px; text-transform: uppercase; }
-        .net-link:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); }
+        /* DIRECT TOPIC LINKS */
+        .network-links { margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; max-width: 800px; }
+        .net-link { color: var(--gold); font-family: 'JetBrains Mono'; font-size: 0.75rem; text-decoration: none; border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; transition: 0.3s; letter-spacing: 1px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        .net-link:hover { background: var(--gold); color: #000; box-shadow: 0 0 15px rgba(212, 175, 55, 0.3); border-color: var(--gold); }
 
         .hero-btns { margin-top: 40px; display: flex; gap: 20px; }
         .btn { padding: 15px 35px; font-family: 'Orbitron'; font-size: 0.7rem; letter-spacing: 2px; text-decoration: none; border-radius: 4px; transition: 0.3s; font-weight: 700; }
@@ -52,7 +54,10 @@
         .corp-addr { font-family: 'JetBrains Mono'; font-size: 0.75rem; color: var(--gold); word-break: break-all; opacity: 0.9; line-height: 1.5; }
 
         /* FOOTER */
-        .footer { padding: 80px 10% 40px; text-align: center; border-top: 1px solid var(--border); color: var(--gold); font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 5px; font-weight: 900; }
+        .footer { padding: 80px 10% 40px; text-align: center; border-top: 1px solid var(--border); }
+        .footer-logo { font-family: 'Orbitron'; color: var(--gold); font-size: 0.8rem; letter-spacing: 5px; font-weight: 900; margin-bottom: 20px; display: block; }
+        .footer-email { font-family: 'JetBrains Mono'; color: #fff; text-decoration: none; font-size: 0.75rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .footer-email:hover { color: var(--gold); }
     </style>
 </head>
 <body>
@@ -61,9 +66,9 @@
         <a href="index.html" class="nav-logo">NBX PROTOCOL</a>
         <div class="nav-links">
             <a href="votes.html">Monitoring</a>
-            <a href="https://wx.network" target="_blank">WX.Network</a>
-            <a href="https://wavesexplorer.com" target="_blank">Waves Explorer</a>
-            <a href="https://github.com/nbx-protocol">GitHub</a>
+            <a href="https://wavesexplorer.com" target="_blank">Explorer</a>
+            <a href="https://github.com/nbx-protocol" target="_blank">GitHub</a>
+            <a href="mailto:info.nbxproject@gmail.com">✉️ CONTACT</a>
         </div>
     </nav>
 
@@ -73,13 +78,15 @@
         <h1>Governance Execution<br><span style="color:var(--gold)">Infrastructure.</span></h1>
         
         <div class="network-links">
-            <a href="https://wx.network" target="_blank" class="net-link">WX.NETWORK</a>
-            <a href="https://wavesexplorer.com/address/3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M" target="_blank" class="net-link">WAVES.EXPLORER</a>
+            <a href="https://wavesexplorer.com/address/3PLvmYuuHscQhxpvXZBzwAXFeLV2nt3M24M" target="_blank" class="net-link">🗳️ LIVE GOVERNANCE</a>
+            <a href="votes.html" class="net-link">📡 SYSTEM MONITORING</a>
+            <a href="https://github.com/nbx-protocol" target="_blank" class="net-link">🛠️ DEV LOGS</a>
+            <a href="mailto:info.nbxproject@gmail.com" class="net-link">✉️ SUPPORT</a>
         </div>
 
         <div class="hero-btns">
             <a href="votes.html" class="btn btn-gold">LAUNCH SYSTEM</a>
-            <a href="whitepaper.pdf" class="btn btn-outline">WHITEPAPER</a>
+            <a href="whitepaper.pdf" class="btn btn-outline">TECHNICAL DOCS</a>
         </div>
     </section>
 
@@ -121,7 +128,10 @@
     </section>
 
     <footer class="footer">
-        A NEBULA-X ECOSYSTEM PROJECT | 2026
+        <span class="footer-logo">A NEBULA-X ECOSYSTEM PROJECT | 2026</span>
+        <a href="mailto:info.nbxproject@gmail.com" class="footer-email">
+            ✉️ info.nbxproject@gmail.com
+        </a>
     </footer>
 
 </body>
