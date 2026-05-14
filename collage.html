@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { background: #050505; margin: 0; padding: 40px; font-family: 'Orbitron', sans-serif; color: white; display: flex; justify-content: center; }
+        .container { display: flex; gap: 40px; align-items: center; border: 1px solid rgba(212, 175, 55, 0.2); padding: 40px; background: #0a0a0a; border-radius: 8px; }
+        
+        .box { position: relative; width: 450px; border: 2px solid #1a1a1a; border-radius: 4px; overflow: hidden; }
+        
+        /* Pannello Vecchio */
+        .old-version { opacity: 0.4; filter: grayscale(1); }
+        .strike { position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+                      background: linear-gradient(to top left, transparent 47%, #ff4444 48%, #ff4444 52%, transparent 53%),
+                                  linear-gradient(to top right, transparent 47%, #ff4444 48%, #ff4444 52%, transparent 53%);
+                      z-index: 10; display: flex; align-items: center; justify-content: center; }
+        .badge-old { position: absolute; top: 10px; left: 10px; background: #ff4444; color: black; padding: 5px 10px; font-size: 10px; font-weight: bold; z-index: 20; }
+
+        /* Pannello Nuovo */
+        .new-version { border-color: #d4af37; box-shadow: 0 0 30px rgba(212, 175, 55, 0.1); }
+        .badge-new { position: absolute; top: 10px; left: 10px; background: #d4af37; color: black; padding: 5px 10px; font-size: 10px; font-weight: bold; z-index: 20; }
+        
+        .arrow { font-size: 40px; color: #d4af37; }
+        img { width: 100%; display: block; }
+        
+        .label { text-align: center; margin-top: 15px; font-size: 12px; letter-spacing: 2px; color: #d4af37; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="box old-version">
+            <div class="badge-old">DEPRECATED</div>
+            <div class="strike"></div>
+            <img src="old_screenshot.png">
+            <div class="label">LEGACY WX LINK</div>
+        </div>
+
+        <div class="arrow">➔</div>
+
+        <div class="box new-version">
+            <div class="badge-new">ACTIVE INFRASTRUCTURE</div>
+            <img src="new_screenshot.png">
+            <div class="label">ON-CHAIN EXPLORER</div>
+        </div>
+    </div>
+
+</body>
+</html>
